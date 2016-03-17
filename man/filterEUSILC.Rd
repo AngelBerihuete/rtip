@@ -2,31 +2,36 @@
 % Please edit documentation in R/filterEUSILC.R
 \name{filterEUSILC}
 \alias{filterEUSILC}
-\alias{filtereusilc}
-\title{ToDo}
+\title{Filter datasets from EUSILC survey datasets}
 \usage{
 filterEUSILC(year = "2006", varD = c("DB010", "DB020", "DB030", "DB040",
   "DB090"), varH = c("HB010", "HB020", "HB030", "HY020", "HY025", "HX010",
   "HX040", "HX050", "HX080", "HX090"))
 }
 \arguments{
-\item{year}{is the year when the survey was done.}
+\item{year}{Default year of the survey.}
 
-\item{varD}{are a vector containing the DB variables to filter}
+\item{varH}{Default string vector containing the variables to filter in the
+file D.}
+
+\item{varH}{Default string vector containing the variables to filter in the
+file H.}
 }
 \value{
-a data frame containing the variables required
+A data frame containing the variables required.
 }
 \description{
-This is an auxiliary function to obtain specific variables from EUSILC datasets files.
+\code{filterEUSILC()} extracts and transforms some variables in the EUSILC
+survey files in a suitable data frame in order to do the calculations. In
+general, you will receive two files from Eurostat for each year you have
+requested the EUSILC survey (usually the filenames have letters D and H to
+distingish them). For each file there will be dozens of variables containing
+the dataset, but you will not need all of them to the calculations with
+rtip package.
 }
-\details{
-Filter datasets from EUSILC survey
-
-\code{filterEUSILC} uses some packages
-to do the
-
-Todo
+\note{
+We do not give examples in this function because the EUSILC survey
+datasets have a restricted license.
 }
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo

@@ -3,19 +3,33 @@
 \docType{data}
 \name{LCS2012}
 \alias{LCS2012}
-\title{Living conditions survey
-CAMBIAR}
-\format{A data frame with 6000 rows of 7 variables:
-\describe{
- \item{DB010}{integer; year of the pull}
- \item{DB020}{factor; name of the country}
- \item{DB040}{factor; name of the region within the country}}}
+\title{Living conditions survey data from INE}
+\format{A data frame with 12714 rows of 11 variables:
+
+\itemize{
+\item DB010, a numeric vector containing the year of the survey.
+\item DB020, a factor with one level which is the country considered.
+\item DB040, a factor with as many levels as there are regions in the country.
+\item DB090, a numeric vector containing information about household cross-sectional weight.
+\item HX040, an integer vector containing information about households size.
+\item HX050, a numeric vector containing information about the equivalised household size. The scale employed is the modified OECD scale.
+\item HX090, a numeric vector containing information about equivalised disposable income (with the modified OECD scale).
+}}
 \usage{
 data(LCS2012)
 }
-\references{
-Moore et al. (2013) Genetics 195:1077-1086
-(\href{http://www.ncbi.nlm.nih.gov/pubmed/23979570}{PubMed})
+\description{
+This is a spanish National Statistics Institute (INE in spanish nomenclature)
+release for the living conditions survey in 2012. The dataset is not modified
+but transformed properly in order to use functions in the package.
+You can obtain the raw datasets at
+\href{http://www.ine.es/dyngs/INEbase/en/operacion.htm?c=Estadistica_C&cid=1254736176807&menu=ultiDatos&idp=1254735976608}{INE}
+Also the datasets and the function to extract the variables are available
+in data-raw directory (source version package only).
+}
+\note{
+According to the INE regulations, it is mandatory to inform that
+the values in this dataset were not modified.
 }
 \keyword{datasets}
 

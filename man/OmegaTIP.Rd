@@ -17,10 +17,10 @@ OmegaTIP(dataset, arpt.value, norm = FALSE, samp)
 }
 \value{
 A list with the following components:
-
-Omega covariance matrix for the estimated vector of TIP curve ordinates.
-
-tip.curve estimated vector of TIP curve ordinates.
+\itemize{
+\item Omega, covariance matrix for the estimated vector of TIP curve ordinates.
+\item tip.curve estimated vector of TIP curve ordinates.
+}
 }
 \description{
 The auxiliary function OmegaTIP computes the (empirical) vector of TIP curve ordinates and its corresponding covariance matrix. This matrix will be used to compute the test-statistic to test for the TIP dominance relation between two TIP curves.

@@ -6,11 +6,32 @@
 \usage{
 loadLCS(lcs_d_file, lcs_h_file)
 }
+\arguments{
+\item{lcs_d_file, }{a string with the name fo the file containing the letter d
+in the filename.}
+
+\item{lcs_h_file, }{a string with the name fo the file containing the letter h
+in the filename.}
+}
+\value{
+A data frame containing the variables required.
+}
 \description{
-Function to load the LCS dataset from INE
+\code{loadLCS()} loads the living conditions survey from spanish National
+Statistics Institute (\acronym{INE} in spanish nomenclature).
 }
 \details{
-Todo
+Regularly the INE releases the living contions survey through two different
+files which can be downloaded for free. The filename of these files contains
+the letters d and h, and include dozens of variables. Only some of these
+variables are needed to do the calculations with rtip package.
+}
+\note{
+We have included two files in dat-raw to test the function
+(source version package only).
+}
+\examples{
+\dontrun{lcs2014 <- loadLCS("esudb14d.csv","esudb14h.csv")}
 }
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo

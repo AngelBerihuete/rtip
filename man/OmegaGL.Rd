@@ -14,15 +14,13 @@ OmegaGL(dataset, samp)
 \value{
 A list with the following components:
 
-Omega covariance matrix for the estimated vector of GL curve ordinates.
-
-gl.curve estimated vector of GL curve ordinates.
-
-p_i vector with components p_i=i/samp, i=1, ..., samp.
-
-quantile_i estimated vector of quantiles of income corresponding to these p_i's.
-
-gamma.i vector of estimated conditional means of income less than the quantil corresponding to p_i=i/samp, i=1, ..., samp.
+\itemize{
+\item Omega, covariance matrix for the estimated vector of GL curve ordinates.
+\item gl.curve, estimated vector of GL curve ordinates.
+\item p_i, vector with components p_i=i/samp, i=1, ..., samp.
+\item quantile_i, estimated vector of quantiles of income corresponding to these p_i's.
+\item gamma.i, vector of estimated conditional means of income less than the quantil corresponding to p_i=i/samp, i=1, ..., samp.
+}
 }
 \description{
 The auxiliary function OmegaGL computes the (empirical) vector of Generalized Lorenz (GL) curve ordinates and its corresponding covariance matrix. This matrix will be used to compute the test-statistic to test for the Generalized Lorenz dominance relation between two GL curves.

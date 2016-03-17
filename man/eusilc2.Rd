@@ -3,23 +3,35 @@
 \docType{data}
 \name{eusilc2}
 \alias{eusilc2}
-\title{Modified synthetic EU-SILC survey data
-Synthetic dataset generated from real Austrian EU-SILC.
-
-The dataset is the same as in laeken package but
-with transformed variables in order to perform right calculations
-using laeken2.}
-\format{A data frame with 6000 rows of 7 variables:
-\describe{
- \item{DB010}{integer; year of the pull}
- \item{DB020}{factor; name of the country}
- \item{DB040}{factor; name of the region within the country}}}
+\title{Modified synthetic EU-SILC survey data}
+\format{A data frame with 6000 rows and 7 variables:
+\itemize{
+\item DB010, a numeric vector containing the year of the survey.
+\item DB020, a factor with one level which is the country considered.
+\item DB040, a factor with as many levels as there are regions in the country.
+\item DB090, a numeric vector containing information about household cross-sectional weight.
+\item HX040, an integer vector containing information about households size.
+\item HX050, a numeric vector containing information about the equivalised household size. The scale employed is the modified OECD scale.
+\item HX090, a numeric vector containing information about equivalised disposable income (with the modified OECD scale).
+}}
 \usage{
 data(eusilc2)
 }
+\description{
+The dataset eusilc2 is the same as in the laeken package
+(see reference below), but transformed in order to do calculations
+using rtip package functions. Therefore eusilc2 is a synthetic dataset
+generated from real Austrian EU-SILC containing a data frame.
+}
+\note{
+The original dataset (eusilc) and the transformations done to obtain
+eusilc2 dataset are included in data-raw directory
+(source version package only).
+}
 \references{
-Moore et al. (2013) Genetics 195:1077-1086
-(\href{http://www.ncbi.nlm.nih.gov/pubmed/23979570}{PubMed})
+Andreas A. et al. (2013) JSS 54:1,
+\href{https://www.jstatsoft.org/index.php/jss/article/view/v054i15}{
+Estimation of Social Exclusion Indicators from Complex Surveys: The R Package laeken}
 }
 \keyword{datasets}
 

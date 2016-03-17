@@ -1,15 +1,34 @@
-#' @title Living conditions survey 
+#' @title Living conditions survey
+#' @description
+#' \code{loadLCS()} loads the living conditions survey from spanish National
+#' Statistics Institute (\acronym{INE} in spanish nomenclature).
+#'
+#' @details
+#' Regularly the INE releases the living contions survey through two different
+#' files which can be downloaded for free. The filename of these files contains
+#' the letters d and h, and include dozens of variables. Only some of these
+#' variables are needed to do the calculations with rtip package.
+#'
+#' @param lcs_d_file, a string with the name fo the file containing the letter d
+#' in the filename.
+#' @param lcs_h_file, a string with the name fo the file containing the letter h
+#' in the filename.
+#'
+#' @return A data frame containing the variables required.
+#'
+#' @note We have included two files in dat-raw to test the function
+#' (source version package only).
+#' @examples
+#' \dontrun{lcs2014 <- loadLCS("esudb14d.csv","esudb14h.csv")}
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
-#' @description Function to load the LCS dataset from INE
-#' @details Todo
 #' @export
 
 loadLCS <- function(lcs_d_file, lcs_h_file){
-  
-  
+
+
   dataset1 <- read.table(lcs_d_file, header=TRUE, sep= ",")
   dataset2 <- read.table(lcs_h_file, header=TRUE, sep= ",")
-  
+
   sub.dataset1 <- subset(dataset1, select = c("DB010", "DB020", "DB030",
                                               "DB040", "DB090"))
   sub.dataset2 <- subset(dataset2, select = c("HB010", "HB020", "HB030",
@@ -25,10 +44,10 @@ loadLCS <- function(lcs_d_file, lcs_h_file){
   }else if (!check2){
     stop('You do not have the same identification for homes')
   }else{
-    dataset <- cbind(sub.dataset1, sub.dataset2) # ELIMINAR LAS VARIABLES REPETIDAS!!
+    dataset <- cbind(sub.dataset1, sub.dataset2)
     dataset <- subset(dataset, select = c("DB010", "DB020", "DB030","DB040",
                                           "DB090", "HB020", "HB030",
                                           "HY020", "HX040", "HX050",
                                           "HX090"))
-  } 
+  }
 }

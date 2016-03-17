@@ -8,6 +8,11 @@ Source: CRAN
 Version: 2.1.2
 Hash: c515e41c73294952cbb33ee1c1be5a2d
 
+Package: RColorBrewer
+Source: CRAN
+Version: 1.1-2
+Hash: c0d56cd15034f395874c870141870c25
+
 Package: Rcpp
 Source: CRAN
 Version: 0.12.3
@@ -17,6 +22,11 @@ Package: brew
 Source: CRAN
 Version: 1.0-6
 Hash: 931f9972deae0f205e1c78a51f33149b
+
+Package: colorspace
+Source: CRAN
+Version: 1.2-6
+Hash: 00bb12245cd975c450cc4a960884fa15
 
 Package: curl
 Source: CRAN
@@ -30,6 +40,11 @@ Hash: 11261bd97eda1c73da7136c4e2031e97
 Requires: digest, git2r, httr, jsonlite, memoise, rstudioapi, whisker,
     withr
 
+Package: dichromat
+Source: CRAN
+Version: 2.0-0
+Hash: 08eed0c80510af29bb15f840ccfe37ce
+
 Package: digest
 Source: CRAN
 Version: 0.6.9
@@ -39,6 +54,11 @@ Package: git2r
 Source: CRAN
 Version: 0.14.0
 Hash: 38b74f188c339da499441cb1812b89b9
+
+Package: gtable
+Source: CRAN
+Version: 0.2.0
+Hash: cd78381a9d3fea966ac39bd0daaf5554
 
 Package: httr
 Source: CRAN
@@ -50,6 +70,11 @@ Package: jsonlite
 Source: CRAN
 Version: 0.9.19
 Hash: 4a983f753b6e88ae0f5a6ac152d8cc32
+
+Package: labeling
+Source: CRAN
+Version: 0.3
+Hash: ecf589b42cd284b03a4beb9665482d3e
 
 Package: magrittr
 Source: CRAN
