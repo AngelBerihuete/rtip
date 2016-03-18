@@ -17,9 +17,9 @@ A list with the following components:
 \itemize{
 \item Omega, covariance matrix for the estimated vector of GL curve ordinates.
 \item gl.curve, estimated vector of GL curve ordinates.
-\item p_i, vector with components p_i=i/samp, i=1, ..., samp.
-\item quantile_i, estimated vector of quantiles of income corresponding to these p_i's.
-\item gamma.i, vector of estimated conditional means of income less than the quantil corresponding to p_i=i/samp, i=1, ..., samp.
+\item p, vector with components \eqn{p_i=i/samp, \quad i=1, ..., samp}.
+\item quantiles, estimated vector of quantiles of income corresponding to these \eqn{p_i}.
+\item gamma, vector of estimated conditional means of income less than the quantil corresponding to \eqn{p_i=i/samp, \quad i=1, \dots,  samp}.
 }
 }
 \description{

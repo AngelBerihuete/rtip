@@ -16,9 +16,9 @@
 #' \itemize{
 #' \item Omega, covariance matrix for the estimated vector of GL curve ordinates.
 #' \item gl.curve, estimated vector of GL curve ordinates.
-#' \item p_i, vector with components p_i=i/samp, i=1, ..., samp.
-#' \item quantile_i, estimated vector of quantiles of income corresponding to these p_i's.
-#' \item gamma.i, vector of estimated conditional means of income less than the quantil corresponding to p_i=i/samp, i=1, ..., samp.
+#' \item p, vector with components \eqn{p_i=i/samp, \quad i=1, ..., samp}.
+#' \item quantiles, estimated vector of quantiles of income corresponding to these \eqn{p_i}.
+#' \item gamma, vector of estimated conditional means of income less than the quantil corresponding to \eqn{p_i=i/samp, \quad i=1, \dots,  samp}.
 #' }
 #'
 #'
@@ -50,20 +50,20 @@ p_i <- (1:samp)/samp
 np_i <- floor(p_i*number.individuals)
 
 sigma <- mat.or.vec(samp, samp)
-vector.gamma.i <- c()
+vector.gamma_i <- c()
 quantile.i <- c()
 for(i in 1:samp){
   pos.i <- which(dataset1$Acum.P_i>=p_i[i])[1]
   quantile.i[i] <- dataset1$ipuc[pos.i]
   if(pos.i == 1){
-    gamma.i <- vector.gamma.i[i] <- dataset1$ipuc[pos.i]
+    gamma_i <- vector.gamma_i[i] <- dataset1$ipuc[pos.i]
     lambda.i <- 0
   }else{
-    gamma.i <- sum(dataset1$ipuc[1:(pos.i-1)]*dataset1$wHX040[1:(pos.i-1)]) +
+    gamma_i <- sum(dataset1$ipuc[1:(pos.i-1)]*dataset1$wHX040[1:(pos.i-1)]) +
       dataset1$ipuc[pos.i]*(np_i[i]-dataset1$Acum[pos.i-1])
-    gamma.i <- vector.gamma.i[i] <- gamma.i/np_i[i]
-    lambda.i <- sum((dataset1$ipuc[1:(pos.i-1)]-gamma.i)^2*dataset1$wHX040[1:(pos.i-1)])+
-      (dataset1$ipuc[pos.i]-gamma.i)^2*(np_i[i]-dataset1$Acum[pos.i-1])
+    gamma_i <- vector.gamma_i[i] <- gamma_i/np_i[i]
+    lambda.i <- sum((dataset1$ipuc[1:(pos.i-1)]-gamma_i)^2*dataset1$wHX040[1:(pos.i-1)])+
+      (dataset1$ipuc[pos.i]-gamma_i)^2*(np_i[i]-dataset1$Acum[pos.i-1])
 
     lambda.i <- lambda.i/np_i[i]
   }
@@ -77,7 +77,7 @@ for(i in 1:samp){
         dataset1$ipuc[pos.j]*(np_i[j]-dataset1$Acum[pos.j-1])
       gamma.j <- gamma.j/np_i[j]
     }
-    sigma[i,j] <- p_i[i]*(lambda.i+(1-p_i[j])*(dataset1$ipuc[pos.i]-gamma.i)*(dataset1$ipuc[pos.j]-gamma.j)+(dataset1$ipuc[pos.i]-gamma.i)*(gamma.j-gamma.i))
+    sigma[i,j] <- p_i[i]*(lambda.i+(1-p_i[j])*(dataset1$ipuc[pos.i]-gamma_i)*(dataset1$ipuc[pos.j]-gamma.j)+(dataset1$ipuc[pos.i]-gamma_i)*(gamma.j-gamma_i))
   }
 }
 
@@ -85,8 +85,8 @@ sigma <- sigma + t(sigma)
 diag(sigma) <- diag(sigma)/2
 
 Omega.gl <- sigma/number.individuals
-gl.curve <- vector.gamma.i*p_i
+gl.curve <- vector.gamma_i*p_i
 
-return(list(Omega = Omega.gl, gl.curve = gl.curve, p_i = p_i,
-            quantile_i = quantile.i, gamma.i = vector.gamma.i))
+return(list(Omega = Omega.gl, gl.curve = gl.curve, p = p_i,
+            quantiles = quantile.i, gamma = vector.gamma_i))
 }

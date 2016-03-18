@@ -22,24 +22,17 @@ setupDataset(dataset, country = "ES", region = "all", s = "OECD",
 }
 \value{
 A data.frame with the following variables:
-
-DB010 a numeric vector containing the year of the survey.
-
-DB020 a factor with one level which is the country considered.
-
-DB040 a factor with as many levels as there are regions in the country.
-
-DB090 a numeric vector containing information about household cross-sectional weight.
-
-HX040 an integer vector containing information about households size.
-
-HX050 a numeric vector containing information about the equivalised household size. The scale employed is the modified OECD scale.
-
-HX090 a numeric vector containing information about equivalised disposable income (with the modified OECD scale).
-
-ipuc a numeric vector containing the income per unit of consumption. This variable takes into account if deflac is not NULL, ppp is TRUE or/and the value assigned d to \emph{s}.
-
-wHX040 a numeric vector which is obtained by multiplying DB090 by HX040. It represents household weights taking into account the size of the household.
+\itemize{
+ \item DB010 a numeric vector containing the year of the survey.
+ \item DB020 a factor with one level which is the country considered.
+ \item DB040 a factor with as many levels as there are regions in the country.
+ \item DB090 a numeric vector containing information about household cross-sectional weight.
+ \item HX040 an integer vector containing information about households size.
+ \item HX050 a numeric vector containing information about the equivalised household size. The scale employed is the modified OECD scale.
+ \item HX090 a numeric vector containing information about equivalised disposable income (with the modified OECD scale).
+ \item ipuc a numeric vector containing the income per unit of consumption. This variable takes into account if deflac is not NULL, ppp is TRUE or/and the value assigned d to \emph{s}.
+ \item wHX040 a numeric vector which is obtained by multiplying DB090 by HX040. It represents household weights taking into account the size of the household.
+}
 }
 \description{
 Extracts and transforms variables taken directly from the EU-SILC survey.
@@ -53,15 +46,12 @@ The purchasing power parity exchange rate is useful for making comparisons betwe
 data(eusilc2)
 ATdataset <- setupDataset(eusilc2, country = "AT")
 str(ATdataset)
- 
+
 }
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo
 }
 \references{
 B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
-}
-\seealso{
-
 }
 

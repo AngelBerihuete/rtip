@@ -29,9 +29,9 @@ eusilc2 dataset are included in data-raw directory
 (source version package only).
 }
 \references{
-Andreas A. et al. (2013) JSS 54:1,
-\href{https://www.jstatsoft.org/index.php/jss/article/view/v054i15}{
-Estimation of Social Exclusion Indicators from Complex Surveys: The R Package laeken}
+A. Andreas et al. (2013) \href{https://www.jstatsoft.org/index.php/jss/article/view/v054i15}{
+Estimation of Social Exclusion Indicators from Complex Surveys: The R Package laeken},
+Journal of Statistics Software, 54:1, 1--25
 }
 \keyword{datasets}
 

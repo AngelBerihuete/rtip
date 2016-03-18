@@ -1,15 +1,15 @@
-#' @title Living conditions survey data from INE
+#' @title Spanish living conditions survey data for the year 2014
 #'
-#' @usage data(LCS2012)
+#' @usage data(LCS2014)
 #'
 #' @description
-#'
-#' This is a spanish National Statistics Institute (INE in spanish nomenclature)
-#' release for the living conditions survey in 2012. The dataset is not modified
+#' This is the Spanish National Statistics Institute (INE in spanish nomenclature)
+#' release for the living conditions survey in 2014. The dataset is not modified
 #' but transformed properly in order to use functions in the package.
 #' You can obtain the raw datasets at
-#' \href{http://www.ine.es/dyngs/INEbase/en/operacion.htm?c=Estadistica_C&cid=1254736176807&menu=ultiDatos&idp=1254735976608}{INE}
-#' Also the datasets and the function to extract the variables are available
+#' \href{http://www.ine.es/dyngs/INEbase/en/operacion.htm?c=Estadistica_C&cid=1254736176807&menu=ultiDatos&idp=1254735976608}{INE}.
+#'
+#' These datasets and the function to extract the variables are available
 #' in data-raw directory (source version package only).
 #'
 #' @format A data frame with 12714 rows of 11 variables:
@@ -29,4 +29,4 @@
 #'
 #' @docType data
 #'
-"LCS2012"
+"LCS2014"

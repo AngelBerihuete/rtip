@@ -15,10 +15,10 @@ lc(dataset, samp = 10, generalized = FALSE, plot = FALSE)
 }
 \value{
 A data.frame with the following components:
-
-x.lg vector of cumulated proportion of population.
-
-y.lg vector with values of the Lorenz or the Generalized Lorenz curves ordinates.
+\itemize{
+\item x.lg, vector of cumulated proportion of population.
+\item y.lg, vector with values of the Lorenz or the Generalized Lorenz curves ordinates.
+}
 }
 \description{
 Estimates the Lorenz and the Generalized Lorenz curves ordinates.
@@ -31,7 +31,7 @@ data(eusilc2)
 ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
 lc.curve <- lc(ATdataset)
 str(lc.curve)
- 
+
 }
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo

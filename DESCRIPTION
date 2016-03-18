@@ -1,10 +1,10 @@
 Package: rtip
 Type: Package
-Title: Tools measuring the inequality and poverty
+Title: Inequality, welfare and poverty indices and curves using the EU-SILC data.
 Version: 0.1
 Date: 2016-03-15
 Authors@R: c(person("Angel", "Berihuete", email = "angel.berihuete@uca.es", role = c("aut", "cre")), person("Carmen Dolores", "Ramos", email = "carmen.ramos@uca.es", role = "aut"), person("Miguel Angel", "Sordo", email = "mangel.sordo@uca.es", role = "aut"))
-Description: R tools to measure the inequality and poverty in regions of Europe through living conditions surveys giving by Eurostat (EU-SILC) and the spanish National Statistics Institute (LCS).
+Description: R tools to measure and compare inequality, welfare and poverty using the EU statistics on income and living conditions surveys.
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 5.0.1
