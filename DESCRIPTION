@@ -1,9 +1,11 @@
 Package: rtip
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Inequality, welfare and poverty indices and curves using the EU-SILC data.
 Version: 0.1
 Date: 2016-03-15
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Authors@R: c(person("Angel", "Berihuete", email = "angel.berihuete@uca.es", role = c("aut", "cre")), person("Carmen Dolores", "Ramos", email = "carmen.ramos@uca.es", role = "aut"), person("Miguel Angel", "Sordo", email = "mangel.sordo@uca.es", role = "aut"))
+Description: R tools to measure and compare inequality, welfare and poverty using the EU statistics on income and living conditions surveys.
+License: GPL-3
 LazyData: TRUE
+RoxygenNote: 5.0.1
+Encoding: utf8
