@@ -13,7 +13,6 @@ OmegaGL(dataset, samp)
 }
 \value{
 A list with the following components:
-
 \itemize{
 \item Omega, covariance matrix for the estimated vector of GL curve ordinates.
 \item gl.curve, estimated vector of GL curve ordinates.
@@ -29,13 +28,6 @@ The auxiliary function OmegaGL computes the (empirical) vector of Generalized Lo
 Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983).
 
 Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
-}
-\examples{
-data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
-omega.gl <- OmegaGL(ATdataset, samp = 10)
-str(omega.gl)
-
 }
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo

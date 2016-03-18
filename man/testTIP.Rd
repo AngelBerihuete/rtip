@@ -36,7 +36,7 @@ Statistical test procedure given by Xu and Osberg (1998) to study TIP dominance 
 TIP curve estimates.
 }
 \details{
-Because the TIP curve becomes horizontal at the arpr value, it is only necessary to have the test implemented over the interval \eqn{(0, max {arpr1, arpr2})}. For that reason both TIP curves are truncated at the same value equal to \eqn{max(arpr1, arpr2)} and ordinates are only compared at points \eqn{p_i=i/samplesize}, where \eqn{i=1, \dots, k} in the interval \eqn{(0, max(arpr1, arpr2))} (see arpr).
+Because the TIP curve becomes horizontal at the arpr value, it is only necessary to have the test implemented over the interval \eqn{(0, max {arpr1, arpr2})}. For that reason both TIP curves are truncated at the same value equal to \eqn{max{arpr1, arpr2}} and ordinates are only compared at points \eqn{p_i = i/samplesize}, where \eqn{i=1, \dots, k} in the interval \eqn{(0, max{arpr1, arpr2})} (see arpr).
 
 The null hypotesis to be tested is if the TIP curve calculated from dataset1 dominates the one calculated from dataset2.
 }

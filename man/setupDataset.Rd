@@ -30,7 +30,7 @@ A data.frame with the following variables:
  \item HX040 an integer vector containing information about households size.
  \item HX050 a numeric vector containing information about the equivalised household size. The scale employed is the modified OECD scale.
  \item HX090 a numeric vector containing information about equivalised disposable income (with the modified OECD scale).
- \item ipuc a numeric vector containing the income per unit of consumption. This variable takes into account if deflac is not NULL, ppp is TRUE or/and the value assigned d to \emph{s}.
+ \item ipuc a numeric vector containing the income per unit of consumption. This variable takes into account if deflac is not NULL, ppp is TRUE or/and the value assigned to \emph{s}.
  \item wHX040 a numeric vector which is obtained by multiplying DB090 by HX040. It represents household weights taking into account the size of the household.
 }
 }

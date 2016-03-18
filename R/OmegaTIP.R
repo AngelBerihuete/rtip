@@ -7,7 +7,7 @@
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
 #' @param arpt.value the at-risk-of-poverty threshold to be used (see arpt).
 #' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
-#' @param samp an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points p_i, where p_i=i/samp, i=1, ..., samp.
+#' @param samp an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, i=1, \dots, samp}.
 #'
 #'
 #' @details Estimation of TIP curve ordinates and their covariance matrix are made following Beach and Davidson (1983) and Xu and Osberg (1998).
