@@ -12,7 +12,6 @@
 #' Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 #'
 #' @return A list with the following components:
-#'
 #' \itemize{
 #' \item Omega, covariance matrix for the estimated vector of GL curve ordinates.
 #' \item gl.curve, estimated vector of GL curve ordinates.
@@ -25,12 +24,6 @@
 #' @references C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves and income shares, Review of Economic Studies, 50, 723--735.
 #' @references B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 #' @references K. Xu (1997) Asymptotically distribution-free statistical test for generalized Lorenz curves: An alternative approach, Journal of Income Distribution, 7, 45--62.
-#'
-#' @examples
-#' data(eusilc2)
-#' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
-#' omega.gl <- OmegaGL(ATdataset, samp = 10)
-#' str(omega.gl)
 #'
 #' @seealso testGL, setupDataset
 #'

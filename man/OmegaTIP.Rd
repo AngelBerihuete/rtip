@@ -13,7 +13,7 @@ OmegaTIP(dataset, arpt.value, norm = FALSE, samp)
 
 \item{norm}{logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).}
 
-\item{samp}{an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points p_i, where p_i=i/samp, i=1, ..., samp.}
+\item{samp}{an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, i=1, \dots, samp}.}
 }
 \value{
 A list with the following components:
