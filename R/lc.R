@@ -33,7 +33,7 @@ lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
   res.glc <- OmegaGL(dataset, samp = samp)
 
   if(generalized == FALSE){
-    results <- data.frame(x.lg = c(0, res.glc$p_i),
+    results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve)/miuc(dataset))
     if(plot){
       p <- ggplot(data = results, aes(x.lg, y.lg)) + geom_line() +
@@ -45,7 +45,7 @@ lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
 
     return(results)
   }else{
-    results <- data.frame(x.lg = c(0, res.glc$p_i),
+    results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve))
 
     if(plot){
