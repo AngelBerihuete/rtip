@@ -9,3 +9,8 @@ License: GPL-3
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Encoding: utf8
+Depends:
+    plyr,
+    ggplot2,
+    stats,
+    boot

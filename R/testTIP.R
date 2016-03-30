@@ -54,10 +54,10 @@ testTIP <- function(dataset1, dataset2, pz = 0.6,
   }
 
   list1 <- OmegaTIP(dataset1, arpt.value1,
-                    normalization = norm,
+                    norm = norm,
                     samp = samplesize)
   list2 <- OmegaTIP(dataset2, arpt.value2,
-                    normalization = norm,
+                    norm = norm,
                     samp = samplesize)
 
   phi1 <- list1$tip.curve
