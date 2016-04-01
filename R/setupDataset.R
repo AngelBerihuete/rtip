@@ -1,4 +1,4 @@
-#' @title Setup dataset from EU-SILC survey
+#' @title Setup datasets loaded from the living conditions survey
 #'
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
 #'
@@ -27,6 +27,8 @@
 #'  \item ipuc a numeric vector containing the income per unit of consumption. This variable takes into account if deflac is not NULL, ppp is TRUE or/and the value assigned to \emph{s}.
 #'  \item wHX040 a numeric vector which is obtained by multiplying DB090 by HX040. It represents household weights taking into account the size of the household.
 #' }
+#'
+#' @seealso loadEUSILC, loadLCS
 #'
 #' @references B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 #'

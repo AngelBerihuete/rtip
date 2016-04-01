@@ -12,7 +12,7 @@
 #' These datasets and the function to extract the variables are available
 #' in data-raw directory (source version package only).
 #'
-#' @format A data frame with 12714 rows of 11 variables:
+#' @format A data frame with 11965 rows of 7 variables:
 #'
 #' \itemize{
 #' \item DB010, a numeric vector containing the year of the survey.

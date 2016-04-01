@@ -2,7 +2,7 @@
 % Please edit documentation in R/setupDataset.R
 \name{setupDataset}
 \alias{setupDataset}
-\title{Setup dataset from EU-SILC survey}
+\title{Setup datasets loaded from the living conditions survey}
 \usage{
 setupDataset(dataset, country = "ES", region = "all", s = "OECD",
   deflac = NULL, ppp = FALSE)
@@ -53,5 +53,8 @@ A. Berihuete, C.D. Ramos and M.A. Sordo
 }
 \references{
 B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
+}
+\seealso{
+loadEUSILC, loadLCS
 }
 

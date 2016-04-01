@@ -7,6 +7,7 @@
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
 #' @param samp an integer which represents the number of ordinates to be estimated. The default is 10.
 #' @param generalized logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.
+#' @param plot logical; if TRUE plots the Lorenz or generalized Lorenz curve.
 #'
 #' @details Lorenz and Generalized Lorenz curves ordinates are computed using the equivalized disposable income. The equivalence scales employed are the modified OECD scale and the parametric scale of Buhmann et al. (1988) (see setupDataset).
 #'

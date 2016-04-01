@@ -2,14 +2,14 @@
 % Please edit documentation in R/loadEUSILC.R
 \name{loadEUSILC}
 \alias{loadEUSILC}
-\title{Filter datasets from EUSILC survey datasets}
+\title{Load the living conditions survey (EUSILC)}
 \usage{
 loadEUSILC(eusilc_d_file, eusilc_h_file)
 }
 \arguments{
-\item{eusilc_d_file, }{a string with the filename of \code{D}-file.}
+\item{eusilc_d_file}{a string with the filename of \code{D}-file.}
 
-\item{eusilc_h_file, }{a string with the filename of \code{H}-file.}
+\item{eusilc_h_file}{a string with the filename of \code{H}-file.}
 }
 \value{
 A data frame containing the variables required to use the functions

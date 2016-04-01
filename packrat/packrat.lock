@@ -59,7 +59,7 @@ Package: ggplot2
 Source: CRAN
 Version: 2.1.0
 Hash: 50e297b0191179c39c7dcae0eff72b51
-Requires: digest, gtable, plyr, reshape2, scales
+Requires: digest, gtable, plyr, scales, reshape2
 
 Package: git2r
 Source: CRAN
@@ -129,7 +129,7 @@ Package: reshape2
 Source: CRAN
 Version: 1.4.1
 Hash: 55963009094746c3aef64bfbf9eb4731
-Requires: Rcpp, stringr, plyr
+Requires: Rcpp, plyr, stringr
 
 Package: roxygen2
 Source: CRAN
@@ -146,7 +146,7 @@ Package: scales
 Source: CRAN
 Version: 0.4.0
 Hash: b74e3f81bab2d88325d8798d5e03e0cc
-Requires: RColorBrewer, Rcpp, dichromat, labeling, munsell, plyr
+Requires: RColorBrewer, Rcpp, dichromat, labeling, plyr, munsell
 
 Package: stringi
 Source: CRAN
