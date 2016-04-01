@@ -8,6 +8,6 @@ Description: R tools to measure and compare inequality, welfare and poverty usin
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Encoding: utf8
+Encoding: UTF-8
 Depends: R (>= 3.2.4)
 Imports:stats,boot,mvtnorm,plyr,ggplot2

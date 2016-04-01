@@ -52,9 +52,9 @@ gini <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
       M <- sum(dataset.boot$X)/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
       100*(2*sum(dataset.boot$ipuc*dataset.boot$p_i*dataset.boot$Fi)/M-1)
     }
-    boot.gini <- boot(dataset, statistic = gini3, R = rep,
+    boot.gini <- boot::boot(dataset, statistic = gini3, R = rep,
                      sim = "ordinary", stype = "i")
-    gini.ci <- boot.ci(boot.gini, type = "basic")
+    gini.ci <- boot::boot.ci(boot.gini, type = "basic")
     if(verbose == FALSE){
       return(gini.ci)
     }else{
