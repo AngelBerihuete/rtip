@@ -1,18 +1,19 @@
-#' @title Living conditions survey
+#' @title Load the living conditions survey (INE)
+#'
 #' @description
+#'
 #' \code{loadLCS()} loads the living conditions survey from spanish National
 #' Statistics Institute (\acronym{INE} in spanish nomenclature).
+#'
+#' @param lcs_d_file, a string with the filename of \code{D}-file.
+#' @param lcs_h_file, a string with the filename of \code{H}-file.
 #'
 #' @details
 #' Regularly the INE releases the living contions survey through two different
 #' files which can be downloaded for free. The filename of these files contains
-#' the letters d and h, and include dozens of variables. Only some of these
-#' variables are needed to do the calculations with rtip package.
+#' the letters \code{D} and \code{H}, and include dozens of variables. Only some of these
+#' variables are needed to do the calculations with \code{rtip} package.
 #'
-#' @param lcs_d_file, a string with the name fo the file containing the letter d
-#' in the filename.
-#' @param lcs_h_file, a string with the name fo the file containing the letter h
-#' in the filename.
 #'
 #' @return A data frame containing the variables required.
 #'

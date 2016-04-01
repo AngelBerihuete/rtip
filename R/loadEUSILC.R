@@ -1,10 +1,13 @@
-#' @title Filter datasets from EUSILC survey datasets
+#' @title Load the living conditions survey (EUSILC)
 #'
 #' @description
 #'
 #' \code{loadEUSILC()} extracts some variables from the EUSILC
 #' survey files and transforms them into a suitable data frame in order to do
 #' the calculations.
+#'
+#' @param eusilc_d_file a string with the filename of \code{D}-file.
+#' @param eusilc_h_file a string with the filename of \code{H}-file.
 #'
 #' @details Vector strings \code{varD} and \code{varH} contains the names of the
 #' variables needed to do the calculations with rtip package. This variables are given
@@ -13,9 +16,6 @@
 #'
 #' @note We do not give examples in this function because the EUSILC survey
 #' datasets have a restricted licence for use.
-#'
-#' @param eusilc_d_file, a string with the filename of \code{D}-file.
-#' @param eusilc_h_file, a string with the filename of \code{H}-file.
 #'
 #' @return A data frame containing the variables required to use the functions
 #' in the package.

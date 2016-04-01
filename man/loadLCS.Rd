@@ -2,16 +2,14 @@
 % Please edit documentation in R/loadLCS.R
 \name{loadLCS}
 \alias{loadLCS}
-\title{Living conditions survey}
+\title{Load the living conditions survey (INE)}
 \usage{
 loadLCS(lcs_d_file, lcs_h_file)
 }
 \arguments{
-\item{lcs_d_file, }{a string with the name fo the file containing the letter d
-in the filename.}
+\item{lcs_d_file, }{a string with the filename of \code{D}-file.}
 
-\item{lcs_h_file, }{a string with the name fo the file containing the letter h
-in the filename.}
+\item{lcs_h_file, }{a string with the filename of \code{H}-file.}
 }
 \value{
 A data frame containing the variables required.
@@ -23,8 +21,8 @@ Statistics Institute (\acronym{INE} in spanish nomenclature).
 \details{
 Regularly the INE releases the living contions survey through two different
 files which can be downloaded for free. The filename of these files contains
-the letters d and h, and include dozens of variables. Only some of these
-variables are needed to do the calculations with rtip package.
+the letters \code{D} and \code{H}, and include dozens of variables. Only some of these
+variables are needed to do the calculations with \code{rtip} package.
 }
 \note{
 We have included two files in dat-raw to test the function

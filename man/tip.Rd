@@ -12,6 +12,8 @@ tip(dataset, arpt.value, norm = FALSE, plot = FALSE)
 \item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt).}
 
 \item{norm}{logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).}
+
+\item{plot}{logical; if TRUE plots the TIP curve.}
 }
 \value{
 A data.frame with the following components:

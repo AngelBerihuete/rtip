@@ -7,7 +7,7 @@
 #'
 #' @param dataset1 a data.frame containing variables obtained by using  the setupDataset function.
 #' @param dataset2 a data.frame containing variables obtained by using  the setupDataset function.
-#' @param generalized logical; if TRUE the test will be applied to compare two Generalized Lorenz curves. Otherwise case Lorenz curves will be compared.
+#' @param generalized logical; if TRUE the test will be applied to compare two Generalized Lorenz curves. Otherwise Lorenz curves will be compared.
 #' @param samplesize an integer which represents the number of Lorenz (Generalized Lorenz) curve ordinates to be estimated for comparison. The default is 10.
 #'
 #'

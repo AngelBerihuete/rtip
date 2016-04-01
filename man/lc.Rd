@@ -12,6 +12,8 @@ lc(dataset, samp = 10, generalized = FALSE, plot = FALSE)
 \item{samp}{an integer which represents the number of ordinates to be estimated. The default is 10.}
 
 \item{generalized}{logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.}
+
+\item{plot}{logical; if TRUE plots the Lorenz or generalized Lorenz curve.}
 }
 \value{
 A data.frame with the following components:

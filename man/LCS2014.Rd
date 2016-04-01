@@ -4,7 +4,7 @@
 \name{LCS2014}
 \alias{LCS2014}
 \title{Spanish living conditions survey data for the year 2014}
-\format{A data frame with 12714 rows of 11 variables:
+\format{A data frame with 11965 rows of 7 variables:
 
 \itemize{
 \item DB010, a numeric vector containing the year of the survey.
