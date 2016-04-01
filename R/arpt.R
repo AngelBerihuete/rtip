@@ -48,9 +48,9 @@ arpt <- function(dataset, pz = 0.6, ci = FALSE, rep = 500, verbose = FALSE){
       uc.median <- dataset.boot$ipuc[which(dataset.boot$abscisa2 > 0.5)[1]]
       pz*uc.median
       }
-    boot.arpt.value <- boot(dataset, statistic = arpt2, R = rep,
+    boot.arpt.value <- boot::boot(dataset, statistic = arpt2, R = rep,
                       sim = "ordinary", stype = "i", pz = pz)
-    arpt.value.ci <- boot.ci(boot.arpt.value, type = "basic")
+    arpt.value.ci <- boot::boot.ci(boot.arpt.value, type = "basic")
     if(verbose == FALSE){
       return(arpt.value.ci)
     }else{

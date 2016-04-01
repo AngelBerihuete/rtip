@@ -44,9 +44,9 @@ arpr <- function(dataset, arpt.value, ci = FALSE, rep = 1000, verbose = FALSE){
       dataset.boot$acum.wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
       100*(dataset.boot$abscisa2[length(which(dataset.boot$ipuc < arpt.value))])
     }
-    boot.arpr <- boot(dataset, statistic = arpr3, R = rep,
+    boot.arpr <- boot::boot(dataset, statistic = arpr3, R = rep,
                        sim = "ordinary", stype = "i", arpt.value = arpt.value)
-    arpr.ci <- boot.ci(boot.arpr, type = "basic")
+    arpr.ci <- boot::boot.ci(boot.arpr, type = "basic")
     if(verbose == FALSE){
       return(arpr.ci)
     }else{

@@ -102,7 +102,7 @@ testGL <- function(dataset1, dataset2, generalized = FALSE, samplesize = 10){
     i <- 1
     iterations <- 1
     while(i < 1001){
-      estim.gl <- as.numeric(rmvnorm(n=1, sigma=OmegaTotal))
+      estim.gl <- as.numeric(mvtnorm::rmvnorm(n=1, sigma=OmegaTotal))
 
       res <- try(constrOptim(rep(0.5, length(estim.gl)), fr, gr,
                              ui = diag(1, length(estim.gl)),

@@ -1,6 +1,6 @@
 Package: rtip
 Type: Package
-Title: Inequality, welfare and poverty indices and curves using the EU-SILC data.
+Title: Inequality, welfare and poverty indices and curves using the EU-SILC data
 Version: 0.1
 Date: 2016-03-15
 Authors@R: c(person("Angel", "Berihuete", email = "angel.berihuete@uca.es", role = c("aut", "cre")), person("Carmen Dolores", "Ramos", email = "carmen.ramos@uca.es", role = "aut"), person("Miguel Angel", "Sordo", email = "mangel.sordo@uca.es", role = "aut"))
@@ -8,6 +8,6 @@ Description: R tools to measure and compare inequality, welfare and poverty usin
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Encoding: utf8
+Encoding: UTF-8
 Depends: R (>= 3.2.4)
-Imports:plyr,ggplot2,stats,boot
+Imports:stats,boot,mvtnorm,plyr,ggplot2
