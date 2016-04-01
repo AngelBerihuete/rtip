@@ -127,7 +127,7 @@ testTIP <- function(dataset1, dataset2, pz = 0.6,
     i <- 1
     iterations <- 1
     while(i < 1001){
-      estim.phi <- as.numeric(rmvnorm(n=1, sigma=OmegaTotal))
+      estim.phi <- as.numeric(mvtnorm::rmvnorm(n=1, sigma=OmegaTotal))
 
       res <- try(constrOptim(rep(0.5, threshold), fr, gr,
                   ui = diag(1, threshold),
