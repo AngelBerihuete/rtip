@@ -28,6 +28,9 @@
 #' @export
 
 tip <- function(dataset, arpt.value, norm = FALSE, plot = FALSE){
+  # Following line to avoid Notes in Travis CI Check because ggplot
+  x.tip <- y.tip <- arpr.value <- NULL
+  #
   dataset <- dataset[order(dataset[, "ipuc"]), ]
   dataset$pg <- pmax(arpt.value - dataset$ipuc, 0) # poverty gaps
   w2xpg <- dataset$wHX040*dataset$pg
@@ -40,7 +43,7 @@ tip <- function(dataset, arpt.value, norm = FALSE, plot = FALSE){
   if(plot){
     arpr.value <- arpr(dataset, arpt.value)
     xlim.aux <- (arpr.value/100 + 0.2)
-       p <- ggplot2::ggplot(data = tip.curve, aes_string('x.tip', 'y.tip')) + 
+       p <- ggplot2::ggplot(data = tip.curve, aes_string(x.tip, y.tip)) + 
       ggplot2::geom_line() +
       ggplot2::geom_segment(aes(x = arpr.value/100, y = 0,
                       xend = arpr.value/100, yend = max(y.tip)),
