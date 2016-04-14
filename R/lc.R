@@ -37,11 +37,11 @@ lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
     results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve)/miuc(dataset))
     if(plot){
-      p <- ggplot::ggplot(data = results, aes(x.lg, y.lg)) + 
-      ggplot::geom_line() +
-      ggplot::scale_x_continuous("Cumulated proportion of population") +
-      ggplot::scale_y_continuous("") +
-      ggplot::ggtitle("Lorenz curve")
+      p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) + 
+      ggplot2::geom_line() +
+      ggplot2::scale_x_continuous("Cumulated proportion of population") +
+      ggplot2::scale_y_continuous("") +
+      ggplot2::ggtitle("Lorenz curve")
       print(p)
     }
 
