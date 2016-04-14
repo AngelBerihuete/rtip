@@ -41,9 +41,9 @@ miuc <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
       number.individuals <- dataset.boot$acum.wHX040[number.homes]
       sum(dataset.boot$ipuc*dataset.boot$wHX040)/number.individuals
     }
-    boot.miuc <- boot(dataset, statistic = miuc2, R = rep,
+    boot.miuc <- boot::boot(dataset, statistic = miuc2, R = rep,
                      sim = "ordinary", stype = "i")
-    miuc.ci <- boot.ci(boot.miuc, type = "basic")
+    miuc.ci <- boot::boot.ci(boot.miuc, type = "basic")
     if(verbose == FALSE){
       return(miuc.ci)
     }else{

@@ -48,9 +48,9 @@ qsr <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
       uc.S80 <- sum(A[which(dataset.boot$abscisa2 > 0.8)])
       uc.S80/uc.S20
     }
-    boot.qsr <- boot(dataset, statistic = qsr3, R = rep,
+    boot.qsr <- boot::boot(dataset, statistic = qsr3, R = rep,
                       sim = "ordinary", stype = "i")
-    qsr.ci <- boot.ci(boot.qsr, type = "basic")
+    qsr.ci <- boot::boot.ci(boot.qsr, type = "basic")
     if(verbose == FALSE){
       return(qsr.ci)
     }else{

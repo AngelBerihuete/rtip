@@ -39,9 +39,9 @@ mip <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
       number.individuals <- dataset.boot$acum.wHX040[number.homes]
       sum(dataset.boot$HX090*dataset.boot$HX050*dataset.boot$DB090)/number.individuals
     }
-    boot.mip <- boot(dataset, statistic = mip2, R = rep,
+    boot.mip <- boot::boot(dataset, statistic = mip2, R = rep,
                      sim = "ordinary", stype = "i")
-    mip.ci <- boot.ci(boot.mip, type = "basic")
+    mip.ci <- boot::boot.ci(boot.mip, type = "basic")
     if(verbose == FALSE){
       return(mip.ci)
     }else{

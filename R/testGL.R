@@ -123,7 +123,7 @@ testGL <- function(dataset1, dataset2, generalized = FALSE, samplesize = 10){
       return(positv)
       }
 
-    n.positiv <- aaply(diff.gl,.margins=1, count.pos)
+    n.positiv <- plyr::aaply(diff.gl,.margins=1, count.pos)
     props.positive <- table(n.positiv)/length(n.positiv)
     prob.chi <- rev(pchisq(Tvalue, df=0:length(estim.gl), lower.tail = FALSE))
 

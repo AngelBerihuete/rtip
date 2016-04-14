@@ -40,23 +40,24 @@ tip <- function(dataset, arpt.value, norm = FALSE, plot = FALSE){
   if(plot){
     arpr.value <- arpr(dataset, arpt.value)
     xlim.aux <- (arpr.value/100 + 0.2)
-       p <- ggplot(data = tip.curve, aes(x.tip, y.tip)) + geom_line() +
-         geom_segment(aes(x = arpr.value/100, y = 0,
-                          xend = arpr.value/100, yend = max(y.tip)),
+       p <- ggplot2::ggplot(data = tip.curve, aes(x.tip, y.tip)) + 
+      ggplot2::geom_line() +
+      ggplot2::geom_segment(aes(x = arpr.value/100, y = 0,
+                      xend = arpr.value/100, yend = max(y.tip)),
                       linetype = "longdash",
                       color = "red") +
-         geom_segment(aes(x = 0, y = max(y.tip),
-                          xend = arpr.value/100, yend = max(y.tip)),
+      ggplot2::geom_segment(aes(x = 0, y = max(y.tip),
+                      xend = arpr.value/100, yend = max(y.tip)),
                       linetype = "longdash",
                       color = "red") +
-         annotate("text", label = "arpr value", x = (arpr.value/100),
+      ggplot2::annotate("text", label = "arpr value", x = (arpr.value/100),
                   y = -max(y.tip)/80, size = 4, colour = "red") +
-         annotate("text", label = "s1 value", x = 0,
+      ggplot2::annotate("text", label = "s1 value", x = 0,
                   y = (max(y.tip)+max(y.tip)/80), size = 4, colour = "red") +
-        scale_x_continuous("Cumulated proportion of population",
+      ggplot2::scale_x_continuous("Cumulated proportion of population",
                            limits = c(0,xlim.aux)) +
-        scale_y_continuous("") +
-        ggtitle("TIP curve")
+      ggplot2::scale_y_continuous("") +
+      ggplot2::ggtitle("TIP curve")
        print(p)
        }
 

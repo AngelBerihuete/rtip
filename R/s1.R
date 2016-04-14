@@ -39,10 +39,10 @@ s1 <- function(dataset, arpt.value, norm = FALSE, ci = FALSE,
     s11 <- function(dataset, i, arpt.value, norm){
       max(tip(dataset[i,], arpt.value, norm)[,2]) # s1 index
     }
-    boot.s1 <- boot(dataset, statistic = s11, R = rep,
+    boot.s1 <- boot::boot(dataset, statistic = s11, R = rep,
                     sim = "ordinary", stype = "i",
                     arpt.value = arpt.value, norm = norm)
-    s1.ci <- boot.ci(boot.s1, type = "basic")
+    s1.ci <- boot::boot.ci(boot.s1, type = "basic")
     if(verbose == FALSE){
       return(s1.ci)
     }else{
