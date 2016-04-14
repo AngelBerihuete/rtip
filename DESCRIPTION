@@ -10,4 +10,4 @@ LazyData: TRUE
 RoxygenNote: 5.0.1
 Encoding: UTF-8
 Depends: R (>= 3.2.4)
-Imports: stats,boot,mvtnorm,plyr,ggplot2
+Imports: boot,mvtnorm,plyr,ggplot2
