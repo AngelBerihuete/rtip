@@ -43,7 +43,7 @@ tip <- function(dataset, arpt.value, norm = FALSE, plot = FALSE){
   if(plot){
     arpr.value <- arpr(dataset, arpt.value)
     xlim.aux <- (arpr.value/100 + 0.2)
-       p <- ggplot2::ggplot(data = tip.curve, aes_string(x.tip, y.tip)) + 
+       p <- ggplot2::ggplot(data = tip.curve, aes(x.tip, y.tip)) + 
       ggplot2::geom_line() +
       ggplot2::geom_segment(aes(x = arpr.value/100, y = 0,
                       xend = arpr.value/100, yend = max(y.tip)),
