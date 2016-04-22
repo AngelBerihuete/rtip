@@ -35,7 +35,8 @@
 #' testGL(ATdataset1, ATdataset2, generalized = TRUE, samplesize = 10)
 #'
 #' @seealso OmegaGL, setupDataset
-#'
+#' @import plyr
+#' @import mvtnorm
 #' @export
 
 

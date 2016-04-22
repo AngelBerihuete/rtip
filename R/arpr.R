@@ -23,7 +23,7 @@
 #' arpr(ATdataset,arpt.value = arpt(ATdataset))
 #'
 #' @seealso arpt, setupDataset
-#'
+#' @import boot
 #' @export
 
 arpr <- function(dataset, arpt.value, ci = FALSE, rep = 1000, verbose = FALSE){

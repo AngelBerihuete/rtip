@@ -35,7 +35,6 @@ The normalized mean poverty gap index, also named FGT(1), is a particular case o
 data(eusilc2)
 ATdataset <- setupDataset(eusilc2, country = "AT", , s = "OECD")
 s1(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
-
 }
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo

@@ -20,7 +20,7 @@
 #' mih(ATdataset)
 #'
 #' @seealso setupDataset.
-#'
+#' @import boot
 #' @export
 
 mih <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){

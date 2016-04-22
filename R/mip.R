@@ -20,7 +20,7 @@
 #' mip(ATdataset)
 #'
 #' @seealso setupDataset.
-#'
+#' @import boot
 #' @export
 
 mip <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){

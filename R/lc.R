@@ -27,7 +27,7 @@
 #' str(lc.curve)
 #'
 #' @seealso setupDataset
-#'
+#' @import ggplot2
 #' @export
 
 lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
@@ -37,40 +37,28 @@ lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
     results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve)/miuc(dataset))
     if(plot){
-     Plotlc(results)
+      p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
+        ggplot2::geom_line() +
+        ggplot2::geom_segment(aes(x = 0, y = 0, xend = 1, yend = 1),
+                              linetype = "longdash",
+                              color = "grey") +
+        ggplot2::scale_x_continuous("Cumulated proportion of population") +
+        ggplot2::scale_y_continuous("") +
+        ggplot2::ggtitle("Lorenz curve")
+      print(p)
     }
-
     return(results)
   }else{
     results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve))
+    if(plot){
+      p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
+        ggplot2::geom_line() +
+        ggplot2::scale_x_continuous("Cumulated proportion of population") +
+        ggplot2::scale_y_continuous("") +
+        ggplot2::ggtitle("Lorenz curve")
+      print(p)
+    }
     return(results)
   }
-}
-
-# Auxiliary functions to plot with ggplot2
- 
-Plotlc <- function(plot.data) {
-   p <- ggplot()
-   p <- p + line4lc(plot.data)
-   p <- p + XLabellc()
-   p <- p + YLabellc()
-   p <- p + PlotTitlelc()
-   return(p)
- }
-
-line4lc <- function (data) {
-    return(geom_line(aes_string(x = "x.lg", y = "y.lg"), data = data))
-  }
-
-XLabellc <- function() {
-  return(scale_x_continuous("Cumulated proportion of population"))
-}
-
-YLabellc <- function() {
-  return(scale_y_continuous(" "))
-}
-
-PlotTitlelc <- function() {
-  return(ggtitle("Lorenz curve"))
 }
