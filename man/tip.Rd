@@ -33,7 +33,6 @@ data(eusilc2)
 ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
 tip.curve <- tip(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
 str(tip.curve)
-
 }
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo

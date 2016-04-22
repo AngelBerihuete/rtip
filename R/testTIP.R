@@ -39,7 +39,8 @@
 #' ATdataset2 <- setupDataset(eusilc2, country = "AT", region = "Carinthia")
 #' testTIP(ATdataset1, ATdataset, same.arpt.value = arpt(ATdataset))
 #'
-#'
+#' @import plyr
+#' @import mvtnorm
 #' @export
 
 testTIP <- function(dataset1, dataset2, pz = 0.6,
@@ -149,7 +150,7 @@ testTIP <- function(dataset1, dataset2, pz = 0.6,
       return(positv)
     }
 
-    n.positiv <- aaply(diff.phi,.margins=1, count.pos)
+    n.positiv <- plyr::aaply(diff.phi,.margins=1, count.pos)
     props.positive <- table(n.positiv)/length(n.positiv)
     prob.chi <- rev(pchisq(Tvalue, df=0:threshold, lower.tail = FALSE))
 

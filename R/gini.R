@@ -1,29 +1,29 @@
-#' @title Gini index 
-#' 
+#' @title Gini index
+#'
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
-#' 
+#'
 #' @description Estimates the Gini inequality index of an income distribution.
-#' 
+#'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
 #' @param ci logical; if  TRUE, 95 percent confidence interval is given for the Gini coefficient.
 #' @param rep a number to do the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
-#' 
+#'
 #' @details The Gini index is calculated using the equivalized disposable income of each individual. Two types of equivalence scales can be used, the modified OECD scale and the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale  (see setupDataset).
-#' 
-#' @return The value of the Gini index. 
-#' 
+#'
+#' @return The value of the Gini index.
+#'
 #' @references B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 #' @references E. Ferreira and A. Garín (1997) Una nota sobre el cálculo del índice de Gini, Estadística Española, 39(142), 207--218.
 #' @references \url{http://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Gini_coefficient}
-#' 
-#' @examples 
+#'
+#' @examples
 #' data(eusilc2)
 #' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
 #' gini(ATdataset)
-#' 
+#'
 #' @seealso setupDataset
-#' 
+#' @import boot
 #' @export
 
 
@@ -62,5 +62,5 @@ gini <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
       plot(boot.gini)
       return(gini.ci)
     }
-  } 
+  }
 }

@@ -27,36 +27,38 @@
 #' str(lc.curve)
 #'
 #' @seealso setupDataset
-#'
+#' @import ggplot2
 #' @export
 
 lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
   res.glc <- OmegaGL(dataset, samp = samp)
-
+  x.lg <- y.lg <- NULL # To avoid Notes in Travis CI checking (ggplot2)
   if(generalized == FALSE){
     results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve)/miuc(dataset))
     if(plot){
-      p <- ggplot(data = results, aes(x.lg, y.lg)) + geom_line() +
-        scale_x_continuous("Cumulated proportion of population") +
-        scale_y_continuous("") +
-        ggtitle("Lorenz curve")
+      p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
+        ggplot2::geom_line() +
+        ggplot2::geom_segment(aes(x = 0, y = 0, xend = 1, yend = 1),
+                              linetype = "longdash",
+                              color = "grey") +
+        ggplot2::scale_x_continuous("Cumulated proportion of population") +
+        ggplot2::scale_y_continuous("") +
+        ggplot2::ggtitle("Lorenz curve")
       print(p)
     }
-
     return(results)
   }else{
     results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve))
-
     if(plot){
-      p <- ggplot(data = results, aes(x.lg, y.lg)) + geom_line() +
-        scale_x_continuous("Cumulated proportion of population") +
-        scale_y_continuous("") +
-        ggtitle("Generalized Lorenz curve")
-    print(p)
-      }
-
+      p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
+        ggplot2::geom_line() +
+        ggplot2::scale_x_continuous("Cumulated proportion of population") +
+        ggplot2::scale_y_continuous("") +
+        ggplot2::ggtitle("Lorenz curve")
+      print(p)
+    }
     return(results)
   }
 }

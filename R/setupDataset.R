@@ -46,9 +46,9 @@ setupDataset <- function(dataset,
                          deflac = NULL,
                          ppp = FALSE) {
 
-  # SI ppp.rate = TRUE, entonces da problemas aux.year
-  # ------------------------------------------------
-  # Hay que incluirlo en el dataset original
+  # The following line is only to overcome the note obtained by 
+  # R CMD check, because the using in subset function
+  DB020 = DB040 = year = NULL 
 
   if(!is.null(country)){ # only for one region
     dataset <- subset(dataset, DB020 == country)

@@ -47,7 +47,6 @@ ATdataset1 <- setupDataset(eusilc2, country = "AT", region = "Burgenland")
 ATdataset2 <- setupDataset(eusilc2, country = "AT", region = "Carinthia")
 testTIP(ATdataset1, ATdataset, same.arpt.value = arpt(ATdataset))
 
-
 }
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo
