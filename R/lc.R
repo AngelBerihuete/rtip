@@ -31,7 +31,7 @@
 #' @export
 
 lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
-  res.glc <- OmegaGL(dataset, samp = samp)
+  res.glc <- OmegaGL(dataset, samp = samp, generalized)
   x.lg <- y.lg <- NULL # To avoid Notes in Travis CI checking (ggplot2)
   if(generalized == FALSE){
     results <- data.frame(x.lg = c(0, res.glc$p),

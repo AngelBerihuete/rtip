@@ -42,18 +42,13 @@
 
 testGL <- function(dataset1, dataset2, generalized = FALSE, samplesize = 10){
 
-  list1 <- OmegaGL(dataset1, samp = samplesize)
-  list2 <- OmegaGL(dataset2, samp = samplesize)
-
-  if(generalized == FALSE){
-    gl1 <- list1$gl.curve/miuc(dataset1)
-    gl2 <- list2$gl.curve/miuc(dataset2)
+  list1 <- OmegaGL(dataset1, samp = samplesize, generalized)
+  list2 <- OmegaGL(dataset2, samp = samplesize, generalized)
+  if(!generalized){
+    estim.gl <- gl1[-samplesize] - gl2[-samplesize]
   }else{
-    gl1 <- list1$gl.curve
-    gl2 <- list2$gl.curve
+    estim.gl <- gl1 - gl2
   }
-
-  estim.gl <- gl1 - gl2
   Omega1 <- list1$Omega
   Omega2 <- list2$Omega
   OmegaTotal <-  Omega1 + Omega2

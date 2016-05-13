@@ -6,7 +6,7 @@
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
 #' @param samp an integer which represents the number of the GL ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, \quad i=1, \dots, samp}.
-#'
+#' @param generalized logical; if TRUE the test will be applied to compare two Generalized Lorenz curves. Otherwise Lorenz curves will be compared.
 #' @details Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983).
 #'
 #' Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
@@ -29,7 +29,7 @@
 #'
 #' @export
 
-OmegaGL <- function(dataset, samp){
+OmegaGL <- function(dataset, samp, generalized = FALSE){
 
 select <- (1:samp)/samp
 dataset1 <- dataset[order(dataset[,'ipuc']), ]
@@ -77,8 +77,20 @@ for(i in 1:samp){
 sigma <- sigma + t(sigma)
 diag(sigma) <- diag(sigma)/2
 
-Omega.gl <- sigma/number.individuals
-gl.curve <- vector.gamma_i*p_i
+if(generalized == FALSE){
+
+  J <- diag(rep(1/gamma.j, (samp-1)))
+  end.col <- -p_i[-samp]*vector.gamma_i[-samp]/gamma.j^2
+  J <- cbind(J, end.col)
+  Omega.gl <- J %*% sigma %*% t(J)
+  Omega.gl <- Omega.gl/number.individuals
+
+  gl.curve <- vector.gamma_i*p_i/gamma.j
+
+} else {
+  Omega.gl <- sigma/number.individuals
+  gl.curve <- vector.gamma_i*p_i
+}
 
 return(list(Omega = Omega.gl, gl.curve = gl.curve, p = p_i,
             quantiles = quantile.i, gamma = vector.gamma_i))

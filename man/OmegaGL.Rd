@@ -4,7 +4,7 @@
 \alias{OmegaGL}
 \title{Matrix for testing Generalized Lorenz dominance}
 \usage{
-OmegaGL(dataset, samp)
+OmegaGL(dataset, samp, generalized = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
