@@ -10,7 +10,7 @@
 #' @param samp an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, i=1, \dots, samp}.
 #'
 #'
-#' @details Estimation of TIP curve ordinates and their covariance matrix are made following Beach and Davidson (1983) and Xu and Osberg (1998).
+#' @details Estimation of TIP curve ordinates and their covariance matrix are made following Beach and Davidson (1983), Beach and Kaliski (1986) and Xu and Osberg (1998).
 #'
 #' Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 #'
@@ -21,6 +21,7 @@
 #' }
 #'
 #' @references C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves and income shares, Review of Economic Studies, 50, 723--735.
+#' @references C. M. Beach and S. F. Kaliski (1986) Curve inference with sample weights: and application to the distribution of unemployment experience, Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 35, No. 1, 38--45.
 #' @references B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 #' @references K. Xu and L. Osberg (1998) A distribution-free test for deprivation dominance, Econometric Reviews,17, 415--429.
 #'

@@ -2,7 +2,7 @@
 #'
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
 #'
-#' @description Statistical test procedure given by Xu (1997) to study Generalized Lorenz dominance from sample Generalized Lorenz curve estimates.  Lorenz dominance from sample Lorenz curve estimates can also be studied (Beach and Davidson, 1983).
+#' @description Statistical test procedure given by Xu (1997) to study Generalized Lorenz dominance from sample Generalized Lorenz curve estimates.  Lorenz dominance from sample Lorenz curve estimates can also be studied (Beach and Kaliski, 1986).
 #'
 #'
 #' @param dataset1 a data.frame containing variables obtained by using  the setupDataset function.
@@ -24,6 +24,7 @@
 #'
 #'
 #' @references C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves
+#' @references C. M. Beach and S. F. Kaliski (1986) Curve inference with sample weights: and application to the distribution of unemployment experience, Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 35, No. 1, 38--45.
 #' @references D.A. Kodde and F.C. Palm (1986) Wald criteria for jointly testing equality and inequality restrictions, Econometrica, 50, 1243--1248.
 #' @references F.A. Wolak (1989), Testing inequality constrains in linear econometric models, Journal of Econometrics, 41, 205--235.
 #' @references K. Xu (1997) Asymptotically distribution-free statistical test for generalized Lorenz curves: An alternative approach, Journal of Income Distribution, 7(1), 45--62.
@@ -40,7 +41,7 @@
 #' @export
 
 
-testGL <- function(dataset1, dataset2, generalized = FALSE, samplesize = 10){
+testGL <- function(dataset1, dataset2, generalized = TRUE, samplesize = 10){
 
   list1 <- OmegaGL(dataset1, samp = samplesize, generalized)
   list2 <- OmegaGL(dataset2, samp = samplesize, generalized)

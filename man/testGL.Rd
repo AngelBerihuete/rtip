@@ -4,7 +4,7 @@
 \alias{testGL}
 \title{Test for Lorenz and Generalized Lorenz dominance}
 \usage{
-testGL(dataset1, dataset2, generalized = FALSE, samplesize = 10)
+testGL(dataset1, dataset2, generalized = TRUE, samplesize = 10)
 }
 \arguments{
 \item{dataset1}{a data.frame containing variables obtained by using  the setupDataset function.}
@@ -25,7 +25,7 @@ A list with the following components:
 }
 }
 \description{
-Statistical test procedure given by Xu (1997) to study Generalized Lorenz dominance from sample Generalized Lorenz curve estimates.  Lorenz dominance from sample Lorenz curve estimates can also be studied (Beach and Davidson, 1983).
+Statistical test procedure given by Xu (1997) to study Generalized Lorenz dominance from sample Generalized Lorenz curve estimates.  Lorenz dominance from sample Lorenz curve estimates can also be studied (Beach and Kaliski, 1986).
 }
 \details{
 The null hypotesis to be tested is if the  Lorenz (Generalized Lorenz) curve calculated from dataset1 dominates the one calculated from dataset2.
@@ -42,6 +42,8 @@ A. Berihuete, C.D. Ramos and M.A. Sordo
 }
 \references{
 C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves
+
+C. M. Beach and S. F. Kaliski (1986) Curve inference with sample weights: and application to the distribution of unemployment experience, Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 35, No. 1, 38--45.
 
 D.A. Kodde and F.C. Palm (1986) Wald criteria for jointly testing equality and inequality restrictions, Econometrica, 50, 1243--1248.
 

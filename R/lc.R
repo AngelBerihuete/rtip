@@ -35,7 +35,7 @@ lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
   x.lg <- y.lg <- NULL # To avoid Notes in Travis CI checking (ggplot2)
   if(generalized == FALSE){
     results <- data.frame(x.lg = c(0, res.glc$p),
-                          y.lg = c(0, res.glc$gl.curve)/miuc(dataset))
+                          y.lg = c(0, res.glc$gl.curve))
     if(plot){
       p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
         ggplot2::geom_line() +
