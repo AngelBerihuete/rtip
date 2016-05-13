@@ -10,6 +10,8 @@ OmegaGL(dataset, samp, generalized = FALSE)
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
 \item{samp}{an integer which represents the number of the GL ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, \quad i=1, \dots, samp}.}
+
+\item{generalized}{logical; if TRUE the test will be applied to compare two Generalized Lorenz curves. Otherwise Lorenz curves will be compared.}
 }
 \value{
 A list with the following components:

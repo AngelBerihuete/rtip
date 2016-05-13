@@ -24,6 +24,7 @@
 #'
 #' @seealso arpt, setupDataset
 #' @import boot
+#' @importFrom graphics plot
 #' @export
 
 arpr <- function(dataset, arpt.value, ci = FALSE, rep = 1000, verbose = FALSE){

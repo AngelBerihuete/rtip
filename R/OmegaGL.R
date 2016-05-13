@@ -26,6 +26,7 @@
 #' @references K. Xu (1997) Asymptotically distribution-free statistical test for generalized Lorenz curves: An alternative approach, Journal of Income Distribution, 7, 45--62.
 #'
 #' @seealso testGL, setupDataset
+#' @importFrom stats constrOptim pchisq complete.cases
 #'
 #' @export
 
