@@ -44,11 +44,13 @@ testGL <- function(dataset1, dataset2, generalized = FALSE, samplesize = 10){
 
   list1 <- OmegaGL(dataset1, samp = samplesize, generalized)
   list2 <- OmegaGL(dataset2, samp = samplesize, generalized)
+
   if(!generalized){
-    estim.gl <- gl1[-samplesize] - gl2[-samplesize]
+    estim.gl <- list1$gl.curve[-samplesize] - list2$gl.curve[-samplesize]
   }else{
-    estim.gl <- gl1 - gl2
-  }
+    estim.gl <- list1$gl.curve - list2$gl.curve
+    }
+
   Omega1 <- list1$Omega
   Omega2 <- list2$Omega
   OmegaTotal <-  Omega1 + Omega2
