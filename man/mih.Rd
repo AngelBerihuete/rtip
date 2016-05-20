@@ -11,7 +11,7 @@ mih(dataset, ci = FALSE, rep = 1000, verbose = FALSE)
 
 \item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.}
 
-\item{rep}{a number to do the confidence interval using boostrap technique.}
+\item{rep}{a number to make the confidence interval using boostrap technique.}
 
 \item{verbose}{logical; if TRUE the confindence interval is plotted.}
 }

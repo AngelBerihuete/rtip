@@ -24,7 +24,7 @@
 #' \item HX090, a numeric vector containing information about equivalised disposable income (with the modified OECD scale).
 #' }
 #'
-#' @note According to the INE regulations, it is mandatory to inform that
+#' @note According to the INE regulation, it is mandatory to inform that
 #' the values in this dataset were not modified.
 #'
 #' @docType data

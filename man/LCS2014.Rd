@@ -29,7 +29,7 @@ These datasets and the function to extract the variables are available
 in data-raw directory (source version package only).
 }
 \note{
-According to the INE regulations, it is mandatory to inform that
+According to the INE regulation, it is mandatory to inform that
 the values in this dataset were not modified.
 }
 \keyword{datasets}

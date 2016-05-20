@@ -28,7 +28,7 @@ A list with the following components:
 Statistical test procedure given by Xu (1997) to study Generalized Lorenz dominance from sample Generalized Lorenz curve estimates.  Lorenz dominance from sample Lorenz curve estimates can also be studied (Beach and Kaliski, 1986).
 }
 \details{
-The null hypotesis to be tested is if the  Lorenz (Generalized Lorenz) curve calculated from dataset1 dominates the one calculated from dataset2.
+The null hypotesis to be tested is that the  Lorenz (Generalized Lorenz) curve calculated from dataset1 dominates the one calculated from dataset2.
 }
 \examples{
 data(eusilc2)

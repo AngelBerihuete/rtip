@@ -11,7 +11,9 @@
 #' @param deflac numeric; a number to be used as a deflator. The default (NULL) will not apply any deflation.
 #' @param ppp a logical; if it is TRUE the purchasing power parity (PPP) exchange rate will be used.
 #'
-#' @details The parametric scale of Buhmann et al. (1988) can also be used assigning to \emph{s} parameter a value between 0 and 1. The parameter s is called  elasticity of equivalence.
+#' @details We obtain the equivalized disposable income with the equivalence
+#' scale of Buhmann et al. (1988) by assigning a numeric value between 0 and 1
+#' to argument s . The parameter s is called elasticity of equivalence.
 #'
 #' The purchasing power parity exchange rate is useful for making comparisons between countries.
 #'
@@ -46,9 +48,9 @@ setupDataset <- function(dataset,
                          deflac = NULL,
                          ppp = FALSE) {
 
-  # The following line is only to overcome the note obtained by 
+  # The following line is only to overcome the note obtained by
   # R CMD check, because the using in subset function
-  DB020 = DB040 = year = NULL 
+  DB020 = DB040 = year = NULL
 
   if(!is.null(country)){ # only for one region
     dataset <- subset(dataset, DB020 == country)

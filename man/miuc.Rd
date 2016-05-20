@@ -11,7 +11,7 @@ miuc(dataset, ci = FALSE, rep = 1000, verbose = FALSE)
 
 \item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.}
 
-\item{rep}{a number to do the confidence interval using boostrap technique.}
+\item{rep}{a number to make the confidence interval using boostrap technique.}
 
 \item{verbose}{logical; if TRUE the confindence interval is plotted.}
 }
@@ -22,7 +22,7 @@ The value of mean income per unit of consumption
 Estimates the mean income per unit of consumption which is the mean of the equivalized disposable income.
 }
 \details{
-The equivalized disposable income is calculated using the standar equivalence scale called the modified OECD scale and recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale (see setupDataset).
+The equivalized disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale (see setupDataset).
 }
 \examples{
 data(eusilc2)

@@ -23,7 +23,10 @@ A list with the following components:
 }
 }
 \description{
-The auxiliary function OmegaTIP computes the (empirical) vector of TIP curve ordinates and its corresponding covariance matrix. This matrix will be used to compute the test-statistic to test for the TIP dominance relation between two TIP curves.
+The auxiliary function OmegaTIP computes the (empirical) vector
+of TIP curve ordinates and its corresponding covariance matrix.
+Given two income distributions, this matrix will be used to test the
+null hypothesis that one distribution dominates the other in the TIP sense.
 }
 \details{
 Estimation of TIP curve ordinates and their covariance matrix are made following Beach and Davidson (1983), Beach and Kaliski (1986) and Xu and Osberg (1998).

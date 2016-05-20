@@ -9,7 +9,8 @@ OmegaGL(dataset, samp, generalized = TRUE)
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{samp}{an integer which represents the number of the GL ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, \quad i=1, \dots, samp}.}
+\item{samp}{An interger representing the number of GL ordinates to be estimated.
+These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, \quad i=1, \dots, samp}.}
 
 \item{generalized}{logical; if FALSE the matrix for testing Lorenz dominance will be calculated.}
 }
@@ -24,7 +25,11 @@ A list with the following components:
 }
 }
 \description{
-The auxiliary function OmegaGL computes the (empirical) vector of Generalized Lorenz (GL) curve ordinates and its corresponding covariance matrix. This matrix will be used to compute the test-statistic to test for the Generalized Lorenz dominance relation between two GL curves.
+The auxiliary function OmegaGL computes the (empirical) vector
+of Generalized Lorenz (GL) curve ordinates and its corresponding covariance
+matrix. Given two income distributions, this matrix will be used to test the
+null hypothesis that one distribution dominates the other in the Generalized
+Lorenz sense.
 }
 \details{
 Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983) and Beach and Kalisiki (1986).

@@ -2,7 +2,10 @@
 #'
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
 #'
-#' @description The auxiliary function OmegaTIP computes the (empirical) vector of TIP curve ordinates and its corresponding covariance matrix. This matrix will be used to compute the test-statistic to test for the TIP dominance relation between two TIP curves.
+#' @description The auxiliary function OmegaTIP computes the (empirical) vector
+#' of TIP curve ordinates and its corresponding covariance matrix.
+#' Given two income distributions, this matrix will be used to test the
+#' null hypothesis that one distribution dominates the other in the TIP sense.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
 #' @param arpt.value the at-risk-of-poverty threshold to be used (see arpt).

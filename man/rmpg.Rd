@@ -24,7 +24,7 @@ The value of the relative median at-risk-of-poverty gap.
 Estimates the relative median at-risk-of-poverty gap which is the difference between the at-risk-of-poverty threshold and the median equivalized disposable income of people below the at-risk-of-poverty threshold, expressed as a percentage of this threshold.
 }
 \details{
-The equivalized disposable income is calculated using the standar equivalence scale called the modified OECD scale and recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
+The equivalized disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
 }
 \examples{
 data(eusilc2)

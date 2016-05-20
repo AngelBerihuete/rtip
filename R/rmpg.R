@@ -10,7 +10,7 @@
 #' @param rep a number to do the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
-#' @details The equivalized disposable income is calculated using the standar equivalence scale called the modified OECD scale and recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
+#' @details The equivalized disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
 #'
 #' @return The value of the relative median at-risk-of-poverty gap.
 #'
