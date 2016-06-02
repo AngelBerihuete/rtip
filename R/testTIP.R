@@ -27,7 +27,7 @@
 #' }
 #'
 #' @seealso OmegaTIP, setupDataset, arpt, arpr
-#'
+#' @references C. M. Beach and S. F. Kaliski (1986) Curve inference with sample weights: and application to the distribution of unemployment experience, Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 35, No. 1, 38--45.
 #' @references D.A. Kodde and F.C. Palm (1986) Wald criteria for jointly testing equality and inequality restrictions, Econometrica, 50, 1243--1248.
 #' @references F.A. Wolak (1989), Testing inequality constrains in linear econometric models, Journal of Econometrics, 41, 205--235.
 #' @references K. Xu and L. Osberg (1998) A distribution-free test for deprivation dominance, Econometric Reviews, 17, 415--429.

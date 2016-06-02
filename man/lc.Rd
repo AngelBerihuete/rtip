@@ -13,7 +13,7 @@ lc(dataset, samp = 10, generalized = FALSE, plot = FALSE)
 
 \item{generalized}{logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.}
 
-\item{plot}{logical; if TRUE plots the Lorenz or generalized Lorenz curve.}
+\item{plot}{logical; if TRUE plots the Lorenz or Generalized Lorenz curve.}
 }
 \value{
 A data.frame with the following components:

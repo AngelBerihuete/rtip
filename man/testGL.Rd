@@ -11,7 +11,7 @@ testGL(dataset1, dataset2, generalized = TRUE, samplesize = 10)
 
 \item{dataset2}{a data.frame containing variables obtained by using  the setupDataset function.}
 
-\item{generalized}{logical; if TRUE the test will be applied to compare two Generalized Lorenz curves. Otherwise Lorenz curves will be compared.}
+\item{generalized}{logical; if FALSE the test will be applied to compare two Lorenz curves. Otherwise Generalized Lorenz curves will be compared.}
 
 \item{samplesize}{an integer which represents the number of Lorenz (Generalized Lorenz) curve ordinates to be estimated for comparison. The default is 10.}
 }
