@@ -22,6 +22,7 @@
 #' @examples
 #' \dontrun{lcs2014 <- loadLCS("esudb14d.csv","esudb14h.csv")}
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
+#' @importFrom utils read.table
 #' @export
 
 loadLCS <- function(lcs_d_file, lcs_h_file){

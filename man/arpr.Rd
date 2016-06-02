@@ -13,7 +13,7 @@ arpr(dataset, arpt.value, ci = FALSE, rep = 1000, verbose = FALSE)
 
 \item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the at-risk-of-poverty rate.}
 
-\item{rep}{a number to do the confidence interval using boostrap technique.}
+\item{rep}{a number to make the confidence interval using boostrap technique.}
 
 \item{verbose}{logical; if TRUE the confindence interval is plotted.}
 }
@@ -24,7 +24,7 @@ The value of the at-risk-of-poverty rate.
 Estimates the poverty rate which is defined as the share of people with an equivalized disposable income below the at-risk-of-poverty threshold.
 }
 \details{
-The equivalized disposable income is calculated using the standar equivalence scale called the modified OECD scale and recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
+The equivalized disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
 }
 \examples{
 data(eusilc2)

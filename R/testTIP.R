@@ -14,7 +14,7 @@
 #'
 #' @details Because the TIP curve becomes horizontal at the arpr value, it is only necessary to have the test implemented over the interval \eqn{(0, \max \{ arpr1, arpr2 \})}{(0, max {arpr1, arpr2})}. For that reason both TIP curves are truncated at the same value equal to \eqn{\max \{ arpr1, arpr2 \} }{max{arpr1, arpr2}} and ordinates are only compared at points \eqn{p_i = i/samplesize}{p_i = i/samplesize}, where \eqn{i=1, \dots, k} in the interval \eqn{(0, \max \{ arpr1, arpr2 \})}{(0, max { arpr1, arpr2})} (see \code{arpr} function).
 #'
-#' The null hypotesis to be tested is if the TIP curve calculated from dataset1 dominates the one calculated from dataset2.
+#' The null hypotesis to be tested is that the TIP curve calculated from dataset1 dominates the one calculated from dataset2.
 #'
 #' @return A list with the following components:
 #' \itemize{
@@ -27,7 +27,7 @@
 #' }
 #'
 #' @seealso OmegaTIP, setupDataset, arpt, arpr
-#'
+#' @references C. M. Beach and S. F. Kaliski (1986) Curve inference with sample weights: and application to the distribution of unemployment experience, Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 35, No. 1, 38--45.
 #' @references D.A. Kodde and F.C. Palm (1986) Wald criteria for jointly testing equality and inequality restrictions, Econometrica, 50, 1243--1248.
 #' @references F.A. Wolak (1989), Testing inequality constrains in linear econometric models, Journal of Econometrics, 41, 205--235.
 #' @references K. Xu and L. Osberg (1998) A distribution-free test for deprivation dominance, Econometric Reviews, 17, 415--429.

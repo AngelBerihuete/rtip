@@ -4,12 +4,15 @@
 \alias{OmegaGL}
 \title{Matrix for testing Generalized Lorenz dominance}
 \usage{
-OmegaGL(dataset, samp)
+OmegaGL(dataset, samp, generalized = TRUE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{samp}{an integer which represents the number of the GL ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, \quad i=1, \dots, samp}.}
+\item{samp}{An interger representing the number of GL ordinates to be estimated.
+These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, \quad i=1, \dots, samp}.}
+
+\item{generalized}{logical; if FALSE the matrix for testing Lorenz dominance will be calculated.}
 }
 \value{
 A list with the following components:
@@ -22,10 +25,14 @@ A list with the following components:
 }
 }
 \description{
-The auxiliary function OmegaGL computes the (empirical) vector of Generalized Lorenz (GL) curve ordinates and its corresponding covariance matrix. This matrix will be used to compute the test-statistic to test for the Generalized Lorenz dominance relation between two GL curves.
+The auxiliary function OmegaGL computes the (empirical) vector
+of Generalized Lorenz (GL) curve ordinates and its corresponding covariance
+matrix. Given two income distributions, this matrix will be used to test the
+null hypothesis that one distribution dominates the other in the Generalized
+Lorenz sense.
 }
 \details{
-Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983).
+Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983) and Beach and Kalisiki (1986).
 
 Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 }
@@ -34,6 +41,8 @@ A. Berihuete, C.D. Ramos and M.A. Sordo
 }
 \references{
 C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves and income shares, Review of Economic Studies, 50, 723--735.
+
+C. M. Beach and S. F. Kaliski (1986) Curve inference with sample weights: and application to the distribution of unemployment experience, Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 35, No. 1, 38--45.
 
 B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 

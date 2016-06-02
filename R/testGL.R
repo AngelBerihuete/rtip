@@ -2,16 +2,16 @@
 #'
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
 #'
-#' @description Statistical test procedure given by Xu (1997) to study Generalized Lorenz dominance from sample Generalized Lorenz curve estimates.  Lorenz dominance from sample Lorenz curve estimates can also be studied (Beach and Davidson, 1983).
+#' @description Statistical test procedure given by Xu (1997) to study Generalized Lorenz dominance from sample Generalized Lorenz curve estimates.  Lorenz dominance from sample Lorenz curve estimates can also be studied (Beach and Kaliski, 1986).
 #'
 #'
 #' @param dataset1 a data.frame containing variables obtained by using  the setupDataset function.
 #' @param dataset2 a data.frame containing variables obtained by using  the setupDataset function.
-#' @param generalized logical; if TRUE the test will be applied to compare two Generalized Lorenz curves. Otherwise Lorenz curves will be compared.
+#' @param generalized logical; if FALSE the test will be applied to compare two Lorenz curves. Otherwise Generalized Lorenz curves will be compared.
 #' @param samplesize an integer which represents the number of Lorenz (Generalized Lorenz) curve ordinates to be estimated for comparison. The default is 10.
 #'
 #'
-#' @details The null hypotesis to be tested is if the  Lorenz (Generalized Lorenz) curve calculated from dataset1 dominates the one calculated from dataset2.
+#' @details The null hypotesis to be tested is that the  Lorenz (Generalized Lorenz) curve calculated from dataset1 dominates the one calculated from dataset2.
 #'
 #'
 #' @return A list with the following components:
@@ -24,6 +24,7 @@
 #'
 #'
 #' @references C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves
+#' @references C. M. Beach and S. F. Kaliski (1986) Curve inference with sample weights: and application to the distribution of unemployment experience, Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 35, No. 1, 38--45.
 #' @references D.A. Kodde and F.C. Palm (1986) Wald criteria for jointly testing equality and inequality restrictions, Econometrica, 50, 1243--1248.
 #' @references F.A. Wolak (1989), Testing inequality constrains in linear econometric models, Journal of Econometrics, 41, 205--235.
 #' @references K. Xu (1997) Asymptotically distribution-free statistical test for generalized Lorenz curves: An alternative approach, Journal of Income Distribution, 7(1), 45--62.
@@ -40,20 +41,17 @@
 #' @export
 
 
-testGL <- function(dataset1, dataset2, generalized = FALSE, samplesize = 10){
+testGL <- function(dataset1, dataset2, generalized = TRUE, samplesize = 10){
 
-  list1 <- OmegaGL(dataset1, samp = samplesize)
-  list2 <- OmegaGL(dataset2, samp = samplesize)
+  list1 <- OmegaGL(dataset1, samp = samplesize, generalized)
+  list2 <- OmegaGL(dataset2, samp = samplesize, generalized)
 
-  if(generalized == FALSE){
-    gl1 <- list1$gl.curve/miuc(dataset1)
-    gl2 <- list2$gl.curve/miuc(dataset2)
+  if(!generalized){
+    estim.gl <- list1$gl.curve[-samplesize] - list2$gl.curve[-samplesize]
   }else{
-    gl1 <- list1$gl.curve
-    gl2 <- list2$gl.curve
-  }
+    estim.gl <- list1$gl.curve - list2$gl.curve
+    }
 
-  estim.gl <- gl1 - gl2
   Omega1 <- list1$Omega
   Omega2 <- list2$Omega
   OmegaTotal <-  Omega1 + Omega2

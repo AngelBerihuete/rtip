@@ -10,7 +10,7 @@
 #' @param eusilc_h_file a string with the filename of \code{H}-file.
 #'
 #' @details Vector strings \code{varD} and \code{varH} contains the names of the
-#' variables needed to do the calculations with rtip package. This variables are given
+#' variables needed to do the calculations with rtip package. These variables are given
 #' by Eurostat in two different files, namely basic household register
 #' (\code{H}-file) and household data (\code{D}-file).
 #'
