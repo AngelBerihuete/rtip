@@ -1,5 +1,7 @@
 # rtip
 
+[![Build Status](https://travis-ci.org/AngelBerihuete/rtip.svg?branch=master)](https://travis-ci.org/AngelBerihuete/rtip)
+
 rtip is an R package containing tools to measure and compare inequality, 
 welfare and poverty using the EU statistics on income and living conditions 
 surveys (EU-SILC). 
@@ -7,7 +9,6 @@ surveys (EU-SILC).
 The package also estimates the ordinates of the Generalized Lorenz  
 and TIP curves. Furthermore, some tests are implemented to study the dominance 
 of two income distributions from Generalized Lorenz  and TIP curves.
->>>>>>> develop
 
 
 ## Installation
