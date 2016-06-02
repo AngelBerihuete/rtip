@@ -51,8 +51,8 @@ Hash: 21fb53e12f47bff18a2db6ab69bd87a0
 
 Package: devtools
 Source: CRAN
-Version: 1.10.0
-Hash: 11261bd97eda1c73da7136c4e2031e97
+Version: 1.11.1
+Hash: 4c6aa014d917044bf376a363c3c8ee1a
 Requires: digest, git2r, httr, jsonlite, memoise, rstudioapi, whisker,
     withr
 
