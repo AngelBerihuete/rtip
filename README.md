@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/AngelBerihuete/rtip.svg?branch=master)](https://travis-ci.org/AngelBerihuete/rtip)
 [![CRAN_Status_Badge](http://cranlogs.r-pkg.org/badges/grand-total/rtip)]
 (http://cran.r-project.org/package=rtip)
+[![DOI](https://zenodo.org/badge/53953000.svg)](https://zenodo.org/badge/latestdoi/53953000)
+
 
 rtip is an R package containing tools to measure and compare inequality, 
 welfare and poverty using the EU statistics on income and living conditions 
