@@ -58,8 +58,9 @@ ATdataset2 <- setupDataset(eusilc2, country = "AT", region = "Carinthia")
 testTIP(ATdataset1, ATdataset, same.arpt.value = arpt(ATdataset))
 ```
 
+## Citation
 A BibTeX entry for LaTeX users is
-
+```bibtex
   @Manual{,
     title = {rtip: Inequality, Welfare and Poverty Indices and Curves using the
 EU-SILC Data},
@@ -68,3 +69,4 @@ EU-SILC Data},
     note = {R package version 1.0.0},
     url = {https://CRAN.R-project.org/package=rtip},
   }
+```
