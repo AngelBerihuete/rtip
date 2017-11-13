@@ -6,6 +6,7 @@
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt).
+#' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.
 #' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
 #' @param plot logical; if TRUE plots the TIP curve.
 #' @details The TIP (Three I's of Poverty) curve ordinates are computed using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
@@ -22,46 +23,43 @@
 #' @examples
 #' data(eusilc2)
 #' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
-#' tip.curve <- tip(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
+#' tip.curve <- tip(ATdataset, arpt.value = arpt(ATdataset), norm = TRUE)
 #' str(tip.curve)
 #' @import ggplot2
 #' @export
 
-tip <- function(dataset, arpt.value, norm = FALSE, plot = FALSE){
+tip <- function(dataset, arpt.value, samplesize = 10, norm = FALSE, plot = FALSE){
   # Following line to avoid Notes in Travis CI Check because ggplot
   x.tip <- y.tip <- arpr.value <- NULL
-  #
-  dataset <- dataset[order(dataset[, "ipuc"]), ]
-  dataset$pg <- pmax(arpt.value - dataset$ipuc, 0) # poverty gaps
-  w2xpg <- dataset$wHX040*dataset$pg
-  acum.w2xpg <- cumsum(w2xpg)
-  acum.wHX040 <- cumsum(dataset$wHX040)
-  y.tip <- acum.w2xpg/acum.wHX040[length(acum.wHX040)]
-  x.tip <- acum.wHX040/acum.wHX040[length(acum.wHX040)]
-  if(norm == TRUE) y.tip <- y.tip/arpt.value
-  tip.curve <- data.frame(x.tip = c(0, x.tip), y.tip = c(0, y.tip))
+
+  if(samplesize != "complete"){
+    res.tip <- OmegaTIP(dataset, arpt.value=arpt.value, samplesize = samplesize, norm = norm)
+    y.tip <- res.tip$tip.curve
+    x.tip <- (1:samplesize)/samplesize
+    tip.curve <- data.frame(x.tip = c(0, x.tip[1:samplesize-1]), y.tip = y.tip)
+  }else{
+    dataset <- dataset[order(dataset[, "ipuc"]), ]
+    dataset$pg <- pmax(arpt.value - dataset$ipuc, 0) # poverty gaps
+    w2xpg <- dataset$wHX040*dataset$pg
+    acum.w2xpg <- cumsum(w2xpg)
+    acum.wHX040 <- cumsum(dataset$wHX040)
+    y.tip <- acum.w2xpg/acum.wHX040[length(acum.wHX040)]
+    x.tip <- acum.wHX040/acum.wHX040[length(acum.wHX040)]
+    if(norm == TRUE) y.tip <- y.tip/arpt.value
+    tip.curve <- data.frame(x.tip = c(0, x.tip), y.tip = c(0, y.tip))
+  }
+
+
   if(plot){
     arpr.value <- arpr(dataset, arpt.value)
     xlim.aux <- (arpr.value/100 + 0.2)
        p <- ggplot2::ggplot(data = tip.curve, aes(x.tip, y.tip)) +
       ggplot2::geom_line() +
-      ggplot2::geom_segment(aes(x = arpr.value/100, y = 0,
-                      xend = arpr.value/100, yend = max(y.tip)),
-                      linetype = "longdash",
-                      color = "red") +
-      ggplot2::geom_segment(aes(x = 0, y = max(y.tip),
-                      xend = arpr.value/100, yend = max(y.tip)),
-                      linetype = "longdash",
-                      color = "red") +
-      ggplot2::annotate("text", label = "arpr value", x = (arpr.value/100),
-                  y = -max(y.tip)/80, size = 4, colour = "red") +
-      ggplot2::annotate("text", label = "s1 value", x = 0,
-                  y = (max(y.tip)+max(y.tip)/80), size = 4, colour = "red") +
       ggplot2::scale_x_continuous("Cumulated proportion of population",
                            limits = c(0,xlim.aux)) +
       ggplot2::scale_y_continuous("") +
       ggplot2::ggtitle("TIP curve")
-       print(p)
+      print(p)
        }
 
   return(tip.curve)

@@ -4,12 +4,12 @@
 \alias{lc}
 \title{Lorenz and Generalized Lorenz curves}
 \usage{
-lc(dataset, samp = 10, generalized = FALSE, plot = FALSE)
+lc(dataset, samplesize = 10, generalized = FALSE, plot = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{samp}{an integer which represents the number of ordinates to be estimated. The default is 10.}
+\item{samplesize}{an integer which represents the number of ordinates to be estimated. The default is 10.}
 
 \item{generalized}{logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.}
 
@@ -35,9 +35,6 @@ lc.curve <- lc(ATdataset)
 str(lc.curve)
 
 }
-\author{
-A. Berihuete, C.D. Ramos and M.A. Sordo
-}
 \references{
 B C Arnold (1987) Majorization and the Lorenz order: A brief introduction, Lecture Notes in Statistics, 43, Springer-Verlag.
 
@@ -46,4 +43,6 @@ B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty:
 \seealso{
 setupDataset
 }
-
+\author{
+A. Berihuete, C.D. Ramos and M.A. Sordo
+}

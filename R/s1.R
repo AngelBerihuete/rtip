@@ -33,11 +33,11 @@
 s1 <- function(dataset, arpt.value, norm = FALSE, ci = FALSE,
                rep = 1000, verbose = FALSE){
   if( ci == FALSE){
-    maxtip <- max(tip(dataset, arpt.value, norm)[,2])
+    maxtip <- max(tip(dataset, arpt.value, samplesize="complete", norm)[,2])
     return(maxtip)
   }else{
     s11 <- function(dataset, i, arpt.value, norm){
-      max(tip(dataset[i,], arpt.value, norm)[,2]) # s1 index
+      max(tip(dataset[i,], arpt.value, samplesize="complete", norm)[,2]) # s1 index
     }
     boot.s1 <- boot::boot(dataset, statistic = s11, R = rep,
                     sim = "ordinary", stype = "i",

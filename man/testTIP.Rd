@@ -48,9 +48,6 @@ ATdataset2 <- setupDataset(eusilc2, country = "AT", region = "Carinthia")
 testTIP(ATdataset1, ATdataset, same.arpt.value = arpt(ATdataset))
 
 }
-\author{
-A. Berihuete, C.D. Ramos and M.A. Sordo
-}
 \references{
 C. M. Beach and S. F. Kaliski (1986) Curve inference with sample weights: and application to the distribution of unemployment experience, Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 35, No. 1, 38--45.
 
@@ -63,4 +60,6 @@ K. Xu and L. Osberg (1998) A distribution-free test for deprivation dominance, E
 \seealso{
 OmegaTIP, setupDataset, arpt, arpr
 }
-
+\author{
+A. Berihuete, C.D. Ramos and M.A. Sordo
+}

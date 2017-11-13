@@ -5,7 +5,7 @@
 #' @description Estimates the Lorenz and the Generalized Lorenz curves ordinates.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param samp an integer which represents the number of ordinates to be estimated. The default is 10.
+#' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 10.
 #' @param generalized logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.
 #' @param plot logical; if TRUE plots the Lorenz or Generalized Lorenz curve.
 #'
@@ -30,8 +30,8 @@
 #' @import ggplot2
 #' @export
 
-lc <- function(dataset, samp = 10, generalized = FALSE, plot = FALSE){
-  res.glc <- OmegaGL(dataset, samp = samp, generalized)
+lc <- function(dataset, samplesize = 10, generalized = FALSE, plot = FALSE){
+  res.glc <- OmegaGL(dataset, samplesize = samplesize, generalized)
   x.lg <- y.lg <- NULL # To avoid Notes in Travis CI checking (ggplot2)
   if(generalized == FALSE){
     results <- data.frame(x.lg = c(0, res.glc$p),

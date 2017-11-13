@@ -4,16 +4,16 @@
 \alias{OmegaTIP}
 \title{Matrix for testing TIP dominance}
 \usage{
-OmegaTIP(dataset, arpt.value, norm = FALSE, samp)
+OmegaTIP(dataset, arpt.value, samplesize, norm = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
 \item{arpt.value}{the at-risk-of-poverty threshold to be used (see arpt).}
 
-\item{norm}{logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).}
+\item{samplesize}{an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}.}
 
-\item{samp}{an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, i=1, \dots, samp}.}
+\item{norm}{logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).}
 }
 \value{
 A list with the following components:
@@ -33,9 +33,6 @@ Estimation of TIP curve ordinates and their covariance matrix are made following
 
 Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 }
-\author{
-A. Berihuete, C.D. Ramos and M.A. Sordo
-}
 \references{
 C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves and income shares, Review of Economic Studies, 50, 723--735.
 
@@ -48,4 +45,6 @@ K. Xu and L. Osberg (1998) A distribution-free test for deprivation dominance, E
 \seealso{
 testTIP, setupDataset, arpt
 }
-
+\author{
+A. Berihuete, C.D. Ramos and M.A. Sordo
+}

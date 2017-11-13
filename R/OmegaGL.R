@@ -9,8 +9,8 @@
 #' Lorenz sense.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param samp An interger representing the number of GL ordinates to be estimated.
-#' These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, \quad i=1, \dots, samp}.
+#' @param samplesize An interger representing the number of GL ordinates to be estimated.
+#' These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, \quad i=1, \dots, samplesize}.
 #' @param generalized logical; if FALSE the matrix for testing Lorenz dominance will be calculated.
 #' @details Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983) and Beach and Kalisiki (1986).
 #'
@@ -20,9 +20,9 @@
 #' \itemize{
 #' \item Omega, covariance matrix for the estimated vector of GL curve ordinates.
 #' \item gl.curve, estimated vector of GL curve ordinates.
-#' \item p, vector with components \eqn{p_i=i/samp, \quad i=1, ..., samp}.
+#' \item p, vector with components \eqn{p_i=i/samplesize, \quad i=1, ..., samplesize}.
 #' \item quantiles, estimated vector of quantiles of income corresponding to these \eqn{p_i}.
-#' \item gamma, vector of estimated conditional means of income less than the quantil corresponding to \eqn{p_i=i/samp, \quad i=1, \dots,  samp}.
+#' \item gamma, vector of estimated conditional means of income less than the quantil corresponding to \eqn{p_i=i/samplesize, \quad i=1, \dots,  samplesize}.
 #' }
 #'
 #'
@@ -36,9 +36,9 @@
 #'
 #' @export
 
-OmegaGL <- function(dataset, samp, generalized = TRUE){
+OmegaGL <- function(dataset, samplesize, generalized = TRUE){
 
-select <- (1:samp)/samp
+select <- (1:samplesize)/samplesize
 dataset1 <- dataset[order(dataset[,'ipuc']), ]
 
 dataset1$Acum <- cumsum(dataset1$wHX040)
@@ -46,13 +46,13 @@ dataset1$Acum.P_i <- dataset1$Acum/dataset1$Acum[length(dataset1$Acum)]
 
 number.individuals <- dataset1$Acum[length(dataset1$Acum)]
 
-p_i <- (1:samp)/samp
+p_i <- (1:samplesize)/samplesize
 np_i <- floor(p_i*number.individuals)
 
-sigma <- mat.or.vec(samp, samp)
+sigma <- mat.or.vec(samplesize, samplesize)
 vector.gamma_i <- c()
 quantile.i <- c()
-for(i in 1:samp){
+for(i in 1:samplesize){
   pos.i <- which(dataset1$Acum.P_i>=p_i[i])[1]
   quantile.i[i] <- dataset1$ipuc[pos.i]
   if(pos.i == 1){
@@ -68,7 +68,7 @@ for(i in 1:samp){
     lambda.i <- lambda.i/np_i[i]
   }
 
-  for(j in i:samp){
+  for(j in i:samplesize){
     pos.j <- which(dataset1$Acum.P_i>=p_i[j])[1]
     if(pos.j == 1){
       gamma.j <- dataset1$ipuc[pos.j]
@@ -86,8 +86,8 @@ diag(sigma) <- diag(sigma)/2
 
 if(generalized == FALSE){
 
-  J <- diag(rep(1/gamma.j, (samp-1)))
-  end.col <- -p_i[-samp]*vector.gamma_i[-samp]/gamma.j^2
+  J <- diag(rep(1/gamma.j, (samplesize-1)))
+  end.col <- -p_i[-samplesize]*vector.gamma_i[-samplesize]/gamma.j^2
   J <- cbind(J, end.col)
   Omega.gl <- J %*% sigma %*% t(J)
   Omega.gl <- Omega.gl/number.individuals

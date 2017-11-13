@@ -29,7 +29,7 @@ loadEUSILC <- function(eusilc_d_file, eusilc_h_file){
   dataset2 <- read.table(eusilc_h_file, header=TRUE, sep= ",")
 
   # selecting same ID homes
-  check1 <- identical(dataset1$DB010, dataset2$HB010) # check if you've the same identification for homes
+  check1 <- identical(dataset1$DB010, dataset2$HB010) # check if you've the same identification for years
   check2 <- identical(dataset1$DB030, dataset2$HB030) # check if you've the same identification for homes
   if(!check1){
     stop('Different years!')

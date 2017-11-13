@@ -33,4 +33,3 @@ datasets have a restricted licence for use.
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo
 }
-

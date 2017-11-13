@@ -4,12 +4,14 @@
 \alias{tip}
 \title{TIP curve}
 \usage{
-tip(dataset, arpt.value, norm = FALSE, plot = FALSE)
+tip(dataset, arpt.value, samplesize = 10, norm = FALSE, plot = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
 \item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt).}
+
+\item{samplesize}{an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.}
 
 \item{norm}{logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).}
 
@@ -31,11 +33,8 @@ The TIP (Three I's of Poverty) curve ordinates are computed using the equivalize
 \examples{
 data(eusilc2)
 ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
-tip.curve <- tip(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
+tip.curve <- tip(ATdataset, arpt.value = arpt(ATdataset), norm = TRUE)
 str(tip.curve)
-}
-\author{
-A. Berihuete, C.D. Ramos and M.A. Sordo
 }
 \references{
 B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
@@ -45,4 +44,6 @@ S.P. Jenkins and P.J. Lambert (1997) Three I's of poverty curves, with an analys
 \seealso{
 setupDataset, arpt
 }
-
+\author{
+A. Berihuete, C.D. Ramos and M.A. Sordo
+}

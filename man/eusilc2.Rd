@@ -34,4 +34,3 @@ Estimation of Social Exclusion Indicators from Complex Surveys: The R Package la
 Journal of Statistics Software, 54:1, 1--25
 }
 \keyword{datasets}
-

@@ -36,9 +36,6 @@ data(eusilc2)
 ATdataset <- setupDataset(eusilc2, country = "AT", , s = "OECD")
 s1(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
 }
-\author{
-A. Berihuete, C.D. Ramos and M.A. Sordo
-}
 \references{
 B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 
@@ -49,4 +46,6 @@ M.A. Sordo and C.D. Ramos (2011) Poverty comparisons when TIP curves intersect, 
 \seealso{
 tip, setupDataset, arpt
 }
-
+\author{
+A. Berihuete, C.D. Ramos and M.A. Sordo
+}

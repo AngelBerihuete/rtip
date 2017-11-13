@@ -34,4 +34,3 @@ We have included two files in dat-raw to test the function
 \author{
 A. Berihuete, C.D. Ramos and M.A. Sordo
 }
-

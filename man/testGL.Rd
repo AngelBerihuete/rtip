@@ -37,9 +37,6 @@ ATdataset2 <- setupDataset(eusilc2, country = "AT", region = "Carinthia")
 testGL(ATdataset1, ATdataset2, generalized = TRUE, samplesize = 10)
 
 }
-\author{
-A. Berihuete, C.D. Ramos and M.A. Sordo
-}
 \references{
 C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves
 
@@ -54,4 +51,6 @@ K. Xu (1997) Asymptotically distribution-free statistical test for generalized L
 \seealso{
 OmegaGL, setupDataset
 }
-
+\author{
+A. Berihuete, C.D. Ramos and M.A. Sordo
+}

@@ -5,7 +5,7 @@
 \title{Setup datasets loaded from the living conditions survey}
 \usage{
 setupDataset(dataset, country = "ES", region = "all", s = "OECD",
-  deflac = NULL, ppp = FALSE)
+  deflac = NULL, pppr = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables in the EU-SILC microdata format.}
@@ -18,7 +18,7 @@ setupDataset(dataset, country = "ES", region = "all", s = "OECD",
 
 \item{deflac}{numeric; a number to be used as a deflator. The default (NULL) will not apply any deflation.}
 
-\item{ppp}{a logical; if it is TRUE the purchasing power parity (PPP) exchange rate will be used.}
+\item{pppr}{the purchasing power parity rate (PPPR) exchange rate will be used. Default is FALSE}
 }
 \value{
 A data.frame with the following variables:
@@ -50,13 +50,12 @@ ATdataset <- setupDataset(eusilc2, country = "AT")
 str(ATdataset)
 
 }
-\author{
-A. Berihuete, C.D. Ramos and M.A. Sordo
-}
 \references{
 B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 }
 \seealso{
 loadEUSILC, loadLCS
 }
-
+\author{
+A. Berihuete, C.D. Ramos and M.A. Sordo
+}

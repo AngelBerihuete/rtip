@@ -27,9 +27,6 @@ ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
 mih(ATdataset)
 
 }
-\author{
-A. Berihuete, C.D. Ramos and M.A. Sordo
-}
 \references{
 B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 
@@ -38,4 +35,6 @@ B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty:
 \seealso{
 setupDataset.
 }
-
+\author{
+A. Berihuete, C.D. Ramos and M.A. Sordo
+}

@@ -9,8 +9,8 @@
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
 #' @param arpt.value the at-risk-of-poverty threshold to be used (see arpt).
+#' @param samplesize an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}.
 #' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
-#' @param samp an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samp, i=1, \dots, samp}.
 #'
 #'
 #' @details Estimation of TIP curve ordinates and their covariance matrix are made following Beach and Davidson (1983), Beach and Kaliski (1986) and Xu and Osberg (1998).
@@ -32,7 +32,7 @@
 #'
 #' @export
 
-OmegaTIP <- function(dataset, arpt.value, norm = FALSE, samp){
+OmegaTIP <- function(dataset, arpt.value, samplesize, norm = FALSE){
 
   G <- arpt.value-dataset$ipuc
   dataset$pg <- pmax(G, 0) # poverty gaps
@@ -43,13 +43,13 @@ OmegaTIP <- function(dataset, arpt.value, norm = FALSE, samp){
 
   number.individuals <- dataset1$Acum[length(dataset1$Acum)]
 
-  p_i <- (1:samp)/samp
+  p_i <- (1:samplesize)/samplesize
   np_i <- floor(p_i*number.individuals)
 
-  sigma <- mat.or.vec(samp, samp)
+  sigma <- mat.or.vec(samplesize, samplesize)
   vector.gamma.i <- c()
 
-  for(i in 1:samp){
+  for(i in 1:samplesize){
     pos.i <- which(dataset1$Acum.P_i>=p_i[i])[1]
     if(pos.i == 1){
       gamma.i <- vector.gamma.i[i] <- dataset1$pg[pos.i]
@@ -65,7 +65,7 @@ OmegaTIP <- function(dataset, arpt.value, norm = FALSE, samp){
       lambda.i <- lambda.i/np_i[i]
     }
 
-    for(j in i:samp){
+    for(j in i:samplesize){
       pos.j <- which(dataset1$Acum.P_i>=p_i[j])[1]
 
       if(pos.j == 1){
