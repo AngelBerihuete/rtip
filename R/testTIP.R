@@ -37,7 +37,7 @@
 #' ATdataset <- setupDataset(eusilc2, country = "AT")
 #' ATdataset1 <- setupDataset(eusilc2, country = "AT", region = "Burgenland")
 #' ATdataset2 <- setupDataset(eusilc2, country = "AT", region = "Carinthia")
-#' testTIP(ATdataset1, ATdataset, same.arpt.value = arpt(ATdataset))
+#' testTIP(ATdataset1, ATdataset2, same.arpt.value = arpt(ATdataset))
 #'
 #' @import plyr
 #' @import mvtnorm
