@@ -5,7 +5,7 @@
 #' @description Estimates the Lorenz and the Generalized Lorenz curves ordinates.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 10.
+#' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.
 #' @param generalized logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.
 #' @param plot logical; if TRUE plots the Lorenz or Generalized Lorenz curve.
 #'
