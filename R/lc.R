@@ -31,13 +31,35 @@
 #' @export
 
 lc <- function(dataset, samplesize = 10, generalized = FALSE, plot = FALSE){
-  res.glc <- OmegaGL(dataset, samplesize = samplesize, generalized)
   x.lg <- y.lg <- NULL # To avoid Notes in Travis CI checking (ggplot2)
 
-  if(generalized == FALSE){
+  if(samplesize != "complete"){
+    res.glc <- OmegaGL(dataset, samplesize = samplesize, generalized = generalized)
     results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve))
-    if(plot){
+  }else{
+    dataset <- dataset[order(dataset[, "ipuc"]), ]
+    w2xpg <- dataset$wHX040*dataset$ipuc
+    acum.w2xpg <- cumsum(w2xpg)
+    acum.wHX040 <- cumsum(dataset$wHX040)
+
+    x.lc <- acum.wHX040/acum.wHX040[length(acum.wHX040)]
+    if(generalized){
+      y.lc <- acum.w2xpg/acum.wHX040[length(acum.wHX040)]
+    }else{
+      y.lc <- acum.w2xpg/acum.w2xpg[length(acum.w2xpg)]
+    }
+    results <- data.frame(x.lg = c(0, x.lc),
+                          y.lg = c(0, y.lc))
+    }
+  if(plot){
+    if(generalized){
+      p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
+        ggplot2::geom_line() +
+        ggplot2::scale_x_continuous("Cumulated proportion of population") +
+        ggplot2::scale_y_continuous("") +
+        ggplot2::ggtitle("Lorenz curve")
+    }else{
       p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
         ggplot2::geom_line() +
         ggplot2::geom_segment(aes(x = 0, y = 0, xend = 1, yend = 1),
@@ -46,20 +68,8 @@ lc <- function(dataset, samplesize = 10, generalized = FALSE, plot = FALSE){
         ggplot2::scale_x_continuous("Cumulated proportion of population") +
         ggplot2::scale_y_continuous("") +
         ggplot2::ggtitle("Lorenz curve")
-      print(p)
     }
-    return(results)
-  }else{
-    results <- data.frame(x.lg = c(0, res.glc$p),
-                          y.lg = c(0, res.glc$gl.curve))
-    if(plot){
-      p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
-        ggplot2::geom_line() +
-        ggplot2::scale_x_continuous("Cumulated proportion of population") +
-        ggplot2::scale_y_continuous("") +
-        ggplot2::ggtitle("Lorenz curve")
-      print(p)
-    }
-    return(results)
+    print(p)
   }
+  return(results)
 }
