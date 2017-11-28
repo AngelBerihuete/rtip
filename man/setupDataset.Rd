@@ -5,7 +5,7 @@
 \title{Setup datasets loaded from the living conditions survey}
 \usage{
 setupDataset(dataset, country = "ES", region = "all", s = "OECD",
-  deflac = NULL, pppr = FALSE)
+  deflac = NULL, pppr = NULL)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables in the EU-SILC microdata format.}
@@ -18,7 +18,7 @@ setupDataset(dataset, country = "ES", region = "all", s = "OECD",
 
 \item{deflac}{numeric; a number to be used as a deflator. The default (NULL) will not apply any deflation.}
 
-\item{pppr}{the purchasing power parity rate (PPPR) exchange rate will be used. Default is FALSE}
+\item{pppr}{the purchasing power parity rate (PPPR) will be used. Default is NULL.}
 }
 \value{
 A data.frame with the following variables:

@@ -6,7 +6,7 @@
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt).
-#' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.
+#' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 50. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.
 #' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
 #' @param plot logical; if TRUE plots the TIP curve.
 #' @details The TIP (Three I's of Poverty) curve ordinates are computed using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
@@ -28,7 +28,7 @@
 #' @import ggplot2
 #' @export
 
-tip <- function(dataset, arpt.value, samplesize = 10, norm = FALSE, plot = FALSE){
+tip <- function(dataset, arpt.value, samplesize = 50, norm = FALSE, plot = FALSE){
   # Following line to avoid Notes in Travis CI Check because ggplot
   x.tip <- y.tip <- arpr.value <- NULL
 

@@ -4,14 +4,14 @@
 \alias{tip}
 \title{TIP curve}
 \usage{
-tip(dataset, arpt.value, samplesize = 10, norm = FALSE, plot = FALSE)
+tip(dataset, arpt.value, samplesize = 50, norm = FALSE, plot = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
 \item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt).}
 
-\item{samplesize}{an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.}
+\item{samplesize}{an integer which represents the number of ordinates to be estimated. The default is 50. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.}
 
 \item{norm}{logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).}
 

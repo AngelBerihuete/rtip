@@ -33,6 +33,7 @@
 lc <- function(dataset, samplesize = 10, generalized = FALSE, plot = FALSE){
   res.glc <- OmegaGL(dataset, samplesize = samplesize, generalized)
   x.lg <- y.lg <- NULL # To avoid Notes in Travis CI checking (ggplot2)
+
   if(generalized == FALSE){
     results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve))

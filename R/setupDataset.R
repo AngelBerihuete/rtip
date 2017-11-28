@@ -9,7 +9,7 @@
 #' @param region a character string specifying the region of the country whose data will be considered.
 #' @param s either a character string or a numeric value between 0 and 1 specifying the equivalence scale to be used to obtain the equivalized disposable income. The default ("OECD") considers the standar modified OECD scale.
 #' @param deflac numeric; a number to be used as a deflator. The default (NULL) will not apply any deflation.
-#' @param pppr the purchasing power parity rate (PPPR) exchange rate will be used. Default is FALSE
+#' @param pppr the purchasing power parity rate (PPPR) will be used. Default is NULL.
 #'
 #' @details We obtain the equivalized disposable income with the equivalence
 #' scale of Buhmann et al. (1988) by assigning a numeric value between 0 and 1
@@ -46,7 +46,7 @@ setupDataset <- function(dataset,
                          region = 'all',
                          s = 'OECD',
                          deflac = NULL,
-                         pppr = FALSE) {
+                         pppr = NULL) {
 
   # The following line is only to overcome the note obtained by
   # R CMD check, because the using in subset function
@@ -58,40 +58,21 @@ setupDataset <- function(dataset,
     stop("The variable country is mandatory")
   }
 
-  if(region != 'all'){ # only for one region
-    dataset <- subset(dataset, DB040 == region)
+  if(!is.null(region)){ # only for one region
+    if(region != 'all'){ # only for one region
+      dataset <- subset(dataset, DB040 == region)
+    }
+  }else{
+    stop("The variable region is mandatory")
   }
 
-  ok.cases <- complete.cases(dataset)
-  dataset <- dataset[ok.cases,]
+  dataset <- dataset[complete.cases(dataset),]
 
-
-  #   remove.data <- which(is.na(dataset$HX090)) # renove NA data
-#
-#   if(length(remove.data) != 0){
-#     dataset <- dataset[-remove.data, ]
-#   }
-#
-  # if(ppp){ # Purchasing power parity
-  #   aux.year <- unique(dataset$DB010)
-  #   ppp.rates <- subset(ppp.rates, year == aux.year)
-  #   country1 <- country
-  #   indx4ppp <- which(ppp.rates$country == country1)
-  #
-  #   if(is.na(ppp.rates$ppp[indx4ppp])){
-  #     stop(paste("Country ", country1, " has NA as ppp value", sep = ""))
-  #   }else{
-  #     ppp.rate <- ppp.rates$ppp[indx4ppp]/ppp.rates$rate[indx4ppp]
-  #   }
-  #   dataset$HX090 <- dataset$HX090/ppp.rate
-  #   rm(ppp.rates)
-  # }
-
-  if(pppr){ # Purchasing power parity
+  if(!is.null(pppr)){ # Purchasing power parity
     dataset$HX090 <- dataset$HX090/pppr
   }
 
-  if(!is.null(deflac)){ # Deflaction
+  if(!is.null(deflac)){ # Deflation
     dataset$HX090 <- dataset$HX090/deflac
   }
 
@@ -103,6 +84,10 @@ setupDataset <- function(dataset,
   }
 
   dataset$wHX040 <- dataset$DB090*dataset$HX040
+
+  if(length(which(dataset$ipuc<0))!=0){
+    warning("Some of the income values are negatives")
+  }
 
   return(dataset)
 }
