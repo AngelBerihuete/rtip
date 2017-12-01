@@ -1,6 +1,9 @@
 rtip 1.1.0
 ----------------------------------------------------------------
 
+* Fixed: in order to uniform the parameter names, now the parameter `samp` 
+  is renamed to `samplesize`.
+
 * Improvement: the TIP and Lorenz curves have the `samplesize` parameter. If
   `samplesize='complete'` then the complete dataset will be used instead of 
   quantiles.
