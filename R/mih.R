@@ -23,14 +23,18 @@
 #' @import boot
 #' @export
 
-mih <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
+mih <- function(dataset,
+                hhcsw = "DB090", # Household cross-sectional weight
+                ehhs = "HX050", # Equivalised household size
+                edi = "HX090", # Equivalised disposable income (with the modified OECD scale)
+                ci = FALSE, rep = 1000, verbose = FALSE){
   if(ci == FALSE){
-    mih <- sum(dataset$HX090*dataset$HX050*dataset$DB090)/sum(dataset$DB090)
+    mih <- sum(dataset[,edi]*dataset[,ehhs]*dataset[,hhcsw])/sum(dataset[,hhcsw])
     return(mih)
   }else{
     mih2 <- function(dataset, i){
       dataset.boot <- dataset[i,]
-      sum(dataset.boot$HX090*dataset.boot$HX050*dataset.boot$DB090)/sum(dataset.boot$DB090)
+      sum(dataset.boot[,edi]*dataset.boot[,ehhs]*dataset.boot[,hhcsw])/sum(dataset.boot[,hhcsw])
     }
     boot.mih <- boot::boot(dataset, statistic = mih2, R = rep,
                      sim = "ordinary", stype = "i")

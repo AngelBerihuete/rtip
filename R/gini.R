@@ -27,9 +27,16 @@
 #' @export
 
 
-gini <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
+gini <- function(dataset,
+                 ipuc = "ipuc", # The income per unit of consumption
+                 hhcsw = "DB090", # Household cross-sectional weight
+                 hhsize = "HX040", # Household size
+                 ci = FALSE, rep = 1000, verbose = FALSE){
+
+  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
+
   if(ci == FALSE){
-    dataset <- dataset[order(dataset[,"ipuc"]), ]
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$X <- dataset$ipuc*dataset$wHX040
     dataset$p_i <- dataset$wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]

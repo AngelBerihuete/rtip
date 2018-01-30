@@ -59,8 +59,8 @@ setupDataset <- function(dataset,
   }
 
   if(!is.null(region)){ # only for one region
-    if(region != 'all'){ # only for one region
-      dataset <- subset(dataset, DB040 == region)
+    if(all(region != 'all')){ # only for one region
+      dataset <- subset(dataset, DB040 %in% region)
     }
   }else{
     stop("The variable region is mandatory")

@@ -5,7 +5,7 @@
 #' @description Estimates the poverty rate which is defined as the share of people with an equivalized disposable income below the at-risk-of-poverty threshold.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt).
+#' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.
 #' @param ci logical; if  TRUE, 95 percent confidence interval is given for the at-risk-of-poverty rate.
 #' @param rep a number to make the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
@@ -27,10 +27,18 @@
 #' @importFrom graphics plot
 #' @export
 
-arpr <- function(dataset, arpt.value, ci = FALSE, rep = 1000, verbose = FALSE){
+arpr <- function(dataset,
+                 ipuc = "ipuc", # The income per unit of consumption
+                 hhcsw = "DB090", # Household cross-sectional weight
+                 hhsize = "HX040", # Household size
+                 arpt.value = NULL, ci = FALSE, rep = 1000, verbose = FALSE){
+
+  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] #household weights taking into account the size of the household
+
+  if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
 
   if(ci == FALSE){
-    dataset <- dataset[order(dataset[,"ipuc"]), ]
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
@@ -40,7 +48,7 @@ arpr <- function(dataset, arpt.value, ci = FALSE, rep = 1000, verbose = FALSE){
     arpr3 <- function(dataset, i, arpt.value){
       dataset.boot <- dataset[i,]
       dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
-      dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040) # poblacional
+      dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)
       dataset.boot$abscisa2 <-
       dataset.boot$acum.wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
       100*(dataset.boot$abscisa2[length(which(dataset.boot$ipuc < arpt.value))])

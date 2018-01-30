@@ -23,13 +23,22 @@
 #' @import boot
 #' @export
 
-mip <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
+mip <- function(dataset,
+                ipuc = "ipuc", # The income per unit of consumption
+                hhcsw = "DB090", # Household cross-sectional weight
+                hhsize = "HX040", # Household size
+                ehhs = "HX050", #  Equivalised household size
+                edi = "HX090", # Equivalised disposable income (with the modified OECD scale)
+                ci = FALSE, rep = 1000, verbose = FALSE){
+
   dataset <- dataset[order(dataset[,"ipuc"]),]
+  dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
+
   if(ci == FALSE){
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     number.homes <- length(dataset$acum.wHX040)
     number.individuals <- dataset$acum.wHX040[number.homes]
-    mip <- sum(dataset$HX090*dataset$HX050*dataset$DB090)/number.individuals
+    mip <- sum(dataset[,edi]*dataset[,ehhs]*dataset[,hhcsw])/number.individuals
     return(mip)
   }else{
     mip2 <- function(dataset, i){
@@ -37,7 +46,7 @@ mip <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
       dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)
       number.homes <- length(dataset.boot$acum.wHX040)
       number.individuals <- dataset.boot$acum.wHX040[number.homes]
-      sum(dataset.boot$HX090*dataset.boot$HX050*dataset.boot$DB090)/number.individuals
+      sum(dataset.boot[,edi]*dataset.boot[,ehhs]*dataset.boot[,hhcsw])/number.individuals
     }
     boot.mip <- boot::boot(dataset, statistic = mip2, R = rep,
                      sim = "ordinary", stype = "i")

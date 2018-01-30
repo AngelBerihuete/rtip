@@ -26,12 +26,15 @@
 #' @import boot
 #' @export
 
+arpt <- function(dataset,
+                 ipuc = "ipuc", # The income per unit of consumption
+                 hhcsw = "DB090", # Household cross-sectional weight
+                 hhsize = "HX040", # Household size
+                 pz = 0.6, ci = FALSE, rep = 500, verbose = FALSE){
 
-arpt <- function(dataset, pz = 0.6, ci = FALSE, rep = 500, verbose = FALSE){
-
-
+  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
   if(ci == FALSE){
-    dataset <- dataset[order(dataset[,"ipuc"]), ]
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
@@ -42,7 +45,7 @@ arpt <- function(dataset, pz = 0.6, ci = FALSE, rep = 500, verbose = FALSE){
     arpt2 <- function(dataset, i, pz){
       dataset.boot <- dataset[i,]
       dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
-      dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040) # poblacional
+      dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)
       dataset.boot$abscisa2 <-
         dataset.boot$acum.wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
       uc.median <- dataset.boot$ipuc[which(dataset.boot$abscisa2 > 0.5)[1]]
