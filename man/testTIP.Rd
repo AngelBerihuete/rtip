@@ -4,13 +4,20 @@
 \alias{testTIP}
 \title{Test for TIP dominance}
 \usage{
-testTIP(dataset1, dataset2, pz = 0.6, same.arpt.value = NULL,
-  norm = FALSE, samplesize = 50)
+testTIP(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
+  hhsize = "HX040", pz = 0.6, same.arpt.value = NULL, norm = FALSE,
+  samplesize = 50)
 }
 \arguments{
 \item{dataset1}{a data.frame containing variables obtained by using the setupDataset function.}
 
 \item{dataset2}{a data.frame containing variables obtained by using the setupDataset function.}
+
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
 
 \item{pz}{a number between 0 and 1 which represents the percentage to be used to calculate the at-risk-of-poverty threshold. The default is 0.6.}
 

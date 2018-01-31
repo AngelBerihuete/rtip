@@ -4,10 +4,22 @@
 \alias{mip}
 \title{Mean income per person}
 \usage{
-mip(dataset, ci = FALSE, rep = 1000, verbose = FALSE)
+mip(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
+  ehhs = "HX050", edi = "HX090", ci = FALSE, rep = 1000,
+  verbose = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+
+\item{ehhs}{a character string indicating the variable name of the equivalised household size within dataset. Default is "HX050".}
+
+\item{edi}{a character string indicating the variable name of the equivalised disposable income (with the modified OECD scale) within dataset. Default is "HX090".}
 
 \item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.}
 

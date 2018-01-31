@@ -4,12 +4,19 @@
 \alias{lc}
 \title{Lorenz and Generalized Lorenz curves}
 \usage{
-lc(dataset, samplesize = 10, generalized = FALSE, plot = FALSE)
+lc(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
+  samplesize = 10, generalized = FALSE, plot = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{samplesize}{an integer which represents the number of ordinates to be estimated. The default is 10.}
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+
+\item{samplesize}{an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.}
 
 \item{generalized}{logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.}
 

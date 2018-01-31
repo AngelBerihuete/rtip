@@ -7,6 +7,9 @@
 #'
 #' @param dataset1 a data.frame containing variables obtained by using the setupDataset function.
 #' @param dataset2 a data.frame containing variables obtained by using the setupDataset function.
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
 #' @param pz a number between 0 and 1 which represents the percentage to be used to calculate the at-risk-of-poverty threshold. The default is 0.6.
 #' @param same.arpt.value a number that will be used as a common poverty threshold. If NULL, poverty thresholds will be calculated from each datasets (see arpt).
 #' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
@@ -43,19 +46,44 @@
 #' @import mvtnorm
 #' @export
 
-testTIP <- function(dataset1, dataset2, pz = 0.6,
+testTIP <- function(dataset1, dataset2,
+                    ipuc = "ipuc", # The income per unit of consumption
+                    hhcsw = "DB090", # Household cross-sectional weight
+                    hhsize = "HX040", # Household size
+                    pz = 0.6,
                     same.arpt.value = NULL,
                     norm = FALSE, samplesize = 50){
 
   if(is.null(same.arpt.value)){
-    arpt.value1 <- arpt(dataset1, pz = pz)
-    arpt.value2 <- arpt(dataset2, pz = pz)
+
+    arpt.value1 <- arpt(dataset1,
+                        ipuc = ipuc, # The income per unit of consumption
+                        hhcsw = hhcsw, # Household cross-sectional weight
+                        hhsize = hhsize, # Household size
+                        pz = pz)
+
+    arpt.value2 <- arpt(dataset2,
+                        ipuc = ipuc, # The income per unit of consumption
+                        hhcsw = hhcsw, # Household cross-sectional weight
+                        hhsize = hhsize, # Household size
+                        pz = pz)
   }else{
     arpt.value1 <- arpt.value2 <- same.arpt.value
   }
 
-  list1 <- OmegaTIP(dataset1, arpt.value1, samplesize = samplesize, norm = norm)
-  list2 <- OmegaTIP(dataset2, arpt.value2, samplesize = samplesize, norm = norm)
+  list1 <- OmegaTIP(dataset1,
+                    ipuc = ipuc, # The income per unit of consumption
+                    hhcsw = hhcsw, # Household cross-sectional weight
+                    hhsize = hhsize, # Household size
+                    arpt.value = arpt.value1,
+                    samplesize = samplesize, norm = norm)
+
+  list2 <- OmegaTIP(dataset2,
+                    ipuc = ipuc, # The income per unit of consumption
+                    hhcsw = hhcsw, # Household cross-sectional weight
+                    hhsize = hhsize, # Household size
+                    arpt.value = arpt.value2,
+                    samplesize = samplesize, norm = norm)
 
   phi1 <- list1$tip.curve
   phi2 <- list2$tip.curve

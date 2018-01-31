@@ -5,6 +5,9 @@
 #' @description Estimates the mean income per household.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param ehhs a character string indicating the variable name of the equivalised household size within dataset. Default is "HX050".
+#' @param edi a character string indicating the variable name of the equivalised disposable income (with the modified OECD scale) within dataset. Default is "HX090".
 #' @param ci logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.
 #' @param rep a number to make the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.

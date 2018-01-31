@@ -9,6 +9,9 @@
 #' Lorenz sense.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
 #' @param samplesize An interger representing the number of GL ordinates to be estimated. Default is 10
 #' These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, \quad i=1, \dots, samplesize}.
 #' @param generalized logical; if FALSE the matrix for testing Lorenz dominance will be calculated.

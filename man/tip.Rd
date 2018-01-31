@@ -4,12 +4,19 @@
 \alias{tip}
 \title{TIP curve}
 \usage{
-tip(dataset, arpt.value, samplesize = 50, norm = FALSE, plot = FALSE)
+tip(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
+  arpt.value = NULL, samplesize = 50, norm = FALSE, plot = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt).}
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+
+\item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.}
 
 \item{samplesize}{an integer which represents the number of ordinates to be estimated. The default is 50. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.}
 

@@ -4,12 +4,19 @@
 \alias{OmegaGL}
 \title{Matrix for testing Generalized Lorenz dominance}
 \usage{
-OmegaGL(dataset, samplesize, generalized = TRUE)
+OmegaGL(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
+  samplesize = 10, generalized = TRUE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{samplesize}{An interger representing the number of GL ordinates to be estimated.
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+
+\item{samplesize}{An interger representing the number of GL ordinates to be estimated. Default is 10
 These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, \quad i=1, \dots, samplesize}.}
 
 \item{generalized}{logical; if FALSE the matrix for testing Lorenz dominance will be calculated.}

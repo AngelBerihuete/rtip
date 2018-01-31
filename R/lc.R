@@ -5,6 +5,9 @@
 #' @description Estimates the Lorenz and the Generalized Lorenz curves ordinates.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
 #' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.
 #' @param generalized logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.
 #' @param plot logical; if TRUE plots the Lorenz or Generalized Lorenz curve.

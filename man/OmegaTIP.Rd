@@ -4,12 +4,19 @@
 \alias{OmegaTIP}
 \title{Matrix for testing TIP dominance}
 \usage{
-OmegaTIP(dataset, arpt.value, samplesize, norm = FALSE)
+OmegaTIP(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
+  arpt.value = NULL, samplesize, norm = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{arpt.value}{the at-risk-of-poverty threshold to be used (see arpt).}
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+
+\item{arpt.value}{the at-risk-of-poverty threshold to be used (see arpt). Default is NULL which calculates arpt with default parameters.}
 
 \item{samplesize}{an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}.}
 
