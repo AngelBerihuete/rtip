@@ -9,7 +9,7 @@
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.
-#' @param ci logical; if  TRUE, 95 percent confidence interval is given for the relative median at-risk-of-poverty gap.
+#' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to do the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
@@ -33,13 +33,13 @@ rmpg <- function(dataset,
                  ipuc = "ipuc", # The income per unit of consumption
                  hhcsw = "DB090", # Household cross-sectional weight
                  hhsize = "HX040", # Household size
-                 arpt.value = NULL, ci = FALSE, rep = 1000, verbose = FALSE){
+                 arpt.value = NULL, ci = NULL, rep = 1000, verbose = FALSE){
 
 
   if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
   dataset <- dataset[order(dataset[,"ipuc"]),]
 
-  if(ci == FALSE){
+  if(is.null(ci)){
     rmpg.data <- dataset[which(dataset$ipuc < arpt.value),]
     rmpg.data$weights.rmpg <- rmpg.data[,hhcsw]*rmpg.data[,hhsize]
     rmpg.data$acum.weights.rmpg <- cumsum(rmpg.data$weights.rmpg)
@@ -62,7 +62,7 @@ rmpg <- function(dataset,
     }
     boot.rmpg <- boot::boot(dataset, statistic = rmpg3, R = rep,
                      sim = "ordinary", stype = "i", arpt.value = arpt.value)
-    rmpg.ci <- boot::boot.ci(boot.rmpg, type = "basic")
+    rmpg.ci <- boot::boot.ci(boot.rmpg, conf = ci, type = "basic")
     if(verbose == FALSE){
       return(rmpg.ci)
     }else{

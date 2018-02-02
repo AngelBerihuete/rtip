@@ -5,7 +5,7 @@
 \title{Twice the area under the TIP curve}
 \usage{
 s2(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
-  arpt.value = NULL, norm = FALSE, ci = FALSE, rep = 1000,
+  arpt.value = NULL, norm = FALSE, ci = NULL, rep = 1000,
   verbose = FALSE)
 }
 \arguments{
@@ -21,7 +21,7 @@ s2(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{norm}{logical; if  TRUE, the area under the normalized TIP curve is then estimated (see tip).}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for this area.}
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to do the confidence interval using boostrap technique.}
 

@@ -10,7 +10,7 @@
 #' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt).
 #' @param norm logical; if  TRUE, the normalized mean poverty gap index is calculated which adds up the extent to which individuals on average fall below the poverty threshold, and expresses it as a percentage of the poverty threshold.
-#' @param ci logical; if  TRUE, 95 percent confidence interval is given for the mean poverty gap (or the normalized mean poverty gap index).
+#' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to do the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
@@ -38,11 +38,11 @@ s1 <- function(dataset,
                hhcsw = "DB090", # Household cross-sectional weight
                hhsize = "HX040", # Household size
                arpt.value = NULL,
-               norm = FALSE, ci = FALSE, rep = 1000, verbose = FALSE){
+               norm = FALSE, ci = NULL, rep = 1000, verbose = FALSE){
 
   if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
 
-  if( ci == FALSE){
+  if(is.null(ci)){
     maxtip <- max(tip(dataset,
                       ipuc = ipuc,
                       hhcsw = hhcsw,
@@ -60,7 +60,7 @@ s1 <- function(dataset,
     boot.s1 <- boot::boot(dataset, statistic = s11, R = rep,
                     sim = "ordinary", stype = "i",
                     arpt.value = arpt.value, norm = norm)
-    s1.ci <- boot::boot.ci(boot.s1, type = "basic")
+    s1.ci <- boot::boot.ci(boot.s1, conf = ci, type = "basic")
     if(verbose == FALSE){
       return(s1.ci)
     }else{

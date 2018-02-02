@@ -9,7 +9,7 @@
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.
-#' @param ci logical; if  TRUE, 95 percent confidence interval is given for the at-risk-of-poverty rate.
+#' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to make the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
@@ -34,14 +34,14 @@ arpr <- function(dataset,
                  ipuc = "ipuc", # The income per unit of consumption
                  hhcsw = "DB090", # Household cross-sectional weight
                  hhsize = "HX040", # Household size
-                 arpt.value = NULL, ci = FALSE, rep = 1000, verbose = FALSE){
+                 arpt.value = NULL, ci = NULL, rep = 1000, verbose = FALSE){
 
   dataset <- dataset[order(dataset[,"ipuc"]), ]
   dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] #household weights taking into account the size of the household
 
   if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
 
-  if(ci == FALSE){
+  if(is.null(ci)){
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
@@ -58,7 +58,7 @@ arpr <- function(dataset,
     }
     boot.arpr <- boot::boot(dataset, statistic = arpr3, R = rep,
                        sim = "ordinary", stype = "i", arpt.value = arpt.value)
-    arpr.ci <- boot::boot.ci(boot.arpr, type = "basic")
+    arpr.ci <- boot::boot.ci(boot.arpr, conf = ci, type = "basic")
     if(verbose == FALSE){
       return(arpr.ci)
     }else{

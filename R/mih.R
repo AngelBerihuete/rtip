@@ -8,7 +8,7 @@
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
 #' @param ehhs a character string indicating the variable name of the equivalised household size within dataset. Default is "HX050".
 #' @param edi a character string indicating the variable name of the equivalised disposable income (with the modified OECD scale) within dataset. Default is "HX090".
-#' @param ci logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.
+#' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to make the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
@@ -30,8 +30,8 @@ mih <- function(dataset,
                 hhcsw = "DB090", # Household cross-sectional weight
                 ehhs = "HX050", # Equivalised household size
                 edi = "HX090", # Equivalised disposable income (with the modified OECD scale)
-                ci = FALSE, rep = 1000, verbose = FALSE){
-  if(ci == FALSE){
+                ci = NULL, rep = 1000, verbose = FALSE){
+  if(is.null(ci)){
     mih <- sum(dataset[,edi]*dataset[,ehhs]*dataset[,hhcsw])/sum(dataset[,hhcsw])
     return(mih)
   }else{
@@ -41,7 +41,7 @@ mih <- function(dataset,
     }
     boot.mih <- boot::boot(dataset, statistic = mih2, R = rep,
                      sim = "ordinary", stype = "i")
-    mih.ci <- boot::boot.ci(boot.mih, type = "basic")
+    mih.ci <- boot::boot.ci(boot.mih, conf = ci, type = "basic")
     if(verbose == FALSE){
       return(mih.ci)
     }else{

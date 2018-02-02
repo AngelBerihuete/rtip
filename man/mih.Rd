@@ -4,7 +4,7 @@
 \alias{mih}
 \title{Mean income per household}
 \usage{
-mih(dataset, hhcsw = "DB090", ehhs = "HX050", edi = "HX090", ci = FALSE,
+mih(dataset, hhcsw = "DB090", ehhs = "HX050", edi = "HX090", ci = NULL,
   rep = 1000, verbose = FALSE)
 }
 \arguments{
@@ -16,7 +16,7 @@ mih(dataset, hhcsw = "DB090", ehhs = "HX050", edi = "HX090", ci = FALSE,
 
 \item{edi}{a character string indicating the variable name of the equivalised disposable income (with the modified OECD scale) within dataset. Default is "HX090".}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.}
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to make the confidence interval using boostrap technique.}
 

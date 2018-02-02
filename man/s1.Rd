@@ -5,7 +5,7 @@
 \title{Maximun of TIP curve}
 \usage{
 s1(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
-  arpt.value = NULL, norm = FALSE, ci = FALSE, rep = 1000,
+  arpt.value = NULL, norm = FALSE, ci = NULL, rep = 1000,
   verbose = FALSE)
 }
 \arguments{
@@ -21,7 +21,7 @@ s1(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{norm}{logical; if  TRUE, the normalized mean poverty gap index is calculated which adds up the extent to which individuals on average fall below the poverty threshold, and expresses it as a percentage of the poverty threshold.}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean poverty gap (or the normalized mean poverty gap index).}
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to do the confidence interval using boostrap technique.}
 

@@ -5,7 +5,7 @@
 \title{Relative median at-risk-of-poverty gap}
 \usage{
 rmpg(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
-  arpt.value = NULL, ci = FALSE, rep = 1000, verbose = FALSE)
+  arpt.value = NULL, ci = NULL, rep = 1000, verbose = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
@@ -18,7 +18,7 @@ rmpg(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the relative median at-risk-of-poverty gap.}
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to do the confidence interval using boostrap technique.}
 

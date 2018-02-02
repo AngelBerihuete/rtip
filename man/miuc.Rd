@@ -5,7 +5,7 @@
 \title{Mean income per unit of consumption}
 \usage{
 miuc(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
-  ci = FALSE, rep = 1000, verbose = FALSE)
+  ci = NULL, rep = 1000, verbose = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
@@ -16,7 +16,7 @@ miuc(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.}
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to make the confidence interval using boostrap technique.}
 
