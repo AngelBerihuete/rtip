@@ -40,7 +40,7 @@ This poverty index coincides with the Sen-Shorrocks-Thon index and the S(2,z) in
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
 s2(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
 }
 \references{

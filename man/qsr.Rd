@@ -33,7 +33,7 @@ It is calculated using the equivalized disposable income. Two types of equivalen
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
 qsr(ATdataset)
 
 }

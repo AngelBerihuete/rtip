@@ -39,7 +39,7 @@ The TIP (Three I's of Poverty) curve ordinates are computed using the equivalize
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
 tip.curve <- tip(ATdataset, arpt.value = arpt(ATdataset), norm = TRUE)
 str(tip.curve)
 }
