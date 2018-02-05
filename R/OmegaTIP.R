@@ -8,7 +8,10 @@
 #' null hypothesis that one distribution dominates the other in the TIP sense.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param arpt.value the at-risk-of-poverty threshold to be used (see arpt).
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param arpt.value the at-risk-of-poverty threshold to be used (see arpt). Default is NULL which calculates arpt with default parameters.
 #' @param samplesize an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}.
 #' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
 #'
@@ -32,9 +35,17 @@
 #'
 #' @export
 
-OmegaTIP <- function(dataset, arpt.value, samplesize, norm = FALSE){
+OmegaTIP <- function(dataset,
+                     ipuc = "ipuc", # The income per unit of consumption
+                     hhcsw = "DB090", # Household cross-sectional weight
+                     hhsize = "HX040", # Household size
+                     arpt.value = NULL, samplesize, norm = FALSE){
 
-  G <- arpt.value-dataset$ipuc
+  if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
+
+  dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] #household weights taking into account the size of the household
+
+  G <- arpt.value-dataset[,ipuc]
   dataset$pg <- pmax(G, 0) # poverty gaps
   dataset1 <- dataset[order(dataset[,'pg']), ] # order with pg
 

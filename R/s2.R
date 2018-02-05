@@ -5,9 +5,12 @@
 #' @description Estimates the poverty measure which is twice the area under the TIP curve.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt).
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.
 #' @param norm logical; if  TRUE, the area under the normalized TIP curve is then estimated (see tip).
-#' @param ci logical; if  TRUE, 95 percent confidence interval is given for this area.
+#' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to do the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
@@ -27,18 +30,27 @@
 #'
 #' @examples
 #' data(eusilc2)
-#' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+#' ATdataset <- setupDataset(eusilc2, country = "AT")
 #' s2(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
 #' @import boot
 #' @export
 
-s2 <- function(dataset, arpt.value, norm = FALSE, ci = FALSE, rep = 1000, verbose = FALSE){
-  if(ci == FALSE){
+s2 <- function(dataset,
+               ipuc = "ipuc", # The income per unit of consumption
+               hhcsw = "DB090", # Household cross-sectional weight
+               hhsize = "HX040", # Household size
+               arpt.value = NULL,
+               norm = FALSE, ci = NULL, rep = 1000, verbose = FALSE){
+
+  if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
+
+  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking
+
+  if(is.null(ci)){
     #
     # REVISAR CON CI = TRUE, argumentos de diferentes longitud
     # ---------------------
-
-    dataset <- dataset[order(dataset[,"ipuc"]), ]
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
@@ -107,7 +119,7 @@ s2 <- function(dataset, arpt.value, norm = FALSE, ci = FALSE, rep = 1000, verbos
     boot.s2 <- boot::boot(dataset, statistic = s23, R = rep,
                       sim = "ordinary", stype = "i",
                     arpt.value = arpt.value, norm = norm)
-    s2.ci <- boot::boot.ci(boot.s2, type = "basic")
+    s2.ci <- boot::boot.ci(boot.s2, conf = ci, type = "basic")
     if(verbose == FALSE){
       return(s2.ci)
     }else{

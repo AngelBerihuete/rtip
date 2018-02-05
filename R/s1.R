@@ -5,9 +5,12 @@
 #' @description Estimates the highest point of the TIP curve which is a measure of the intensity of poverty. It is equal to the mean poverty gap (difference between the poverty threshold and the equivalized disposable income).
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt).
 #' @param norm logical; if  TRUE, the normalized mean poverty gap index is calculated which adds up the extent to which individuals on average fall below the poverty threshold, and expresses it as a percentage of the poverty threshold.
-#' @param ci logical; if  TRUE, 95 percent confidence interval is given for the mean poverty gap (or the normalized mean poverty gap index).
+#' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to do the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
@@ -25,24 +28,39 @@
 #'
 #' @examples
 #' data(eusilc2)
-#' ATdataset <- setupDataset(eusilc2, country = "AT", , s = "OECD")
+#' ATdataset <- setupDataset(eusilc2, country = "AT")
 #' s1(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
 #' @import boot
 #' @export
 
-s1 <- function(dataset, arpt.value, norm = FALSE, ci = FALSE,
-               rep = 1000, verbose = FALSE){
-  if( ci == FALSE){
-    maxtip <- max(tip(dataset, arpt.value, samplesize="complete", norm)[,2])
+s1 <- function(dataset,
+               ipuc = "ipuc", # The income per unit of consumption
+               hhcsw = "DB090", # Household cross-sectional weight
+               hhsize = "HX040", # Household size
+               arpt.value = NULL,
+               norm = FALSE, ci = NULL, rep = 1000, verbose = FALSE){
+
+  if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
+
+  if(is.null(ci)){
+    maxtip <- max(tip(dataset,
+                      ipuc = ipuc,
+                      hhcsw = hhcsw,
+                      hhsize = hhsize,
+                      arpt.value = arpt.value, samplesize="complete", norm)[,2])
     return(maxtip)
   }else{
     s11 <- function(dataset, i, arpt.value, norm){
-      max(tip(dataset[i,], arpt.value, samplesize="complete", norm)[,2]) # s1 index
+      max(tip(dataset[i,],
+              ipuc = ipuc,
+              hhcsw = hhcsw,
+              hhsize = hhsize,
+              arpt.value = arpt.value, samplesize="complete", norm)[,2]) # s1 index
     }
     boot.s1 <- boot::boot(dataset, statistic = s11, R = rep,
                     sim = "ordinary", stype = "i",
                     arpt.value = arpt.value, norm = norm)
-    s1.ci <- boot::boot.ci(boot.s1, type = "basic")
+    s1.ci <- boot::boot.ci(boot.s1, conf = ci, type = "basic")
     if(verbose == FALSE){
       return(s1.ci)
     }else{

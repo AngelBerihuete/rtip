@@ -5,8 +5,11 @@
 #' @description Estimates the poverty rate which is defined as the share of people with an equivalized disposable income below the at-risk-of-poverty threshold.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt).
-#' @param ci logical; if  TRUE, 95 percent confidence interval is given for the at-risk-of-poverty rate.
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.
+#' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to make the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
@@ -19,7 +22,7 @@
 #'
 #' @examples
 #' data(eusilc2)
-#' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+#' ATdataset <- setupDataset(eusilc2, country = "AT")
 #' arpr(ATdataset,arpt.value = arpt(ATdataset))
 #'
 #' @seealso arpt, setupDataset
@@ -27,10 +30,18 @@
 #' @importFrom graphics plot
 #' @export
 
-arpr <- function(dataset, arpt.value, ci = FALSE, rep = 1000, verbose = FALSE){
+arpr <- function(dataset,
+                 ipuc = "ipuc", # The income per unit of consumption
+                 hhcsw = "DB090", # Household cross-sectional weight
+                 hhsize = "HX040", # Household size
+                 arpt.value = NULL, ci = NULL, rep = 1000, verbose = FALSE){
 
-  if(ci == FALSE){
-    dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] #household weights taking into account the size of the household
+
+  if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
+
+  if(is.null(ci)){
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
@@ -40,14 +51,14 @@ arpr <- function(dataset, arpt.value, ci = FALSE, rep = 1000, verbose = FALSE){
     arpr3 <- function(dataset, i, arpt.value){
       dataset.boot <- dataset[i,]
       dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
-      dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040) # poblacional
+      dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)
       dataset.boot$abscisa2 <-
       dataset.boot$acum.wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
       100*(dataset.boot$abscisa2[length(which(dataset.boot$ipuc < arpt.value))])
     }
     boot.arpr <- boot::boot(dataset, statistic = arpr3, R = rep,
                        sim = "ordinary", stype = "i", arpt.value = arpt.value)
-    arpr.ci <- boot::boot.ci(boot.arpr, type = "basic")
+    arpr.ci <- boot::boot.ci(boot.arpr, conf = ci, type = "basic")
     if(verbose == FALSE){
       return(arpr.ci)
     }else{

@@ -4,12 +4,19 @@
 \alias{miuc}
 \title{Mean income per unit of consumption}
 \usage{
-miuc(dataset, ci = FALSE, rep = 1000, verbose = FALSE)
+miuc(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
+  ci = NULL, rep = 1000, verbose = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.}
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to make the confidence interval using boostrap technique.}
 
@@ -26,7 +33,7 @@ The equivalized disposable income is calculated using the standar equivalence sc
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+ATdataset <- setupDataset(eusilc2, country = "AT")
 miuc(ATdataset)
 
 }

@@ -4,12 +4,19 @@
 \alias{mih}
 \title{Mean income per household}
 \usage{
-mih(dataset, ci = FALSE, rep = 1000, verbose = FALSE)
+mih(dataset, hhcsw = "DB090", ehhs = "HX050", edi = "HX090", ci = NULL,
+  rep = 1000, verbose = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean income per unit of consumption.}
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{ehhs}{a character string indicating the variable name of the equivalised household size within dataset. Default is "HX050".}
+
+\item{edi}{a character string indicating the variable name of the equivalised disposable income (with the modified OECD scale) within dataset. Default is "HX090".}
+
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to make the confidence interval using boostrap technique.}
 
@@ -23,7 +30,7 @@ Estimates the mean income per household.
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+ATdataset <- setupDataset(eusilc2, country = "AT")
 mih(ATdataset)
 
 }

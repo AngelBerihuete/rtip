@@ -4,17 +4,24 @@
 \alias{s1}
 \title{Maximun of TIP curve}
 \usage{
-s1(dataset, arpt.value, norm = FALSE, ci = FALSE, rep = 1000,
+s1(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
+  arpt.value = NULL, norm = FALSE, ci = NULL, rep = 1000,
   verbose = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+
 \item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt).}
 
 \item{norm}{logical; if  TRUE, the normalized mean poverty gap index is calculated which adds up the extent to which individuals on average fall below the poverty threshold, and expresses it as a percentage of the poverty threshold.}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the mean poverty gap (or the normalized mean poverty gap index).}
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to do the confidence interval using boostrap technique.}
 
@@ -33,7 +40,7 @@ The normalized mean poverty gap index, also named FGT(1), is a particular case o
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", , s = "OECD")
+ATdataset <- setupDataset(eusilc2, country = "AT")
 s1(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
 }
 \references{

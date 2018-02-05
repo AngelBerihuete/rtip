@@ -4,19 +4,19 @@
 \alias{setupDataset}
 \title{Setup datasets loaded from the living conditions survey}
 \usage{
-setupDataset(dataset, country = "ES", region = "all", s = "OECD",
-  deflac = NULL, pppr = NULL)
+setupDataset(dataset, country = "ES", region = NULL, s = NULL,
+  deflator = NULL, pppr = NULL)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables in the EU-SILC microdata format.}
 
 \item{country}{a character string specifying the country whose data will be considered.}
 
-\item{region}{a character string specifying the region of the country whose data will be considered.}
+\item{region}{a character/vector string specifying the region of the country whose data will be considered. The default (NULL) considers all regions in the country.}
 
-\item{s}{either a character string or a numeric value between 0 and 1 specifying the equivalence scale to be used to obtain the equivalized disposable income. The default ("OECD") considers the standar modified OECD scale.}
+\item{s}{a numeric value between 0 and 1 specifying the equivalence scale to be used to obtain the equivalized disposable income. The default (NULL) considers the standar modified OECD scale.}
 
-\item{deflac}{numeric; a number to be used as a deflator. The default (NULL) will not apply any deflation.}
+\item{deflator}{numeric; a number to be used as a deflator. The default (NULL) will not apply any deflation.}
 
 \item{pppr}{the purchasing power parity rate (PPPR) will be used. Default is NULL.}
 }
@@ -30,7 +30,7 @@ A data.frame with the following variables:
  \item HX040 an integer vector containing information about households size.
  \item HX050 a numeric vector containing information about the equivalised household size. The scale employed is the modified OECD scale.
  \item HX090 a numeric vector containing information about equivalised disposable income (with the modified OECD scale).
- \item ipuc a numeric vector containing the income per unit of consumption. This variable takes into account if deflac is not NULL, ppp is TRUE or/and the value assigned to \emph{s}.
+ \item ipuc a numeric vector containing the income per unit of consumption. This variable takes into account if deflator is not NULL, ppp is TRUE or/and the value assigned to \emph{s}.
  \item wHX040 a numeric vector which is obtained by multiplying DB090 by HX040. It represents household weights taking into account the size of the household.
 }
 }

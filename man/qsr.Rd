@@ -4,12 +4,19 @@
 \alias{qsr}
 \title{Income quintile share ratio}
 \usage{
-qsr(dataset, ci = FALSE, rep = 1000, verbose = FALSE)
+qsr(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
+  ci = NULL, rep = 1000, verbose = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{ci}{logical; if  TRUE, 95 percent confidence interval is given for the quintile share ratio.}
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+
+\item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to do the confidence interval using boostrap technique.}
 
@@ -26,7 +33,7 @@ It is calculated using the equivalized disposable income. Two types of equivalen
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+ATdataset <- setupDataset(eusilc2, country = "AT")
 qsr(ATdataset)
 
 }

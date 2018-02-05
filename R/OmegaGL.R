@@ -9,7 +9,10 @@
 #' Lorenz sense.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param samplesize An interger representing the number of GL ordinates to be estimated.
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param samplesize An interger representing the number of GL ordinates to be estimated. Default is 10
 #' These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, \quad i=1, \dots, samplesize}.
 #' @param generalized logical; if FALSE the matrix for testing Lorenz dominance will be calculated.
 #' @details Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983) and Beach and Kalisiki (1986).
@@ -36,10 +39,15 @@
 #'
 #' @export
 
-OmegaGL <- function(dataset, samplesize, generalized = TRUE){
+OmegaGL <- function(dataset,
+                    ipuc = "ipuc", # The income per unit of consumption
+                    hhcsw = "DB090", # Household cross-sectional weight
+                    hhsize = "HX040", # Household size
+                    samplesize = 10, generalized = TRUE){
 
 select <- (1:samplesize)/samplesize
 dataset1 <- dataset[order(dataset[,'ipuc']), ]
+dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
 
 dataset1$Acum <- cumsum(dataset1$wHX040)
 dataset1$Acum.P_i <- dataset1$Acum/dataset1$Acum[length(dataset1$Acum)]

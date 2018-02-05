@@ -4,12 +4,19 @@
 \alias{testGL}
 \title{Test for Lorenz and Generalized Lorenz dominance}
 \usage{
-testGL(dataset1, dataset2, generalized = TRUE, samplesize = 10)
+testGL(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
+  hhsize = "HX040", generalized = TRUE, samplesize = 10)
 }
 \arguments{
 \item{dataset1}{a data.frame containing variables obtained by using  the setupDataset function.}
 
 \item{dataset2}{a data.frame containing variables obtained by using  the setupDataset function.}
+
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+
+\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
 
 \item{generalized}{logical; if FALSE the test will be applied to compare two Lorenz curves. Otherwise Generalized Lorenz curves will be compared.}
 

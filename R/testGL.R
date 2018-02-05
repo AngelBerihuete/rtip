@@ -7,6 +7,9 @@
 #'
 #' @param dataset1 a data.frame containing variables obtained by using  the setupDataset function.
 #' @param dataset2 a data.frame containing variables obtained by using  the setupDataset function.
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
 #' @param generalized logical; if FALSE the test will be applied to compare two Lorenz curves. Otherwise Generalized Lorenz curves will be compared.
 #' @param samplesize an integer which represents the number of Lorenz (Generalized Lorenz) curve ordinates to be estimated for comparison. The default is 10.
 #'
@@ -41,10 +44,23 @@
 #' @export
 
 
-testGL <- function(dataset1, dataset2, generalized = TRUE, samplesize = 10){
+testGL <- function(dataset1, dataset2,
+                   ipuc = "ipuc", # The income per unit of consumption
+                   hhcsw = "DB090", # Household cross-sectional weight
+                   hhsize = "HX040", # Household size
+                   generalized = TRUE, samplesize = 10){
 
-  list1 <- OmegaGL(dataset1, samplesize = samplesize, generalized)
-  list2 <- OmegaGL(dataset2, samplesize = samplesize, generalized)
+  list1 <- OmegaGL(dataset1,
+                   ipuc = ipuc, # The income per unit of consumption
+                   hhcsw = hhcsw, # Household cross-sectional weight
+                   hhsize = hhsize, # Household size
+                   samplesize = samplesize, generalized = generalized)
+
+  list2 <- OmegaGL(dataset2,
+                   ipuc = ipuc, # The income per unit of consumption
+                   hhcsw = hhcsw, # Household cross-sectional weight
+                   hhsize = hhsize, # Household size
+                   samplesize = samplesize, generalized = generalized)
 
   if(!generalized){
     estim.gl <- list1$gl.curve[-samplesize] - list2$gl.curve[-samplesize]

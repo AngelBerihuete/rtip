@@ -5,7 +5,10 @@
 #' @description Estimates the  quintile share ratio of an income distribution. It is defined as the ratio of total income  received by the 20 percent of the population with the highest income to that received by the 20 percent of the population with the lowest income.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param ci logical; if  TRUE, 95 percent confidence interval is given for the quintile share ratio.
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to do the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confindence interval is plotted.
 #'
@@ -18,16 +21,22 @@
 #'
 #' @examples
 #' data(eusilc2)
-#' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+#' ATdataset <- setupDataset(eusilc2, country = "AT")
 #' qsr(ATdataset)
 #'
 #' @seealso setupDataset
 #' @import boot
 #' @export
 
-qsr <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
-  if(ci == FALSE){
-    dataset <- dataset[order(dataset[,"ipuc"]), ]
+qsr <- function(dataset,
+                ipuc = "ipuc", # The income per unit of consumption
+                hhcsw = "DB090", # Household cross-sectional weight
+                hhsize = "HX040", # Household size
+                ci = NULL, rep = 1000, verbose = FALSE){
+  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
+
+  if(is.null(ci)){
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
@@ -50,7 +59,7 @@ qsr <- function(dataset, ci = FALSE, rep = 1000, verbose = FALSE){
     }
     boot.qsr <- boot::boot(dataset, statistic = qsr3, R = rep,
                       sim = "ordinary", stype = "i")
-    qsr.ci <- boot::boot.ci(boot.qsr, type = "basic")
+    qsr.ci <- boot::boot.ci(boot.qsr, conf = ci, type = "basic")
     if(verbose == FALSE){
       return(qsr.ci)
     }else{
