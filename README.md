@@ -33,7 +33,7 @@ threshold:
 ```R
 library(rtip)
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+ATdataset <- setupDataset(eusilc2, country = "AT")
 arpr(ATdataset,arpt.value = arpt(ATdataset))
 ```
 
