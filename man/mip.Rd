@@ -35,7 +35,7 @@ Estimates the mean income per person.
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
+ATdataset <- setupDataset(eusilc2, country = "AT")
 mip(ATdataset)
 
 }

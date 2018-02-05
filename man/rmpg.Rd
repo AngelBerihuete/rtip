@@ -35,7 +35,7 @@ The equivalized disposable income is calculated using the standar equivalence sc
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
+ATdataset <- setupDataset(eusilc2, country = "AT")
 rmpg(ATdataset,arpt.value = arpt(ATdataset))
 
 }

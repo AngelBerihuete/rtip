@@ -33,7 +33,7 @@ The Gini index is calculated using the equivalized disposable income of each ind
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
+ATdataset <- setupDataset(eusilc2, country = "AT")
 gini(ATdataset)
 
 }

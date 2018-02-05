@@ -30,7 +30,7 @@ Estimates the mean income per household.
 }
 \examples{
 data(eusilc2)
-ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
+ATdataset <- setupDataset(eusilc2, country = "AT")
 mih(ATdataset)
 
 }
