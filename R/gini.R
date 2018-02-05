@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' data(eusilc2)
-#' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+#' ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
 #' gini(ATdataset)
 #'
 #' @seealso setupDataset

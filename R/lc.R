@@ -25,7 +25,7 @@
 #'
 #' @examples
 #' data(eusilc2)
-#' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+#' ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
 #' lc.curve <- lc(ATdataset)
 #' str(lc.curve)
 #'

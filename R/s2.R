@@ -30,7 +30,7 @@
 #'
 #' @examples
 #' data(eusilc2)
-#' ATdataset <- setupDataset(eusilc2, country = "AT", s = "OECD")
+#' ATdataset <- setupDataset(eusilc2, country = "AT", s = NULL)
 #' s2(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
 #' @import boot
 #' @export
