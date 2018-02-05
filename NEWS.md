@@ -5,13 +5,13 @@ rtip 1.1.0
   - In order to uniform the argument names, now the argument `samp`
   is renamed to `samplesize`.
 
-* Improvement: The function `setupDataset` has been changed substantialy:
+* Improvement: The function `setupDataset` has been changed substantially:
   - the argument `ppp` (the purchasing power parity) has been
     changed by `pppr` (purchasing power parity rate) in the `setupDataset`
     function, and must be provided by the user in case of use. Default is
     `NULL`. The reason to do this is because `ppp` was based on a fixed file
     using 2008-2014 period, which is obsolete for some data analysis.
-  - the `region` argument accepts a character or verctor string with the name(s)
+  - the `region` argument accepts a character string with the name(s)
     of the region(s) in the country. The default value (`NULL`) will use all the
     regions in the country.
   - The argument `deflac` is renamed to `deflator`.
