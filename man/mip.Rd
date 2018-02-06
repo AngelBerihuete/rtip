@@ -11,15 +11,15 @@ mip(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
-\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".}
 
-\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+\item{hhsize}{a character string indicating the variable name of the household size. Default is "HX040".}
 
-\item{ehhs}{a character string indicating the variable name of the equivalised household size within dataset. Default is "HX050".}
+\item{ehhs}{a character string indicating the variable name of the equivalised household size. Default is "HX050".}
 
-\item{edi}{a character string indicating the variable name of the equivalised disposable income (with the modified OECD scale) within dataset. Default is "HX090".}
+\item{edi}{a character string indicating the variable name of the equivalised disposable income (with the modified OECD scale). Default is "HX090".}
 
 \item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 

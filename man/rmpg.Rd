@@ -10,11 +10,11 @@ rmpg(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
-\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".}
 
-\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+\item{hhsize}{a character string indicating the variable name of the household size. Default is "HX040".}
 
 \item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.}
 

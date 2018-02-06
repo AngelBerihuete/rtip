@@ -5,9 +5,9 @@
 #' @description Estimates TIP curve ordinates. The TIP curve is defined by plotting the cumulated proportion of population on the x-axis and the cumulated per capita poverty gap (the distance between each income and the poverty threshold) on the y-axis from the biggest one downwards.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
-#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
-#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.
 #' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 50. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.
 #' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).

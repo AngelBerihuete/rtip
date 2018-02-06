@@ -7,9 +7,9 @@
 #'
 #' @param dataset1 a data.frame containing variables obtained by using  the setupDataset function.
 #' @param dataset2 a data.frame containing variables obtained by using  the setupDataset function.
-#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
-#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
-#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param generalized logical; if FALSE the test will be applied to compare two Lorenz curves. Otherwise Generalized Lorenz curves will be compared.
 #' @param samplesize an integer which represents the number of Lorenz (Generalized Lorenz) curve ordinates to be estimated for comparison. The default is 10.
 #'
@@ -112,7 +112,7 @@ testGL <- function(dataset1, dataset2,
                 p.value = p.value,
                 decision = "Reject null hypothesis"))
   }else{
-    print("Inconclusive region ... calculating p-value (10000 simulations)")
+    print("Inconclusive region... calculating p-value (10000 simulations)")
     vec.solved <- matrix(NA, 1000, length(estim.gl))
     i <- 1
     iterations <- 1

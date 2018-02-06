@@ -10,11 +10,11 @@ OmegaGL(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 \arguments{
 \item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
 
-\item{ipuc}{a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".}
+\item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
-\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".}
+\item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".}
 
-\item{hhsize}{a character string indicating the variable name of the household size within dataset. Default is "HX040".}
+\item{hhsize}{a character string indicating the variable name of the household size. Default is "HX040".}
 
 \item{samplesize}{An interger representing the number of GL ordinates to be estimated. Default is 10
 These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, \quad i=1, \dots, samplesize}.}
@@ -26,7 +26,7 @@ A list with the following components:
 \itemize{
 \item Omega, covariance matrix for the estimated vector of GL curve ordinates.
 \item gl.curve, estimated vector of GL curve ordinates.
-\item p, vector with components \eqn{p_i=i/samplesize, \quad i=1, ..., samplesize}.
+\item p, vector with components \eqn{p_i=i/samplesize, \quad i=1,..., samplesize}.
 \item quantiles, estimated vector of quantiles of income corresponding to these \eqn{p_i}.
 \item gamma, vector of estimated conditional means of income less than the quantil corresponding to \eqn{p_i=i/samplesize, \quad i=1, \dots,  samplesize}.
 }

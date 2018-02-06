@@ -5,9 +5,9 @@
 #' @description Estimates the highest point of the TIP curve which is a measure of the intensity of poverty. It is equal to the mean poverty gap (difference between the poverty threshold and the equivalized disposable income).
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
-#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
-#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt).
 #' @param norm logical; if  TRUE, the normalized mean poverty gap index is calculated which adds up the extent to which individuals on average fall below the poverty threshold, and expresses it as a percentage of the poverty threshold.
 #' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.

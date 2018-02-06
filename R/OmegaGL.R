@@ -9,9 +9,9 @@
 #' Lorenz sense.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
-#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
-#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param samplesize An interger representing the number of GL ordinates to be estimated. Default is 10
 #' These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, \quad i=1, \dots, samplesize}.
 #' @param generalized logical; if FALSE the matrix for testing Lorenz dominance will be calculated.
@@ -23,7 +23,7 @@
 #' \itemize{
 #' \item Omega, covariance matrix for the estimated vector of GL curve ordinates.
 #' \item gl.curve, estimated vector of GL curve ordinates.
-#' \item p, vector with components \eqn{p_i=i/samplesize, \quad i=1, ..., samplesize}.
+#' \item p, vector with components \eqn{p_i=i/samplesize, \quad i=1,..., samplesize}.
 #' \item quantiles, estimated vector of quantiles of income corresponding to these \eqn{p_i}.
 #' \item gamma, vector of estimated conditional means of income less than the quantil corresponding to \eqn{p_i=i/samplesize, \quad i=1, \dots,  samplesize}.
 #' }

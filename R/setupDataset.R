@@ -13,7 +13,7 @@
 #'
 #' @details We obtain the equivalized disposable income with the equivalence
 #' scale of Buhmann et al. (1988) by assigning a numeric value between 0 and 1
-#' to argument s . The parameter s is called elasticity of equivalence.
+#' to argument s. The parameter s is called elasticity of equivalence.
 #'
 #' The purchasing power parity exchange rate is useful for making comparisons between countries.
 #'

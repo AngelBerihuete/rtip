@@ -8,9 +8,9 @@
 #' null hypothesis that one distribution dominates the other in the TIP sense.
 #'
 #' @param dataset a data.frame containing variables obtained by using the setupDataset function.
-#' @param ipuc a character string indicating the variable name of the income per unit of consumption within dataset. Default is "ipuc".
-#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight within dataset. Default is "DB090".
-#' @param hhsize a character string indicating the variable name of the household size within dataset. Default is "HX040".
+#' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
+#' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
+#' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used (see arpt). Default is NULL which calculates arpt with default parameters.
 #' @param samplesize an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}.
 #' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
