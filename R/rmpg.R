@@ -49,6 +49,11 @@ rmpg <- function(dataset,
     rmpg <- 100*(arpt.value-rmpg.median)/arpt.value
     return(rmpg)
   }else{
+    if (ci == TRUE) {
+      warning("argument ci=TRUE is deprecated; please check the documentation",
+              call. = FALSE)
+      ci <- 0.95
+    }
     rmpg3 <- function(dataset, i, arpt.value){
       dataset.boot <- dataset[i,]
       dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]

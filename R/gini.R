@@ -50,6 +50,11 @@ gini <- function(dataset,
     gini <- 100*(2*sum(dataset$ipuc*dataset$p_i*dataset$Fi)/M-1)
     return(gini)
   }else{
+    if (ci == TRUE) {
+      warning("argument ci=TRUE is deprecated; please check the documentation",
+              call. = FALSE)
+      ci <- 0.95
+    }
     gini3 <- function(dataset, i){
       dataset.boot <- dataset[i,]
       dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]

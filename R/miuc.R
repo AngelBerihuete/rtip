@@ -44,6 +44,11 @@ miuc <- function(dataset,
     miuc <- sum(dataset$ipuc*dataset$wHX040)/number.individuals
     return(miuc)
   }else{
+    if (ci == TRUE) {
+      warning("argument ci=TRUE is deprecated; please check the documentation",
+              call. = FALSE)
+      ci <- 0.95
+    }
     miuc2 <- function(dataset, i){
       dataset.boot <- dataset[i,]
       dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)

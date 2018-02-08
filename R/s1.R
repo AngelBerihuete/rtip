@@ -50,6 +50,11 @@ s1 <- function(dataset,
                       arpt.value = arpt.value, samplesize="complete", norm)[,2])
     return(maxtip)
   }else{
+    if (ci == TRUE) {
+      warning("argument ci=TRUE is deprecated; please check the documentation",
+              call. = FALSE)
+      ci <- 0.95
+    }
     s11 <- function(dataset, i, arpt.value, norm){
       max(tip(dataset[i,],
               ipuc = ipuc,

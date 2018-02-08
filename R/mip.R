@@ -46,6 +46,11 @@ mip <- function(dataset,
     mip <- sum(dataset[,edi]*dataset[,ehhs]*dataset[,hhcsw])/number.individuals
     return(mip)
   }else{
+    if (ci == TRUE) {
+      warning("argument ci=TRUE is deprecated; please check the documentation",
+              call. = FALSE)
+      ci <- 0.95
+    }
     mip2 <- function(dataset, i){
       dataset.boot <- dataset[i,]
       dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)

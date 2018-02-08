@@ -84,6 +84,11 @@ s2 <- function(dataset,
     return(s2)
 
     }else{
+      if (ci == TRUE) {
+        warning("argument ci=TRUE is deprecated; please check the documentation",
+                call. = FALSE)
+        ci <- 0.95
+      }
     s23 <- function(dataset, i, arpt.value, norm){
       dataset.boot <- dataset[i,]
       dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]

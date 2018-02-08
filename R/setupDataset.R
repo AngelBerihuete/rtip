@@ -48,6 +48,12 @@ setupDataset <- function(dataset,
                          deflator = NULL,
                          pppr = NULL) {
 
+  if (s == "OCDR") {
+    warning("argument s = 'OCDR' is deprecated; please check the documentation", call. = FALSE)
+    s <- NULL
+  }
+
+
   # The following line is only to overcome the note obtained by
   # R CMD check, because the using in subset function
   DB020 = DB040 = year = NULL

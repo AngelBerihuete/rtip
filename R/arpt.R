@@ -45,6 +45,11 @@ arpt <- function(dataset,
     arpt.value <- pz*uc.median # pz is the percentage for median
     return(arpt.value)
   }else{
+    if (ci == TRUE) {
+      warning("argument ci=TRUE is deprecated; please check the documentation",
+              call. = FALSE)
+      ci <- 0.95
+    }
     arpt2 <- function(dataset, i, pz){
       dataset.boot <- dataset[i,]
       dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]

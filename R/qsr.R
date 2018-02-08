@@ -46,6 +46,11 @@ qsr <- function(dataset,
     qsr <- uc.S80/uc.S20
     return(qsr)
   }else{
+    if (ci == TRUE) {
+      warning("argument ci=TRUE is deprecated; please check the documentation",
+              call. = FALSE)
+      ci <- 0.95
+    }
     qsr3 <- function(dataset, i){
       dataset.boot <- dataset[i,]
       dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
