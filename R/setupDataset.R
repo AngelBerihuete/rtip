@@ -48,8 +48,8 @@ setupDataset <- function(dataset,
                          deflator = NULL,
                          pppr = NULL) {
 
-  if (s == "OCDR") {
-    warning("argument s = 'OCDR' is deprecated; please check the documentation", call. = FALSE)
+  if (is.character(s)) {
+    warning("argument s = 'OECD' is deprecated; please check the documentation", call. = FALSE)
     s <- NULL
   }
 
