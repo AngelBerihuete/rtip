@@ -4,17 +4,17 @@
 #'
 #' @description Estimates the poverty measure which is twice the area under the TIP curve.
 #'
-#' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param dataset a data.frame containing the variables.
 #' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.
-#' @param norm logical; if  TRUE, the area under the normalized TIP curve is then estimated (see tip).
+#' @param norm logical; if  TRUE, the area under the normalised TIP curve is then estimated (see tip).
 #' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to do the confidence interval using boostrap technique.
-#' @param verbose logical; if TRUE the confindence interval is plotted.
+#' @param verbose logical; if TRUE the confidence interval is plotted.
 #'
-#' @details It is computed using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
+#' @details It is computed using the equivalised disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 #'
 #' This poverty index coincides with the Sen-Shorrocks-Thon index and the S(2,z) index of Sordo and Ramos (2011).
 #'

@@ -3,7 +3,7 @@
 #' @usage data(LCS2014)
 #'
 #' @description
-#' This is the Spanish National Statistics Institute (INE in spanish nomenclature)
+#' This is the Spanish National Statistics Institute (INE in Spanish)
 #' release for the living conditions survey in 2014. The dataset is not modified
 #' but transformed properly in order to use functions in the package.
 #' You can obtain the raw datasets at

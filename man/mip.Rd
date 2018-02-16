@@ -9,7 +9,7 @@ mip(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
   verbose = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -25,7 +25,7 @@ mip(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{rep}{a number to make the confidence interval using boostrap technique.}
 
-\item{verbose}{logical; if TRUE the confindence interval is plotted.}
+\item{verbose}{logical; if TRUE the confidence interval is plotted.}
 }
 \value{
 The value of mean income per person.

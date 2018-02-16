@@ -8,7 +8,7 @@ arpt(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
   pz = 0.6, ci = NULL, rep = 500, verbose = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -22,16 +22,16 @@ arpt(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{rep}{a number to do the confidence interval using boostrap technique.}
 
-\item{verbose}{logical; if TRUE the confindence interval is plotted.}
+\item{verbose}{logical; if TRUE the confidence interval is plotted.}
 }
 \value{
 The value of the at-risk-of-poverty threshold.
 }
 \description{
-Estimates the at-risk-of-poverty threshold which is set at 60 percent of the median equivalized disposable income using the standard definition.
+Estimates the at-risk-of-poverty threshold which is set at 60 percent of the median equivalised disposable income using the standard definition.
 }
 \details{
-The equivalized disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al.(1988) can also be used. The default is the modified OECD scale  (see setupDataset).
+The equivalised disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al.(1988) can also be used. The default is the modified OECD scale  (see setupDataset).
 }
 \examples{
 data(eusilc2)

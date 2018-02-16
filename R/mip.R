@@ -4,7 +4,7 @@
 #'
 #' @description Estimates the mean income per person.
 #'
-#' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param dataset a data.frame containing the variables.
 #' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
@@ -12,7 +12,7 @@
 #' @param edi a character string indicating the variable name of the equivalised disposable income (with the modified OECD scale). Default is "HX090".
 #' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to make the confidence interval using boostrap technique.
-#' @param verbose logical; if TRUE the confindence interval is plotted.
+#' @param verbose logical; if TRUE the confidence interval is plotted.
 #'
 #' @return The value of mean income per person.
 #'

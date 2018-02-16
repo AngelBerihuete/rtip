@@ -7,18 +7,18 @@
 #' Given two income distributions, this matrix will be used to test the
 #' null hypothesis that one distribution dominates the other in the TIP sense.
 #'
-#' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param dataset a data.frame containing the variables.
 #' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used (see arpt). Default is NULL which calculates arpt with default parameters.
-#' @param samplesize an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}.
-#' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
+#' @param samplesize an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}. Default is 50.
+#' @param norm logical; if  TRUE, the normalised TIP curve ordinates are computed using the normalised poverty gaps (poverty gaps divided by the poverty threshold).
 #'
 #'
 #' @details Estimation of TIP curve ordinates and their covariance matrix are made following Beach and Davidson (1983), Beach and Kaliski (1986) and Xu and Osberg (1998).
 #'
-#' Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
+#' Calculations are made using the equivalised disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 #'
 #' @return A list with the following components:
 #' \itemize{
@@ -39,7 +39,7 @@ OmegaTIP <- function(dataset,
                      ipuc = "ipuc", # The income per unit of consumption
                      hhcsw = "DB090", # Household cross-sectional weight
                      hhsize = "HX040", # Household size
-                     arpt.value = NULL, samplesize, norm = FALSE){
+                     arpt.value = NULL, samplesize = 50, norm = FALSE){
 
   if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
 

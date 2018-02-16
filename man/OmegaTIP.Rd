@@ -5,10 +5,10 @@
 \title{Matrix for testing TIP dominance}
 \usage{
 OmegaTIP(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
-  arpt.value = NULL, samplesize, norm = FALSE)
+  arpt.value = NULL, samplesize = 50, norm = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -18,9 +18,9 @@ OmegaTIP(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{arpt.value}{the at-risk-of-poverty threshold to be used (see arpt). Default is NULL which calculates arpt with default parameters.}
 
-\item{samplesize}{an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}.}
+\item{samplesize}{an integer which represents the number of TIP curve ordinates to be estimated. These ordinates will be estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, i=1, \dots, samplesize}. Default is 50.}
 
-\item{norm}{logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).}
+\item{norm}{logical; if  TRUE, the normalised TIP curve ordinates are computed using the normalised poverty gaps (poverty gaps divided by the poverty threshold).}
 }
 \value{
 A list with the following components:
@@ -38,7 +38,7 @@ null hypothesis that one distribution dominates the other in the TIP sense.
 \details{
 Estimation of TIP curve ordinates and their covariance matrix are made following Beach and Davidson (1983), Beach and Kaliski (1986) and Xu and Osberg (1998).
 
-Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
+Calculations are made using the equivalised disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 }
 \references{
 C. M. Beach and R. Davidson (1983) Distribution-free statistical inference with Lorenz curves and income shares, Review of Economic Studies, 50, 723--735.

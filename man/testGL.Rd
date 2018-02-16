@@ -8,9 +8,9 @@ testGL(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
   hhsize = "HX040", generalized = TRUE, samplesize = 10)
 }
 \arguments{
-\item{dataset1}{a data.frame containing variables obtained by using  the setupDataset function.}
+\item{dataset1}{a data.frame containing the variables.}
 
-\item{dataset2}{a data.frame containing variables obtained by using  the setupDataset function.}
+\item{dataset2}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 

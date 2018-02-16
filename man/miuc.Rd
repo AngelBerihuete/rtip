@@ -8,7 +8,7 @@ miuc(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
   ci = NULL, rep = 1000, verbose = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -20,16 +20,16 @@ miuc(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{rep}{a number to make the confidence interval using boostrap technique.}
 
-\item{verbose}{logical; if TRUE the confindence interval is plotted.}
+\item{verbose}{logical; if TRUE the confidence interval is plotted.}
 }
 \value{
 The value of mean income per unit of consumption
 }
 \description{
-Estimates the mean income per unit of consumption which is the mean of the equivalized disposable income.
+Estimates the mean income per unit of consumption which is the mean of the equivalised disposable income.
 }
 \details{
-The equivalized disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale (see setupDataset).
+The equivalised disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale (see setupDataset).
 }
 \examples{
 data(eusilc2)

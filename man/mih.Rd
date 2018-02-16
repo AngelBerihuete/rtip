@@ -8,7 +8,7 @@ mih(dataset, hhcsw = "DB090", ehhs = "HX050", edi = "HX090", ci = NULL,
   rep = 1000, verbose = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{hhcsw}{a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".}
 
@@ -20,7 +20,7 @@ mih(dataset, hhcsw = "DB090", ehhs = "HX050", edi = "HX090", ci = NULL,
 
 \item{rep}{a number to make the confidence interval using boostrap technique.}
 
-\item{verbose}{logical; if TRUE the confindence interval is plotted.}
+\item{verbose}{logical; if TRUE the confidence interval is plotted.}
 }
 \value{
 The value of mean income per household.

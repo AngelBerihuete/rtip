@@ -8,16 +8,16 @@
 #' null hypothesis that one distribution dominates the other in the Generalized
 #' Lorenz sense.
 #'
-#' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param dataset a data.frame containing the variables.
 #' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
-#' @param samplesize An interger representing the number of GL ordinates to be estimated. Default is 10
+#' @param samplesize An interger representing the number of GL ordinates to be estimated. Default is 10.
 #' These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, \quad i=1, \dots, samplesize}.
 #' @param generalized logical; if FALSE the matrix for testing Lorenz dominance will be calculated.
 #' @details Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983) and Beach and Kalisiki (1986).
 #'
-#' Calculations are made using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
+#' Calculations are made using the equivalised disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 #'
 #' @return A list with the following components:
 #' \itemize{

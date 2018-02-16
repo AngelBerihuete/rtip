@@ -9,7 +9,7 @@ s1(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
   verbose = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -17,26 +17,26 @@ s1(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{hhsize}{a character string indicating the variable name of the household size. Default is "HX040".}
 
-\item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt).}
+\item{arpt.value}{the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.}
 
-\item{norm}{logical; if  TRUE, the normalized mean poverty gap index is calculated which adds up the extent to which individuals on average fall below the poverty threshold, and expresses it as a percentage of the poverty threshold.}
+\item{norm}{logical; if  TRUE, the normalised mean poverty gap index is calculated which adds up the extent to which individuals on average fall below the poverty threshold, and expresses it as a percentage of the poverty threshold.}
 
 \item{ci}{a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.}
 
 \item{rep}{a number to do the confidence interval using boostrap technique.}
 
-\item{verbose}{logical; if TRUE the confindence interval is plotted.}
+\item{verbose}{logical; if TRUE the confidence interval is plotted.}
 }
 \value{
 The value of the poverty measure.
 }
 \description{
-Estimates the highest point of the TIP curve which is a measure of the intensity of poverty. It is equal to the mean poverty gap (difference between the poverty threshold and the equivalized disposable income).
+Estimates the highest point of the TIP curve which is a measure of the intensity of poverty. It is equal to the mean poverty gap (difference between the poverty threshold and the equivalised disposable income).
 }
 \details{
-It is computed using the equivalized disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
+It is computed using the equivalised disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 
-The normalized mean poverty gap index, also named FGT(1), is a particular case of the family of poverty indexes proposed by Foster, Greer and Thorbecke (1984).
+The normalised mean poverty gap index, also named FGT(1), is a particular case of the family of poverty indexes proposed by Foster, Greer and Thorbecke (1984).
 }
 \examples{
 data(eusilc2)

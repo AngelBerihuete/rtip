@@ -9,9 +9,9 @@ testTIP(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
   samplesize = 50)
 }
 \arguments{
-\item{dataset1}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset1}{a data.frame containing the variables.}
 
-\item{dataset2}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset2}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -23,7 +23,7 @@ testTIP(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
 
 \item{same.arpt.value}{a number that will be used as a common poverty threshold. If NULL, poverty thresholds will be calculated from each datasets (see arpt).}
 
-\item{norm}{logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).}
+\item{norm}{logical; if  TRUE, the normalised TIP curve ordinates are computed using the normalised poverty gaps (poverty gaps divided by the poverty threshold).}
 
 \item{samplesize}{an integer which represents the number of TIP curve ordinates to be estimated. The default is 50.}
 }

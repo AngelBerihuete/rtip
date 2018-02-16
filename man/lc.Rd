@@ -8,7 +8,7 @@ lc(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
   samplesize = 10, generalized = FALSE, plot = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -16,7 +16,7 @@ lc(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{hhsize}{a character string indicating the variable name of the household size. Default is "HX040".}
 
-\item{samplesize}{an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.}
+\item{samplesize}{an integer which specifies the number of (equally spaced) percentiles to be used in the estimation of the Lorenz (or the Generalized Lorenz) ordinates. The default value is 10. If samplesize is set to ''complete'', ordinates are computed in each value along the whole distribution.}
 
 \item{generalized}{logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.}
 
@@ -33,7 +33,7 @@ A data.frame with the following components:
 Estimates the Lorenz and the Generalized Lorenz curves ordinates.
 }
 \details{
-Lorenz and Generalized Lorenz curves ordinates are computed using the equivalized disposable income. The equivalence scales employed are the modified OECD scale and the parametric scale of Buhmann et al. (1988) (see setupDataset).
+Lorenz and Generalized Lorenz curves ordinates are computed using the equivalised disposable income. The equivalence scales employed are the modified OECD scale and the parametric scale of Buhmann et al. (1988) (see setupDataset).
 }
 \examples{
 data(eusilc2)

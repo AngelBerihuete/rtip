@@ -8,7 +8,7 @@ arpr(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
   arpt.value = NULL, ci = NULL, rep = 1000, verbose = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -22,16 +22,16 @@ arpr(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{rep}{a number to make the confidence interval using boostrap technique.}
 
-\item{verbose}{logical; if TRUE the confindence interval is plotted.}
+\item{verbose}{logical; if TRUE the confidence interval is plotted.}
 }
 \value{
 The value of the at-risk-of-poverty rate.
 }
 \description{
-Estimates the poverty rate which is defined as the share of people with an equivalized disposable income below the at-risk-of-poverty threshold.
+Estimates the poverty rate which is defined as the share of people with an equivalised disposable income below the at-risk-of-poverty threshold.
 }
 \details{
-The equivalized disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
+The equivalised disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
 }
 \examples{
 data(eusilc2)

@@ -5,14 +5,14 @@
 #' @description Statistical test procedure given by Xu and Osberg (1998) to study TIP dominance from sample
 #' TIP curve estimates.
 #'
-#' @param dataset1 a data.frame containing variables obtained by using the setupDataset function.
-#' @param dataset2 a data.frame containing variables obtained by using the setupDataset function.
+#' @param dataset1 a data.frame containing the variables.
+#' @param dataset2 a data.frame containing the variables.
 #' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param pz a number between 0 and 1 which represents the percentage to be used to calculate the at-risk-of-poverty threshold. The default is 0.6.
 #' @param same.arpt.value a number that will be used as a common poverty threshold. If NULL, poverty thresholds will be calculated from each datasets (see arpt).
-#' @param norm logical; if  TRUE, the normalized TIP curve ordinates are computed using the normalized poverty gaps (poverty gaps divided by the poverty threshold).
+#' @param norm logical; if  TRUE, the normalised TIP curve ordinates are computed using the normalised poverty gaps (poverty gaps divided by the poverty threshold).
 #' @param samplesize an integer which represents the number of TIP curve ordinates to be estimated. The default is 50.
 #'
 #' @details Because the TIP curve becomes horizontal at the arpr value, it is only necessary to have the test implemented over the interval \eqn{(0, \max \{ arpr1, arpr2 \})}{(0, max {arpr1, arpr2})}. For that reason both TIP curves are truncated at the same value equal to \eqn{\max \{ arpr1, arpr2 \} }{max{arpr1, arpr2}} and ordinates are only compared at points \eqn{p_i = i/samplesize}{p_i = i/samplesize}, where \eqn{i=1, \dots, k} in the interval \eqn{(0, \max \{ arpr1, arpr2 \})}{(0, max { arpr1, arpr2})} (see \code{arpr} function).

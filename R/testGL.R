@@ -5,8 +5,8 @@
 #' @description Statistical test procedure given by Xu (1997) to study Generalized Lorenz dominance from sample Generalized Lorenz curve estimates.  Lorenz dominance from sample Lorenz curve estimates can also be studied (Beach and Kaliski, 1986).
 #'
 #'
-#' @param dataset1 a data.frame containing variables obtained by using  the setupDataset function.
-#' @param dataset2 a data.frame containing variables obtained by using  the setupDataset function.
+#' @param dataset1 a data.frame containing the variables.
+#' @param dataset2 a data.frame containing the variables.
 #' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".

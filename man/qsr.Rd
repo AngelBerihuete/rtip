@@ -8,7 +8,7 @@ qsr(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
   ci = NULL, rep = 1000, verbose = FALSE)
 }
 \arguments{
-\item{dataset}{a data.frame containing variables obtained by using the setupDataset function.}
+\item{dataset}{a data.frame containing the variables.}
 
 \item{ipuc}{a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".}
 
@@ -20,7 +20,7 @@ qsr(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{rep}{a number to do the confidence interval using boostrap technique.}
 
-\item{verbose}{logical; if TRUE the confindence interval is plotted.}
+\item{verbose}{logical; if TRUE the confidence interval is plotted.}
 }
 \value{
 The value of the income quintile share ratio.
@@ -29,7 +29,7 @@ The value of the income quintile share ratio.
 Estimates the  quintile share ratio of an income distribution. It is defined as the ratio of total income  received by the 20 percent of the population with the highest income to that received by the 20 percent of the population with the lowest income.
 }
 \details{
-It is calculated using the equivalized disposable income. Two types of equivalence scales can be used, the modified OECD scale and the parametric scale of Buhmann et al. ( 1988). The default is the modified OECD scale  (see setupDataset).
+It is calculated using the equivalised disposable income. Two types of equivalence scales can be used, the modified OECD scale and the parametric scale of Buhmann et al. ( 1988). The default is the modified OECD scale  (see setupDataset).
 }
 \examples{
 data(eusilc2)

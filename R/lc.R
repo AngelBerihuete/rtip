@@ -4,15 +4,15 @@
 #'
 #' @description Estimates the Lorenz and the Generalized Lorenz curves ordinates.
 #'
-#' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param dataset a data.frame containing the variables.
 #' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
-#' @param samplesize an integer which represents the number of ordinates to be estimated. The default is 10. If samplesize is set to ''complete'', then the complete dataset will be used to calculate the ordinates.
+#' @param samplesize an integer which specifies the number of (equally spaced) percentiles to be used in the estimation of the Lorenz (or the Generalized Lorenz) ordinates. The default value is 10. If samplesize is set to ''complete'', ordinates are computed in each value along the whole distribution.
 #' @param generalized logical; if TRUE the Generalized Lorenz curve ordinates will be estimated.
 #' @param plot logical; if TRUE plots the Lorenz or Generalized Lorenz curve.
 #'
-#' @details Lorenz and Generalized Lorenz curves ordinates are computed using the equivalized disposable income. The equivalence scales employed are the modified OECD scale and the parametric scale of Buhmann et al. (1988) (see setupDataset).
+#' @details Lorenz and Generalized Lorenz curves ordinates are computed using the equivalised disposable income. The equivalence scales employed are the modified OECD scale and the parametric scale of Buhmann et al. (1988) (see setupDataset).
 #'
 #' @return A data.frame with the following components:
 #' \itemize{
@@ -71,7 +71,7 @@ lc <- function(dataset,
         ggplot2::geom_line() +
         ggplot2::scale_x_continuous("Cumulated proportion of population") +
         ggplot2::scale_y_continuous("") +
-        ggplot2::ggtitle("Lorenz curve")
+        ggplot2::ggtitle("Generalized Lorenz curve")
     }else{
       p <- ggplot2::ggplot(data = results, aes(x.lg, y.lg)) +
         ggplot2::geom_line() +

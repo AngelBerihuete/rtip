@@ -2,18 +2,18 @@
 #'
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
 #'
-#' @description Estimates the relative median at-risk-of-poverty gap which is the difference between the at-risk-of-poverty threshold and the median equivalized disposable income of people below the at-risk-of-poverty threshold, expressed as a percentage of this threshold.
+#' @description Estimates the relative median at-risk-of-poverty gap which is the difference between the at-risk-of-poverty threshold and the median equivalised disposable income of people below the at-risk-of-poverty threshold, expressed as a percentage of this threshold.
 #'
-#' @param dataset a data.frame containing variables obtained by using the setupDataset function.
+#' @param dataset a data.frame containing the variables.
 #' @param ipuc a character string indicating the variable name of the income per unit of consumption. Default is "ipuc".
 #' @param hhcsw a character string indicating the variable name of the household cross-sectional weight. Default is "DB090".
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param arpt.value the at-risk-of-poverty threshold to be used  (see arpt). Default is NULL which calculates arpt with default parameters.
 #' @param ci a scalar or vector containing the confidence level(s) of the required interval(s). Default does not calculate the confidence interval.
 #' @param rep a number to do the confidence interval using boostrap technique.
-#' @param verbose logical; if TRUE the confindence interval is plotted.
+#' @param verbose logical; if TRUE the confidence interval is plotted.
 #'
-#' @details The equivalized disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
+#' @details The equivalised disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale  (see setupDataset).
 #'
 #' @return The value of the relative median at-risk-of-poverty gap.
 #'
