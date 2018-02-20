@@ -2,7 +2,7 @@ Package: rtip
 Type: Package
 Title: Inequality, Welfare and Poverty Indices and Curves using the EU-SILC Data
 Version: 1.1.0
-Date: 2016-03-15
+Date: 2018-02-20
 Authors@R: c(person("Angel", "Berihuete", email = "angel.berihuete@uca.es", role = c("aut", "cre")), person("Carmen Dolores", "Ramos", email = "carmen.ramos@uca.es", role = "aut"), person("Miguel Angel", "Sordo", email = "mangel.sordo@uca.es", role = "aut"))
 Maintainer: Angel Berihuete <angel.berihuete@uca.es>
 LazyData: TRUE
