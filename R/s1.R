@@ -1,4 +1,4 @@
-#' @title  Maximun of TIP curve
+#' @title  Maximum of TIP curve
 #'
 #' @author A. Berihuete, C.D. Ramos and M.A. Sordo
 #'

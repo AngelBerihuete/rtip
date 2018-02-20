@@ -7,7 +7,7 @@
 #' @param dataset a data.frame containing variables in the EU-SILC microdata format.
 #' @param country a character string specifying the country whose data will be considered.
 #' @param region a character/vector string specifying the region(s) of the country whose data will be considered. The default (NULL) considers all regions in the country.
-#' @param s a numeric value between 0 and 1 specifying the equivalence scale to be used to obtain the equivalised disposable income. The default (NULL) considers the standar modified OECD scale.
+#' @param s a numeric value between 0 and 1 specifying the equivalence scale to be used to obtain the equivalised disposable income. The default (NULL) considers the standard modified OECD scale.
 #' @param deflator numeric; a number to be used as a deflator. The default (NULL) will not apply any deflation.
 #' @param pppr the purchasing power parity rate (PPPR) will be used. Default is NULL.
 #'

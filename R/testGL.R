@@ -14,7 +14,7 @@
 #' @param samplesize an integer which represents the number of Lorenz (Generalized Lorenz) curve ordinates to be estimated for comparison. The default is 10.
 #'
 #'
-#' @details The null hypotesis to be tested is that the  Lorenz (Generalized Lorenz) curve calculated from dataset1 dominates the one calculated from dataset2.
+#' @details The null hypothesis to be tested is that the  Lorenz (Generalized Lorenz) curve calculated from dataset1 dominates the one calculated from dataset2.
 #'
 #'
 #' @return A list with the following components:

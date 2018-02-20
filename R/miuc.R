@@ -12,7 +12,7 @@
 #' @param rep a number to make the confidence interval using boostrap technique.
 #' @param verbose logical; if TRUE the confidence interval is plotted.
 #'
-#' @details The equivalised disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale (see setupDataset).
+#' @details The equivalised disposable income is calculated using the standard equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale (see setupDataset).
 #'
 #' @return The value of mean income per unit of consumption
 #'

@@ -21,7 +21,7 @@
 #' @return The value of the poverty measure.
 #'
 #' @references B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
-#' @references A.F. Shorrocs (1995) Revisiting the Sen poverty index, Econometrica, 63, 1225--1230.
+#' @references A.F. Shorrocks (1995) Revisiting the Sen poverty index, Econometrica, 63, 1225--1230.
 #' @references D. Thon (1979) On measuring poverty, Review of Income and Wealth, 25, 429--439.
 #' @references D. Thon (1983) A poverty measure, The Indian Economic Journal, 30, 55--70.
 #' @references M.A. Sordo and C.D. Ramos (2011) Poverty comparisons when TIP curves intersect, SORT, 31, 65--80.

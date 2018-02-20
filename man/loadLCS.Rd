@@ -19,7 +19,7 @@ A data frame containing the variables required.
 Statistics Institute (\acronym{INE} in Spanish).
 }
 \details{
-Regularly the INE releases the living contions survey through two different
+Regularly the INE releases the living conditions survey through two different
 files which can be downloaded for free. The filename of these files contains
 the letters \code{D} and \code{H}, and these files include dozens of variables. Only some of these
 variables are needed to do the calculations with \code{rtip} package.

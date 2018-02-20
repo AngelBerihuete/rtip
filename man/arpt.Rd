@@ -31,7 +31,7 @@ The value of the at-risk-of-poverty threshold.
 Estimates the at-risk-of-poverty threshold which is set at 60 percent of the median equivalised disposable income using the standard definition.
 }
 \details{
-The equivalised disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al.(1988) can also be used. The default is the modified OECD scale  (see setupDataset).
+The equivalised disposable income is calculated using the standard equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al.(1988) can also be used. The default is the modified OECD scale  (see setupDataset).
 }
 \examples{
 data(eusilc2)

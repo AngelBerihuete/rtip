@@ -29,7 +29,7 @@ The value of mean income per unit of consumption
 Estimates the mean income per unit of consumption which is the mean of the equivalised disposable income.
 }
 \details{
-The equivalised disposable income is calculated using the standar equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale (see setupDataset).
+The equivalised disposable income is calculated using the standard equivalence scale (called the modified OECD scale) recommended by Eurostat. The parametric scale of Buhmann et al. (1988) can also be used. The default is the modified OECD scale (see setupDataset).
 }
 \examples{
 data(eusilc2)

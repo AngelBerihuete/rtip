@@ -14,7 +14,7 @@ setupDataset(dataset, country = "ES", region = NULL, s = NULL,
 
 \item{region}{a character/vector string specifying the region(s) of the country whose data will be considered. The default (NULL) considers all regions in the country.}
 
-\item{s}{a numeric value between 0 and 1 specifying the equivalence scale to be used to obtain the equivalised disposable income. The default (NULL) considers the standar modified OECD scale.}
+\item{s}{a numeric value between 0 and 1 specifying the equivalence scale to be used to obtain the equivalised disposable income. The default (NULL) considers the standard modified OECD scale.}
 
 \item{deflator}{numeric; a number to be used as a deflator. The default (NULL) will not apply any deflation.}
 

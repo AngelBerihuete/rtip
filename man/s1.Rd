@@ -2,7 +2,7 @@
 % Please edit documentation in R/s1.R
 \name{s1}
 \alias{s1}
-\title{Maximun of TIP curve}
+\title{Maximum of TIP curve}
 \usage{
 s1(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
   arpt.value = NULL, norm = FALSE, ci = NULL, rep = 1000,

@@ -46,7 +46,7 @@ s2(ATdataset,arpt.value = arpt(ATdataset), norm = TRUE)
 \references{
 B. Buhmann et al. (1988) Equivalence scales, well-being, inequality and poverty: sensitivity estimates across ten countries using the Luxembourg Income Study (LIS) database, Review of Income and Wealth, 34, 115--142.
 
-A.F. Shorrocs (1995) Revisiting the Sen poverty index, Econometrica, 63, 1225--1230.
+A.F. Shorrocks (1995) Revisiting the Sen poverty index, Econometrica, 63, 1225--1230.
 
 D. Thon (1979) On measuring poverty, Review of Income and Wealth, 25, 429--439.
 

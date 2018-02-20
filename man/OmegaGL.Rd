@@ -16,7 +16,7 @@ OmegaGL(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
 
 \item{hhsize}{a character string indicating the variable name of the household size. Default is "HX040".}
 
-\item{samplesize}{An interger representing the number of GL ordinates to be estimated. Default is 10.
+\item{samplesize}{An integer representing the number of GL ordinates to be estimated. Default is 10.
 These ordinates are estimated at points \eqn{p_i}, where \eqn{p_i=i/samplesize, \quad i=1, \dots, samplesize}.}
 
 \item{generalized}{logical; if FALSE the matrix for testing Lorenz dominance will be calculated.}
@@ -28,7 +28,7 @@ A list with the following components:
 \item gl.curve, estimated vector of GL curve ordinates.
 \item p, vector with components \eqn{p_i=i/samplesize, \quad i=1,..., samplesize}.
 \item quantiles, estimated vector of quantiles of income corresponding to these \eqn{p_i}.
-\item gamma, vector of estimated conditional means of income less than the quantil corresponding to \eqn{p_i=i/samplesize, \quad i=1, \dots,  samplesize}.
+\item gamma, vector of estimated conditional means of income less than the quantile corresponding to \eqn{p_i=i/samplesize, \quad i=1, \dots,  samplesize}.
 }
 }
 \description{
@@ -39,7 +39,7 @@ null hypothesis that one distribution dominates the other in the Generalized
 Lorenz sense.
 }
 \details{
-Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983) and Beach and Kalisiki (1986).
+Estimation of GL curve ordinates and their covariance matrix are calculated following Beach and Davidson (1983) and Beach and Kaliski (1986).
 
 Calculations are made using the equivalised disposable income. The equivalence scales that can be employed are the modified OECD scale or the parametric scale of Buhmann et al. (1988). The default is the modified OECD scale (see setupDataset).
 }
