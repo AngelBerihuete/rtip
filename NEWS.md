@@ -1,3 +1,19 @@
+rtip 1.1.1
+----------------------------------------------------------------
+
+* Improvement: testGL and testTIP functions have the significance level
+  `alpha` as argument.
+
+* Fixed/Improvement:
+  - Upper and Lower bounds for the critical value for jointly 
+  testing equality and inequality are calculated efficiently using
+  indications in (David & Palm). (Thanks to a referee in 
+  the process of submission to Rjournal!)
+  
+  - setupDataset will not calculate wHX040. This variable will be 
+  calculated in every indicator.
+
+
 rtip 1.1.0
 ----------------------------------------------------------------
 

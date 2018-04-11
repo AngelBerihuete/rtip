@@ -36,7 +36,7 @@ arpr <- function(dataset,
                  hhsize = "HX040", # Household size
                  arpt.value = NULL, ci = NULL, rep = 1000, verbose = FALSE){
 
-  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset <- dataset[order(dataset[,ipuc]), ]
   dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] #household weights taking into account the size of the household
 
   if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
@@ -45,7 +45,7 @@ arpr <- function(dataset,
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
-    arpr <- 100*(dataset$abscisa2[length(which(dataset$ipuc < arpt.value))])
+    arpr <- 100*(dataset$abscisa2[length(which(dataset[,ipuc] < arpt.value))])
     return(arpr)
   }else{
 
@@ -57,11 +57,11 @@ arpr <- function(dataset,
 
     arpr3 <- function(dataset, i, arpt.value){
       dataset.boot <- dataset[i,]
-      dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
+      dataset.boot <- dataset.boot[order(dataset.boot[,ipuc]), ]
       dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)
       dataset.boot$abscisa2 <-
       dataset.boot$acum.wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
-      100*(dataset.boot$abscisa2[length(which(dataset.boot$ipuc < arpt.value))])
+      100*(dataset.boot$abscisa2[length(which(dataset.boot[,ipuc] < arpt.value))])
     }
     boot.arpr <- boot::boot(dataset, statistic = arpr3, R = rep,
                        sim = "ordinary", stype = "i", arpt.value = arpt.value)

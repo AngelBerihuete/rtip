@@ -51,9 +51,9 @@ tip <- function(dataset,
     x.tip <- (1:samplesize)/samplesize
     tip.curve <- data.frame(x.tip = c(0, x.tip[1:samplesize-1]), y.tip = y.tip)
   }else{
-    dataset <- dataset[order(dataset[, "ipuc"]), ]
+    dataset <- dataset[order(dataset[, ipuc]), ]
     dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
-    dataset$pg <- pmax(arpt.value - dataset$ipuc, 0) # poverty gaps
+    dataset$pg <- pmax(arpt.value - dataset[,ipuc], 0) # poverty gaps
     w2xpg <- dataset$wHX040*dataset$pg
     acum.w2xpg <- cumsum(w2xpg)
     acum.wHX040 <- cumsum(dataset$wHX040)

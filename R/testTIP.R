@@ -14,6 +14,7 @@
 #' @param same.arpt.value a number that will be used as a common poverty threshold. If NULL, poverty thresholds will be calculated from each datasets (see arpt).
 #' @param norm logical; if  TRUE, the normalised TIP curve ordinates are computed using the normalised poverty gaps (poverty gaps divided by the poverty threshold).
 #' @param samplesize an integer which represents the number of TIP curve ordinates to be estimated. The default is 50.
+#' @param alpha a scalar indicating the significance level. Default is 0.05.
 #'
 #' @details Because the TIP curve becomes horizontal at the arpr value, it is only necessary to have the test implemented over the interval \eqn{(0, \max \{ arpr1, arpr2 \})}{(0, max {arpr1, arpr2})}. For that reason both TIP curves are truncated at the same value equal to \eqn{\max \{ arpr1, arpr2 \} }{max{arpr1, arpr2}} and ordinates are only compared at points \eqn{p_i = i/samplesize}{p_i = i/samplesize}, where \eqn{i=1, \dots, k} in the interval \eqn{(0, \max \{ arpr1, arpr2 \})}{(0, max { arpr1, arpr2})} (see \code{arpr} function).
 #'
@@ -44,6 +45,7 @@
 #'
 #' @import plyr
 #' @import mvtnorm
+#' @import rootSolve
 #' @export
 
 testTIP <- function(dataset1, dataset2,
@@ -52,7 +54,7 @@ testTIP <- function(dataset1, dataset2,
                     hhsize = "HX040", # Household size
                     pz = 0.6,
                     same.arpt.value = NULL,
-                    norm = FALSE, samplesize = 50){
+                    norm = FALSE, samplesize = 50, alpha = 0.05){
 
   if(is.null(same.arpt.value)){
 
@@ -128,20 +130,26 @@ testTIP <- function(dataset1, dataset2,
   Tvalue <- res$value
 
   # Upper and Lower bounds for the critical value for jointly testing equality and inequality restrictions (David & Palm). alpha = 0.05, K = 1 to 17
-  bounds4critical.values <- c(2.706, 5.138, 7.045, 8.761, 10.371,
-                              11.911, 13.401, 14.853, 16.274, 17.670,
-                              19.045, 20.410, 21.742, 23.069, 24.384,
-                              25.689, 26.983, 28.268, 29.545, 30.814,
-                              32.077, 33.333, 34.583, 35.827, 37.066,
-                              38.301, 39.531, 40.756, 41.977, 43.194,
-                              44.408, 45.618, 46.825, 48.029, 49.229)
+  # bounds4critical.values <- c(2.706, 5.138, 7.045, 8.761, 10.371,
+  #                             11.911, 13.401, 14.853, 16.274, 17.670,
+  #                             19.045, 20.410, 21.742, 23.069, 24.384,
+  #                             25.689, 26.983, 28.268, 29.545, 30.814,
+  #                             32.077, 33.333, 34.583, 35.827, 37.066,
+  #                             38.301, 39.531, 40.756, 41.977, 43.194,
+  #                             44.408, 45.618, 46.825, 48.029, 49.229)
 
-  if(Tvalue < bounds4critical.values[1]){
+    # --- Thanks to the suggestions made by the referees in Rjournal ---
+  f <- function(x, alpha, K) 1 - 0.5 * pchisq(x, K)-0.5 * pchisq(x, K-1)-alpha
+  valInf <- rootSolve::uniroot.all(f, c(0, 10 * threshold), alpha = alpha, K = 1)
+  valSup <- rootSolve::uniroot.all(f, c(0, 10 * threshold), alpha = alpha, K = threshold)
+  # ---
+
+  if(Tvalue < valInf){
     p.value <- NA
     return(list(Tvalue = Tvalue,
                 p.value = p.value,
                 decision = "Do not reject null hypothesis" ))
-  }else if(Tvalue > bounds4critical.values[threshold]){
+  }else if(Tvalue > valSup){
     p.value <- NA
     return(list(Tvalue = Tvalue,
                 p.value = p.value,

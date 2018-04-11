@@ -6,7 +6,7 @@
 \usage{
 testTIP(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
   hhsize = "HX040", pz = 0.6, same.arpt.value = NULL, norm = FALSE,
-  samplesize = 50)
+  samplesize = 50, alpha = 0.05)
 }
 \arguments{
 \item{dataset1}{a data.frame containing the variables.}
@@ -26,6 +26,8 @@ testTIP(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
 \item{norm}{logical; if  TRUE, the normalised TIP curve ordinates are computed using the normalised poverty gaps (poverty gaps divided by the poverty threshold).}
 
 \item{samplesize}{an integer which represents the number of TIP curve ordinates to be estimated. The default is 50.}
+
+\item{alpha}{a scalar indicating the significance level. Default is 0.05.}
 }
 \value{
 A list with the following components:

@@ -37,32 +37,27 @@ rmpg <- function(dataset,
 
 
   if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
-  dataset <- dataset[order(dataset[,"ipuc"]),]
+  dataset <- dataset[order(dataset[,ipuc]),]
 
   if(is.null(ci)){
-    rmpg.data <- dataset[which(dataset$ipuc < arpt.value),]
+    rmpg.data <- dataset[which(dataset[,ipuc] < arpt.value),]
     rmpg.data$weights.rmpg <- rmpg.data[,hhcsw]*rmpg.data[,hhsize]
     rmpg.data$acum.weights.rmpg <- cumsum(rmpg.data$weights.rmpg)
     rmpg.data$abscisa.rmpg <-
       rmpg.data$acum.weights.rmpg/rmpg.data$acum.weights.rmpg[length(rmpg.data$acum.weights.rmpg)]
-    rmpg.median <- rmpg.data$ipuc[which(rmpg.data$abscisa.rmpg > 0.5)[1]]
+    rmpg.median <- rmpg.data[which(rmpg.data$abscisa.rmpg > 0.5)[1],ipuc]
     rmpg <- 100*(arpt.value-rmpg.median)/arpt.value
     return(rmpg)
   }else{
-    if (ci == TRUE) {
-      warning("argument ci=TRUE is deprecated; please check the documentation",
-              call. = FALSE)
-      ci <- 0.95
-    }
     rmpg3 <- function(dataset, i, arpt.value){
       dataset.boot <- dataset[i,]
-      dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
-      rmpg.data <- dataset.boot[which(dataset.boot$ipuc < arpt.value),]
+      dataset.boot <- dataset.boot[order(dataset.boot[,ipuc]), ]
+      rmpg.data <- dataset.boot[which(dataset.boot[,ipuc] < arpt.value),]
       rmpg.data$weights.rmpg <- rmpg.data[,hhcsw]*rmpg.data[,hhsize]
       rmpg.data$acum.weights.rmpg <- cumsum(rmpg.data$weights.rmpg)
       rmpg.data$abscisa.rmpg <-
         rmpg.data$acum.weights.rmpg/rmpg.data$acum.weights.rmpg[length(rmpg.data$acum.weights.rmpg)]
-      rmpg.median <- rmpg.data$ipuc[which(rmpg.data$abscisa.rmpg > 0.5)[1]]
+      rmpg.median <- rmpg.data[which(rmpg.data$abscisa.rmpg > 0.5)[1],ipuc]
       100*(arpt.value-rmpg.median)/arpt.value
     }
     boot.rmpg <- boot::boot(dataset, statistic = rmpg3, R = rep,

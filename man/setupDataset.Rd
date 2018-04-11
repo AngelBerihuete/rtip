@@ -31,7 +31,6 @@ A data.frame with the following variables:
  \item HX050 a numeric vector containing information about the equivalised household size. The scale employed is the modified OECD scale.
  \item HX090 a numeric vector containing information about equivalised disposable income (with the modified OECD scale).
  \item ipuc a numeric vector containing the income per unit of consumption. This variable takes into account the value assigned to s and pppr (if they are not NULL).
- \item wHX040 a numeric vector which is set to DB090*HX040. It represents household weights taking into account the size of the household.
 }
 }
 \description{

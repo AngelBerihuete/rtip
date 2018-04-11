@@ -35,13 +35,13 @@ arpt <- function(dataset,
                  hhsize = "HX040", # Household size
                  pz = 0.6, ci = NULL, rep = 500, verbose = FALSE){
 
-  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset <- dataset[order(dataset[,ipuc]), ]
   dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
   if(is.null(ci)){
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
-    uc.median <- dataset$ipuc[which(dataset$abscisa2 > 0.5)[1]]
+    uc.median <- dataset[which(dataset$abscisa2 > 0.5)[1], ipuc]
     arpt.value <- pz*uc.median # pz is the percentage for median
     return(arpt.value)
   }else{
@@ -52,11 +52,11 @@ arpt <- function(dataset,
     }
     arpt2 <- function(dataset, i, pz){
       dataset.boot <- dataset[i,]
-      dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
+      dataset.boot <- dataset.boot[order(dataset.boot[,ipuc]),]
       dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)
       dataset.boot$abscisa2 <-
         dataset.boot$acum.wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
-      uc.median <- dataset.boot$ipuc[which(dataset.boot$abscisa2 > 0.5)[1]]
+      uc.median <- dataset.boot[which(dataset.boot$abscisa2 > 0.5)[1], ipuc]
       pz*uc.median
       }
     boot.arpt.value <- boot::boot(dataset, statistic = arpt2, R = rep,

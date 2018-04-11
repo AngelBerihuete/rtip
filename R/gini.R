@@ -36,18 +36,18 @@ gini <- function(dataset,
                  hhsize = "HX040", # Household size
                  ci = NULL, rep = 1000, verbose = FALSE){
 
-  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset <- dataset[order(dataset[,ipuc]), ]
   dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
 
   if(is.null(ci)){
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
-    dataset$X <- dataset$ipuc*dataset$wHX040
+    dataset$X <- dataset[,ipuc]*dataset$wHX040
     dataset$p_i <- dataset$wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
     dataset$pi2 <- dataset$p_i/2
     dataset$acum.p_i <- cumsum(dataset$p_i)
     dataset$Fi <-  dataset$acum.p_i - dataset$pi2
     M <- sum(dataset$X)/dataset$acum.wHX040[length(dataset$acum.wHX040)]
-    gini <- 100*(2*sum(dataset$ipuc*dataset$p_i*dataset$Fi)/M-1)
+    gini <- 100*(2*sum(dataset[,ipuc]*dataset$p_i*dataset$Fi)/M-1)
     return(gini)
   }else{
     if (ci == TRUE) {
@@ -57,15 +57,15 @@ gini <- function(dataset,
     }
     gini3 <- function(dataset, i){
       dataset.boot <- dataset[i,]
-      dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
+      dataset.boot <- dataset.boot[order(dataset.boot[,ipuc]), ]
       dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)
-      dataset.boot$X <- dataset.boot$ipuc*dataset.boot$wHX040
+      dataset.boot$X <- dataset.boot[,ipuc]*dataset.boot$wHX040
       dataset.boot$p_i <- dataset.boot$wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
       dataset.boot$pi2 <- dataset.boot$p_i/2
       dataset.boot$acum.p_i <- cumsum(dataset.boot$p_i)
       dataset.boot$Fi <-  dataset.boot$acum.p_i - dataset.boot$pi2
       M <- sum(dataset.boot$X)/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
-      100*(2*sum(dataset.boot$ipuc*dataset.boot$p_i*dataset.boot$Fi)/M-1)
+      100*(2*sum(dataset.boot[,ipuc]*dataset.boot$p_i*dataset.boot$Fi)/M-1)
     }
     boot.gini <- boot::boot(dataset, statistic = gini3, R = rep,
                      sim = "ordinary", stype = "i")

@@ -35,11 +35,6 @@ mih <- function(dataset,
     mih <- sum(dataset[,edi]*dataset[,ehhs]*dataset[,hhcsw])/sum(dataset[,hhcsw])
     return(mih)
   }else{
-    if (ci == TRUE) {
-      warning("argument ci=TRUE is deprecated; please check the documentation",
-              call. = FALSE)
-      ci <- 0.95
-    }
     mih2 <- function(dataset, i){
       dataset.boot <- dataset[i,]
       sum(dataset.boot[,edi]*dataset.boot[,ehhs]*dataset.boot[,hhcsw])/sum(dataset.boot[,hhcsw])

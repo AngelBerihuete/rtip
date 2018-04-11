@@ -5,7 +5,7 @@
 \title{Test for Lorenz and Generalized Lorenz dominance}
 \usage{
 testGL(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
-  hhsize = "HX040", generalized = TRUE, samplesize = 10)
+  hhsize = "HX040", generalized = TRUE, samplesize = 10, alpha = 0.05)
 }
 \arguments{
 \item{dataset1}{a data.frame containing the variables.}
@@ -21,6 +21,8 @@ testGL(dataset1, dataset2, ipuc = "ipuc", hhcsw = "DB090",
 \item{generalized}{logical; if FALSE the test will be applied to compare two Lorenz curves. Otherwise Generalized Lorenz curves will be compared.}
 
 \item{samplesize}{an integer which represents the number of Lorenz (Generalized Lorenz) curve ordinates to be estimated for comparison. The default is 10.}
+
+\item{alpha}{a scalar indicating the significance level. Default is 0.05.}
 }
 \value{
 A list with the following components:

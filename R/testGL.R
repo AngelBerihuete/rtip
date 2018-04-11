@@ -12,7 +12,7 @@
 #' @param hhsize a character string indicating the variable name of the household size. Default is "HX040".
 #' @param generalized logical; if FALSE the test will be applied to compare two Lorenz curves. Otherwise Generalized Lorenz curves will be compared.
 #' @param samplesize an integer which represents the number of Lorenz (Generalized Lorenz) curve ordinates to be estimated for comparison. The default is 10.
-#'
+#' @param alpha a scalar indicating the significance level. Default is 0.05.
 #'
 #' @details The null hypothesis to be tested is that the  Lorenz (Generalized Lorenz) curve calculated from dataset1 dominates the one calculated from dataset2.
 #'
@@ -41,6 +41,7 @@
 #' @seealso OmegaGL, setupDataset
 #' @import plyr
 #' @import mvtnorm
+#' @import rootSolve
 #' @export
 
 
@@ -48,7 +49,7 @@ testGL <- function(dataset1, dataset2,
                    ipuc = "ipuc", # The income per unit of consumption
                    hhcsw = "DB090", # Household cross-sectional weight
                    hhsize = "HX040", # Household size
-                   generalized = TRUE, samplesize = 10){
+                   generalized = TRUE, samplesize = 10, alpha = 0.05){
 
   list1 <- OmegaGL(dataset1,
                    ipuc = ipuc, # The income per unit of consumption
@@ -93,20 +94,26 @@ testGL <- function(dataset1, dataset2,
   Tvalue <- res$value
 
   # Upper and Lower bounds for the critical value for jointly testing equality and inequality restrictions (David & Palm). alpha = 0.05, K = 1 to 17
-  bounds4critical.values <- c(2.706, 5.138, 7.045, 8.761, 10.371,
-                              11.911, 13.401, 14.853, 16.274, 17.670,
-                              19.045, 20.410, 21.742, 23.069, 24.384,
-                              25.689, 26.983, 28.268, 29.545, 30.814,
-                              32.077, 33.333, 34.583, 35.827, 37.066,
-                              38.301, 39.531, 40.756, 41.977, 43.194,
-                              44.408, 45.618, 46.825, 48.029, 49.229)
+  # bounds4critical.values <- c(2.706, 5.138, 7.045, 8.761, 10.371,
+  #                             11.911, 13.401, 14.853, 16.274, 17.670,
+  #                             19.045, 20.410, 21.742, 23.069, 24.384,
+  #                             25.689, 26.983, 28.268, 29.545, 30.814,
+  #                             32.077, 33.333, 34.583, 35.827, 37.066,
+  #                             38.301, 39.531, 40.756, 41.977, 43.194,
+  #                             44.408, 45.618, 46.825, 48.029, 49.229)
 
-  if(Tvalue < bounds4critical.values[1]){
+  # --- Thanks to the suggestions made by the referees in Rjournal ---
+  f <- function(x, alpha, K) 1 - 0.5 * pchisq(x, K)-0.5 * pchisq(x, K-1)-alpha
+  valInf <- rootSolve::uniroot.all(f, c(0, 10 * samplesize), alpha = alpha, K = 1)
+  valSup <- rootSolve::uniroot.all(f, c(0, 10 * samplesize), alpha = alpha, K = samplesize)
+  # ---
+
+  if(Tvalue < valInf){
     p.value <- NA
     return(list(Tvalue = Tvalue,
                 p.value = p.value,
                 decision = "Do not reject null hypothesis"))
-  }else if(Tvalue > bounds4critical.values[10]){
+  }else if(Tvalue > valSup){
     p.value <- NA
     return(list(Tvalue = Tvalue,
                 p.value = p.value,

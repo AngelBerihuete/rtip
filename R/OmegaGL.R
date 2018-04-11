@@ -46,8 +46,8 @@ OmegaGL <- function(dataset,
                     samplesize = 10, generalized = TRUE){
 
 select <- (1:samplesize)/samplesize
-dataset1 <- dataset[order(dataset[,'ipuc']), ]
-dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
+dataset1 <- dataset[order(dataset[,ipuc]), ]
+dataset1$wHX040 <- dataset1[,hhcsw]*dataset1[,hhsize] # household weights taking into account the size of the household
 
 dataset1$Acum <- cumsum(dataset1$wHX040)
 dataset1$Acum.P_i <- dataset1$Acum/dataset1$Acum[length(dataset1$Acum)]
@@ -62,16 +62,16 @@ vector.gamma_i <- c()
 quantile.i <- c()
 for(i in 1:samplesize){
   pos.i <- which(dataset1$Acum.P_i>=p_i[i])[1]
-  quantile.i[i] <- dataset1$ipuc[pos.i]
+  quantile.i[i] <- dataset1[pos.i,ipuc]
   if(pos.i == 1){
-    gamma_i <- vector.gamma_i[i] <- dataset1$ipuc[pos.i]
+    gamma_i <- vector.gamma_i[i] <- dataset1[pos.i,ipuc]
     lambda.i <- 0
   }else{
-    gamma_i <- sum(dataset1$ipuc[1:(pos.i-1)]*dataset1$wHX040[1:(pos.i-1)]) +
-      dataset1$ipuc[pos.i]*(np_i[i]-dataset1$Acum[pos.i-1])
+    gamma_i <- sum(dataset1[1:(pos.i-1),ipuc]*dataset1$wHX040[1:(pos.i-1)]) +
+      dataset1[pos.i,ipuc]*(np_i[i]-dataset1$Acum[pos.i-1])
     gamma_i <- vector.gamma_i[i] <- gamma_i/np_i[i]
-    lambda.i <- sum((dataset1$ipuc[1:(pos.i-1)]-gamma_i)^2*dataset1$wHX040[1:(pos.i-1)])+
-      (dataset1$ipuc[pos.i]-gamma_i)^2*(np_i[i]-dataset1$Acum[pos.i-1])
+    lambda.i <- sum((dataset1[1:(pos.i-1),ipuc]-gamma_i)^2*dataset1$wHX040[1:(pos.i-1)])+
+      (dataset1[pos.i,ipuc]-gamma_i)^2*(np_i[i]-dataset1$Acum[pos.i-1])
 
     lambda.i <- lambda.i/np_i[i]
   }
@@ -79,13 +79,13 @@ for(i in 1:samplesize){
   for(j in i:samplesize){
     pos.j <- which(dataset1$Acum.P_i>=p_i[j])[1]
     if(pos.j == 1){
-      gamma.j <- dataset1$ipuc[pos.j]
+      gamma.j <- dataset1[pos.j,ipuc]
     }else{
-      gamma.j <- sum(dataset1$ipuc[1:(pos.j-1)]*dataset1$wHX040[1:(pos.j-1)]) +
-        dataset1$ipuc[pos.j]*(np_i[j]-dataset1$Acum[pos.j-1])
+      gamma.j <- sum(dataset1[1:(pos.j-1),ipuc]*dataset1$wHX040[1:(pos.j-1)]) +
+        dataset1[pos.j,ipuc]*(np_i[j]-dataset1$Acum[pos.j-1])
       gamma.j <- gamma.j/np_i[j]
     }
-    sigma[i,j] <- p_i[i]*(lambda.i+(1-p_i[j])*(dataset1$ipuc[pos.i]-gamma_i)*(dataset1$ipuc[pos.j]-gamma.j)+(dataset1$ipuc[pos.i]-gamma_i)*(gamma.j-gamma_i))
+    sigma[i,j] <- p_i[i]*(lambda.i+(1-p_i[j])*(dataset1[pos.i,ipuc]-gamma_i)*(dataset1[pos.j,ipuc]-gamma.j)+(dataset1[pos.i,ipuc]-gamma_i)*(gamma.j-gamma_i))
   }
 }
 

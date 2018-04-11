@@ -44,7 +44,7 @@ s2 <- function(dataset,
 
   if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
 
-  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset <- dataset[order(dataset[,ipuc]), ]
   dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking
 
   if(is.null(ci)){
@@ -55,7 +55,7 @@ s2 <- function(dataset,
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
 
-    gap.aux <- arpt.value-dataset$ipuc
+    gap.aux <- arpt.value-dataset[,ipuc]
     dataset$pg <- pmax(gap.aux, 0) # poverty gaps
 
     dataset$aux.prod <- dataset$wHX040*dataset$pg
@@ -84,19 +84,14 @@ s2 <- function(dataset,
     return(s2)
 
     }else{
-      if (ci == TRUE) {
-        warning("argument ci=TRUE is deprecated; please check the documentation",
-                call. = FALSE)
-        ci <- 0.95
-      }
     s23 <- function(dataset, i, arpt.value, norm){
       dataset.boot <- dataset[i,]
-      dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
+      dataset.boot <- dataset.boot[order(dataset.boot[,ipuc]), ]
       dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040) # poblacional
       dataset.boot$abscisa2 <-
         dataset.boot$acum.wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
 
-      gap.aux <- arpt.value-dataset.boot$ipuc
+      gap.aux <- arpt.value-dataset.boot[,ipuc]
       dataset.boot$pg <- pmax(gap.aux, 0) # poverty gaps
 
       dataset.boot$aux.prod <- dataset.boot$wHX040*dataset.boot$pg

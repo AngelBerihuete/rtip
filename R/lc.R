@@ -42,17 +42,17 @@ lc <- function(dataset,
 
   if(samplesize != "complete"){
     res.glc <- OmegaGL(dataset,
-                       ipuc = "ipuc", # The income per unit of consumption
-                       hhcsw = "DB090", # Household cross-sectional weight
-                       hhsize = "HX040", # Household size
+                       ipuc = ipuc, # The income per unit of consumption
+                       hhcsw = hhcsw, # Household cross-sectional weight
+                       hhsize = hhsize, # Household size
                        samplesize = samplesize, generalized = generalized)
     results <- data.frame(x.lg = c(0, res.glc$p),
                           y.lg = c(0, res.glc$gl.curve))
   }else{
-    dataset <- dataset[order(dataset[, "ipuc"]), ]
+    dataset <- dataset[order(dataset[, ipuc]),]
     dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
 
-    w2xpg <- dataset$wHX040*dataset$ipuc
+    w2xpg <- dataset$wHX040*dataset[,ipuc]
     acum.w2xpg <- cumsum(w2xpg)
     acum.wHX040 <- cumsum(dataset$wHX040)
 

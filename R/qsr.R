@@ -33,31 +33,26 @@ qsr <- function(dataset,
                 hhcsw = "DB090", # Household cross-sectional weight
                 hhsize = "HX040", # Household size
                 ci = NULL, rep = 1000, verbose = FALSE){
-  dataset <- dataset[order(dataset[,"ipuc"]), ]
+  dataset <- dataset[order(dataset[,ipuc]), ]
   dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
 
   if(is.null(ci)){
     dataset$acum.wHX040 <- cumsum(dataset$wHX040)
     dataset$abscisa2 <-
       dataset$acum.wHX040/dataset$acum.wHX040[length(dataset$acum.wHX040)]
-    A <- dataset$ipuc*dataset$wHX040
+    A <- dataset[,ipuc]*dataset$wHX040
     uc.S20 <- sum(A[which(dataset$abscisa2 < 0.2)])
     uc.S80 <- sum(A[which(dataset$abscisa2 > 0.8)])
     qsr <- uc.S80/uc.S20
     return(qsr)
   }else{
-    if (ci == TRUE) {
-      warning("argument ci=TRUE is deprecated; please check the documentation",
-              call. = FALSE)
-      ci <- 0.95
-    }
     qsr3 <- function(dataset, i){
       dataset.boot <- dataset[i,]
-      dataset.boot <- dataset.boot[order(dataset.boot[,"ipuc"]), ]
+      dataset.boot <- dataset.boot[order(dataset.boot[,ipuc]), ]
       dataset.boot$acum.wHX040 <- cumsum(dataset.boot$wHX040)
       dataset.boot$abscisa2 <-
         dataset.boot$acum.wHX040/dataset.boot$acum.wHX040[length(dataset.boot$acum.wHX040)]
-      A <- dataset.boot$ipuc*dataset.boot$wHX040
+      A <- dataset.boot[,ipuc]*dataset.boot$wHX040
       uc.S20 <- sum(A[which(dataset.boot$abscisa2 < 0.2)])
       uc.S80 <- sum(A[which(dataset.boot$abscisa2 > 0.8)])
       uc.S80/uc.S20

@@ -40,27 +40,22 @@ s1 <- function(dataset,
                arpt.value = NULL,
                norm = FALSE, ci = NULL, rep = 1000, verbose = FALSE){
 
-  if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc, hhcsw, hhsize)
+  if(is.null(arpt.value)) arpt.value <- arpt(dataset, ipuc = ipuc, hhcsw = hhcsw, hhsize = hhsize)
 
   if(is.null(ci)){
     maxtip <- max(tip(dataset,
                       ipuc = ipuc,
                       hhcsw = hhcsw,
                       hhsize = hhsize,
-                      arpt.value = arpt.value, samplesize="complete", norm)[,2])
+                      arpt.value = arpt.value, samplesize="complete", norm = norm)[,2])
     return(maxtip)
   }else{
-    if (ci == TRUE) {
-      warning("argument ci=TRUE is deprecated; please check the documentation",
-              call. = FALSE)
-      ci <- 0.95
-    }
     s11 <- function(dataset, i, arpt.value, norm){
       max(tip(dataset[i,],
               ipuc = ipuc,
               hhcsw = hhcsw,
               hhsize = hhsize,
-              arpt.value = arpt.value, samplesize="complete", norm)[,2]) # s1 index
+              arpt.value = arpt.value, samplesize="complete", norm = norm)[,2]) # s1 index
     }
     boot.s1 <- boot::boot(dataset, statistic = s11, R = rep,
                     sim = "ordinary", stype = "i",
