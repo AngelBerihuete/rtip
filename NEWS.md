@@ -7,7 +7,7 @@ rtip 1.1.1
 * Fixed/Improvement:
   - Upper and Lower bounds for the critical value for jointly 
   testing equality and inequality are calculated efficiently using
-  indications in (David & Palm). (Thanks to a referee in 
+  indications in (David & Palm). (Thanks to one of the referees in 
   the process of submission to Rjournal!)
   
   - setupDataset will not calculate wHX040. This variable will be 
