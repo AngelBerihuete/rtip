@@ -5,7 +5,7 @@
 \title{At-risk-of-poverty threshold}
 \usage{
 arpt(dataset, ipuc = "ipuc", hhcsw = "DB090", hhsize = "HX040",
-  pz = 0.6, ci = NULL, rep = 500, verbose = FALSE)
+  pz = 0.6, ci = NULL, rep = 1000, verbose = FALSE)
 }
 \arguments{
 \item{dataset}{a data.frame containing the variables.}

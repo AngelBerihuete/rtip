@@ -30,7 +30,7 @@ A list with the following components:
 \itemize{
 \item Tvalue the value of the test-statistic
 \item p.value simulated p-value of the test-statistic Tvalue (Wolak, 1989). It is calculated only when the Tvalue falls into an inconclusive region.
-\item decision if the Tvalue is less than the lower-bound of the critical value at the 5 percent significance level the decision is "Do not reject null hypothesis". If the Tvalue is greater than the upper-bound of the critical value at the 5 percent significance level the decision is "Reject null hypothesis". Lower and upper-bounds critical values are obtained from Kodde and Palm (1986). If Tvalue falls into an inconclusive region (between the lower- and upper-bounds) the p-value will be estimated following Wolak (1989).
+\item decision if the Tvalue is less than the lower-bound of the critical value at the \eqn{alpha} significance level the decision is "Do not reject null hypothesis". If the Tvalue is greater than the upper-bound of the critical value at the \eqn{alpha} significance level the decision is "Reject null hypothesis". Lower and upper-bounds critical values are obtained from Kodde and Palm (1986). If Tvalue falls into an inconclusive region (between the lower- and upper-bounds) the p-value will be estimated following Wolak (1989).
 }
 }
 \description{
@@ -43,7 +43,7 @@ The null hypothesis to be tested is that the  Lorenz (Generalized Lorenz) curve 
 data(eusilc2)
 ATdataset1 <- setupDataset(eusilc2, country = "AT", region = "Burgenland")
 ATdataset2 <- setupDataset(eusilc2, country = "AT", region = "Carinthia")
-testGL(ATdataset1, ATdataset2, generalized = TRUE, samplesize = 10)
+testGL(ATdataset1, ATdataset2, generalized = TRUE, samplesize = 10, alpha = 0.05)
 
 }
 \references{

@@ -33,7 +33,7 @@ arpt <- function(dataset,
                  ipuc = "ipuc", # The income per unit of consumption
                  hhcsw = "DB090", # Household cross-sectional weight
                  hhsize = "HX040", # Household size
-                 pz = 0.6, ci = NULL, rep = 500, verbose = FALSE){
+                 pz = 0.6, ci = NULL, rep = 1000, verbose = FALSE){
 
   dataset <- dataset[order(dataset[,ipuc]), ]
   dataset$wHX040 <- dataset[,hhcsw]*dataset[,hhsize] # household weights taking into account the size of the household
