@@ -61,12 +61,16 @@ testTIP(ATdataset1, ATdataset, same.arpt.value = arpt(ATdataset))
 ## Citation
 A BibTeX entry for LaTeX users is
 ```bibtex
-  @Manual{,
-    title = {rtip: Inequality, Welfare and Poverty Indices and Curves using the
-EU-SILC Data},
-    author = {Angel Berihuete and Carmen Dolores Ramos and Miguel Angel Sordo},
-    year = {2016},
-    note = {R package version 1.0.0},
-    url = {https://CRAN.R-project.org/package=rtip},
-  }
+@article{RJ-2018-029,
+  author = {Angel Berihuete and Carmen D. Ramos and Miguel A. Sordo},
+  title = {{Welfare, Inequality and Poverty Analysis with rtip: An
+          Approach Based on Stochastic Dominance}},
+  year = {2018},
+  journal = {{The R Journal}},
+  doi = {10.32614/RJ-2018-029},
+  url = {https://doi.org/10.32614/RJ-2018-029},
+  pages = {328--341},
+  volume = {10},
+  number = {1}
+}
 ```
